@@ -64,7 +64,8 @@
                             "type": "action",
                             "data": {
                                 "taskTitle": "Review rental extension",
-                                "priority": "High"
+                                "priority": "High",
+                                "recipient": { "Type": 2, "Value": "laurent.cadieux@uipath.com" }
                             },
                             "entryConditions": [
                                 {
@@ -212,7 +213,8 @@
                             "type": "action",
                             "data": {
                                 "taskTitle": "Confirm equipment return intent",
-                                "priority": "High"
+                                "priority": "High",
+                                "recipient": { "Type": 2, "Value": "laurent.cadieux@uipath.com" }
                             },
                             "entryConditions": [
                                 {
@@ -392,7 +394,8 @@
                             "type": "action",
                             "data": {
                                 "taskTitle": "Validate rental intake",
-                                "priority": "Medium"
+                                "priority": "Medium",
+                                "recipient": { "Type": 2, "Value": "laurent.cadieux@uipath.com" }
                             },
                             "entryConditions": [
                                 {

@@ -1,0 +1,272 @@
+{
+  "case": {
+    "completionConditions": [
+      {
+        "completionConditionType": "StagesCompleted",
+        "parameters": {
+          "stageNames": [
+            "Return & Close",
+            "Active Rental Monitoring",
+            "Intake & Triage"
+          ]
+        },
+        "ruleName": "Equipment returned and required stages complete"
+      }
+    ]
+  },
+  "stages": [
+    {
+      "name": "Extension Request",
+      "entryConditions": [],
+      "exitConditions": [],
+      "completionConditions": [
+        {
+          "completionConditionType": "TasksCompleted",
+          "parameters": {
+            "taskNames": [
+              "Approve extension request"
+            ]
+          },
+          "ruleName": "Resume active rental"
+        }
+      ],
+      "tasks": [
+        {
+          "name": "Approve extension request",
+          "entryConditions": [
+            {
+              "entryConditionType": "StageEntered",
+              "parameters": {
+                "stageNames": [
+                  "Extension Request"
+                ]
+              },
+              "ruleName": "Review extension request"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Immediate Pickup",
+      "entryConditions": [],
+      "exitConditions": [],
+      "completionConditions": [
+        {
+          "completionConditionType": "TasksCompleted",
+          "parameters": {
+            "taskNames": [
+              "Notify vendor for ASAP pickup"
+            ]
+          },
+          "ruleName": "Resume return and close"
+        }
+      ],
+      "tasks": [
+        {
+          "name": "Notify vendor for ASAP pickup",
+          "entryConditions": [
+            {
+              "entryConditionType": "StageEntered",
+              "parameters": {
+                "stageNames": [
+                  "Immediate Pickup"
+                ]
+              },
+              "ruleName": "Request expedited pickup"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Return & Close",
+      "entryConditions": [
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Return & Close\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Return & Close\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Immediate Pickup"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Resume return and close"
+        },
+        {
+          "entryConditionType": "StagesCompleted",
+          "parameters": {
+            "stageNames": [
+              "Active Rental Monitoring"
+            ]
+          },
+          "ruleName": "Begin return and closure"
+        }
+      ],
+      "exitConditions": [],
+      "completionConditions": [
+        {
+          "completionConditionType": "TasksCompleted",
+          "parameters": {
+            "taskNames": [
+              "Confirm return intent"
+            ]
+          },
+          "ruleName": "Rental return complete"
+        }
+      ],
+      "tasks": [
+        {
+          "name": "Confirm return intent",
+          "runOnlyOnce": false,
+          "entryConditions": [
+            {
+              "entryConditionType": "StageEntered",
+              "parameters": {
+                "stageNames": [
+                  "Return & Close"
+                ]
+              },
+              "ruleName": "Request return intent"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Active Rental Monitoring",
+      "entryConditions": [
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Active Rental Monitoring\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Active Rental Monitoring\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Immediate Pickup"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Resume return and close"
+        },
+        {
+          "entryConditionType": "StagesCompleted",
+          "parameters": {
+            "stageNames": [
+              "Intake & Triage"
+            ]
+          },
+          "ruleName": "Begin active rental monitoring"
+        }
+      ],
+      "exitConditions": [],
+      "completionConditions": [
+        {
+          "completionConditionType": "TasksCompleted",
+          "parameters": {
+            "taskNames": [
+              "Monitor rental contract end date"
+            ]
+          },
+          "ruleName": "Monitoring cycle complete"
+        }
+      ],
+      "tasks": [
+        {
+          "name": "Monitor rental contract end date",
+          "runOnlyOnce": false,
+          "entryConditions": [
+            {
+              "entryConditionType": "StageEntered",
+              "parameters": {
+                "stageNames": [
+                  "Active Rental Monitoring"
+                ]
+              },
+              "ruleName": "Check rental dates"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Intake & Triage",
+      "entryConditions": [
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Intake & Triage\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Intake & Triage\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Immediate Pickup"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Resume return and close"
+        },
+        {
+          "entryConditionType": "CaseEntered",
+          "parameters": {},
+          "ruleName": "Start rental intake"
+        }
+      ],
+      "exitConditions": [],
+      "completionConditions": [
+        {
+          "completionConditionType": "TasksCompleted",
+          "parameters": {
+            "taskNames": [
+              "Validate job and rental data"
+            ]
+          },
+          "ruleName": "Intake complete"
+        }
+      ],
+      "tasks": [
+        {
+          "name": "Validate job and rental data",
+          "runOnlyOnce": false,
+          "entryConditions": [
+            {
+              "entryConditionType": "StageEntered",
+              "parameters": {
+                "stageNames": [
+                  "Intake & Triage"
+                ]
+              },
+              "ruleName": "Validate intake data"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "version": 1
+}
