@@ -28,3 +28,6 @@ Build a credible UiPath showcase as a working product, not a diagram: use realis
 
 ## EquipmentRental-specific operating rule
 Every automation must receive or derive `correlation_id`. It must be written to the rental contract/event history and included in task, agent, RPA, and API logs so a case can be followed across UiPath services.
+
+## Codex agents and skills
+Use the project-local specialist agents in `.codex/agents` as a practical delivery team. Assign bounded responsibilities—analysis, architecture, planning, design, implementation, review, and verification—then integrate their evidence before making a completion claim. Use the installed UiPath skills to select the correct product surface for each task, rather than treating all UiPath work as generic code. Keep agent outputs, design decisions, and validation results in the repository so future contributors can understand both the solution and how it was built.
