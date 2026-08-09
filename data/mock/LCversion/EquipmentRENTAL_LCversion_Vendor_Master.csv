@@ -1,0 +1,4 @@
+vendor_id,vendor_name,vendor_type,support_email,support_phone,api_system_name,status
+VND-001,United Rentals Demonstration,Equipment Rental,support@united-rentals-mock.example,+1-555-0110,united-rentals-mock,Active
+VND-002,Sunbelt Demonstration,Equipment Rental,support@sunbelt-mock.example,+1-555-0120,sunbelt-mock,Active
+VND-003,Herc Rentals Portal Demonstration,Equipment Rental,support@herc-portal-mock.example,+1-555-0130,herc-portal-mock,Active

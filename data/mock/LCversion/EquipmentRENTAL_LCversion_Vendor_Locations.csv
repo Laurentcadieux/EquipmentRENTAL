@@ -1,0 +1,7 @@
+vendor_location_id,vendor_id,location_name,address_line1,city,state,postal_code,contact_name,contact_email,contact_phone,status
+VLOC-01-01,VND-001,United Chicago Branch,111 Rental Way,Chicago,IL,60607,Chicago Rental Desk,chicago.1@vendor.example,+1-555-02110,Active
+VLOC-01-02,VND-001,United Dallas Branch,112 Rental Way,Dallas,TX,75212,Dallas Rental Desk,dallas.1@vendor.example,+1-555-02120,Active
+VLOC-02-01,VND-002,Sunbelt Chicago Branch,121 Rental Way,Chicago,IL,60607,Chicago Rental Desk,chicago.2@vendor.example,+1-555-02210,Active
+VLOC-02-02,VND-002,Sunbelt Dallas Branch,122 Rental Way,Dallas,TX,75212,Dallas Rental Desk,dallas.2@vendor.example,+1-555-02220,Active
+VLOC-03-01,VND-003,Herc Chicago Branch,131 Rental Way,Chicago,IL,60607,Chicago Rental Desk,chicago.3@vendor.example,+1-555-02310,Active
+VLOC-03-02,VND-003,Herc Dallas Branch,132 Rental Way,Dallas,TX,75212,Dallas Rental Desk,dallas.3@vendor.example,+1-555-02320,Active

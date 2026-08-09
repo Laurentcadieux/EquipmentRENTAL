@@ -1,0 +1,5 @@
+department_id,department_name,cost_center,business_unit,manager_staff_id,default_location_id,status
+DEP-001,Operations,CC-4100,Industrial Services,STF-002,LOC-CHI-001,Active
+DEP-002,Facilities,CC-4200,Corporate Services,STF-006,LOC-DAL-001,Active
+DEP-003,Field Services,CC-4300,Industrial Services,STF-010,LOC-ATL-001,Active
+DEP-004,Capital Projects,CC-4400,Project Delivery,STF-014,LOC-PHX-001,Active

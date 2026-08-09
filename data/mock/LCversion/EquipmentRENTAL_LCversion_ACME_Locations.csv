@@ -1,0 +1,5 @@
+location_id,location_name,address_line1,city,state,postal_code,site_contact_staff_id,status
+LOC-CHI-001,Chicago Plant,1850 W Fulton St,Chicago,IL,60612,STF-002,Active
+LOC-DAL-001,Dallas Yard,1020 Riverfront Blvd,Dallas,TX,75207,STF-006,Active
+LOC-ATL-001,Atlanta Field Office,2300 Marietta Blvd,Atlanta,GA,30318,STF-010,Active
+LOC-PHX-001,Phoenix Operations Center,4550 W Roosevelt St,Phoenix,AZ,85043,STF-014,Active

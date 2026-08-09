@@ -1,0 +1,17 @@
+staff_id,first_name,last_name,email,role,department_id,location_id,approval_limit,status
+STF-001,Avery,Bennett,avery.bennett@acme.example,Requester,DEP-001,LOC-CHI-001,0.00,Active
+STF-002,Blake,Carter,blake.carter@acme.example,Manager,DEP-001,LOC-CHI-001,10000.00,Active
+STF-003,Casey,Diaz,casey.diaz@acme.example,Procurement,DEP-001,LOC-CHI-001,100000.00,Active
+STF-004,Devon,Ellis,devon.ellis@acme.example,Case Worker,DEP-001,LOC-CHI-001,0.00,Active
+STF-005,Emerson,Foster,emerson.foster@acme.example,Requester,DEP-002,LOC-DAL-001,0.00,Active
+STF-006,Finley,Garcia,finley.garcia@acme.example,Manager,DEP-002,LOC-DAL-001,10000.00,Active
+STF-007,Gray,Hughes,gray.hughes@acme.example,Procurement,DEP-002,LOC-DAL-001,100000.00,Active
+STF-008,Harper,Irwin,harper.irwin@acme.example,Case Worker,DEP-002,LOC-DAL-001,0.00,Active
+STF-009,Jordan,Jones,jordan.jones@acme.example,Requester,DEP-003,LOC-ATL-001,0.00,Active
+STF-010,Kai,Kim,kai.kim@acme.example,Manager,DEP-003,LOC-ATL-001,10000.00,Active
+STF-011,Logan,Lewis,logan.lewis@acme.example,Procurement,DEP-003,LOC-ATL-001,100000.00,Active
+STF-012,Morgan,Morgan,morgan.morgan@acme.example,Case Worker,DEP-003,LOC-ATL-001,0.00,Active
+STF-013,Avery,Bennett,avery.bennett@acme.example,Requester,DEP-004,LOC-PHX-001,0.00,Active
+STF-014,Blake,Carter,blake.carter@acme.example,Manager,DEP-004,LOC-PHX-001,10000.00,Active
+STF-015,Casey,Diaz,casey.diaz@acme.example,Procurement,DEP-004,LOC-PHX-001,100000.00,Active
+STF-016,Devon,Ellis,devon.ellis@acme.example,Case Worker,DEP-004,LOC-PHX-001,0.00,Active

@@ -1,0 +1,1 @@
+# EquipmentRENTAL LCversion Mock Dataset\n\n- History: 2024-08-09 through 2026-08-09\n- Availability forecast: 2026-08-09 through 2029-02-09\n- Every CSV filename uses the project/version prefix for human traceability.\n- Run `python3 scripts/generate_mock_data.py` to recreate this deterministic dataset.\n
