@@ -1,0 +1,12 @@
+{
+    "DocVersion": "1.0.0",
+    "StudioMinVersion": "2025.10.0",
+    "SolutionId": "2579a88c-633d-44dd-57de-08def46ec69f",
+    "Projects": [
+        {
+            "Type": "CaseManagement",
+            "ProjectRelativePath": "EquipmentRentalCase/project.uiproj",
+            "Id": "d343be7a-1a04-447b-a9d5-b3919ecf3038"
+        }
+    ]
+}

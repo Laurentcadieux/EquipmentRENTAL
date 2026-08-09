@@ -1,0 +1,22 @@
+{
+  "docVersion": "1.0.0",
+  "resource": {
+    "name": "EquipmentRentalCase",
+    "kind": "package",
+    "apiVersion": "orchestrator.uipath.com/v1",
+    "projectKey": "d343be7a-1a04-447b-a9d5-b3919ecf3038",
+    "dependencies": [],
+    "runtimeDependencies": [],
+    "folders": [
+      {
+        "fullyQualifiedName": "solution_folder"
+      }
+    ],
+    "spec": {
+      "name": "EquipmentRentalCase"
+    },
+    "locks": [],
+    "key": "d889ff59-7f4c-4bc9-8234-3c8b1d501d0a",
+    "files": []
+  }
+}

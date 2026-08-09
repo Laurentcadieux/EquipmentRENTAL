@@ -32,7 +32,7 @@ def write_csv(name: str, rows: list[dict[str, object]]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     fields = list(rows[0]) if rows else []
     with path.open("w", newline="", encoding="utf-8") as stream:
-        writer = csv.DictWriter(stream, fieldnames=fields)
+        writer = csv.DictWriter(stream, fieldnames=fields, lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
 
@@ -55,13 +55,13 @@ def main() -> None:
         ("DEP-003", "Field Services", "CC-4300", "Industrial Services", "LOC-ATL-001"),
         ("DEP-004", "Capital Projects", "CC-4400", "Project Delivery", "LOC-PHX-001"),
     ]
-    first_names = ["Avery", "Blake", "Casey", "Devon", "Emerson", "Finley", "Gray", "Harper", "Jordan", "Kai", "Logan", "Morgan"]
-    last_names = ["Bennett", "Carter", "Diaz", "Ellis", "Foster", "Garcia", "Hughes", "Irwin", "Jones", "Kim", "Lewis", "Morgan"]
+    first_names = ["Avery", "Blake", "Casey", "Devon", "Emerson", "Finley", "Gray", "Harper", "Jordan", "Kai", "Logan", "Morgan", "Nico", "Oakley", "Parker", "Quinn"]
+    last_names = ["Bennett", "Carter", "Diaz", "Ellis", "Foster", "Garcia", "Hughes", "Irwin", "Jones", "Kim", "Lewis", "Morgan", "Nguyen", "Owens", "Patel", "Reed"]
     staff: list[dict[str, object]] = []
     for index in range(16):
         dept = departments[index // 4]
         role = ["Requester", "Manager", "Procurement", "Case Worker"][index % 4]
-        first, last = first_names[index % len(first_names)], last_names[index % len(last_names)]
+        first, last = first_names[index], last_names[index]
         staff.append({
             "staff_id": f"STF-{index + 1:03d}", "first_name": first, "last_name": last,
             "email": f"{first.lower()}.{last.lower()}@acme.example", "role": role,
@@ -136,17 +136,17 @@ def main() -> None:
         duration = 14 + (index % 4) * 7
         end = start + timedelta(days=duration)
         if future:
-            status = "Draft" if index % 3 == 0 else "Active"
-            request_status = "Approved" if status == "Active" else "Submitted"
+            status = "Draft"
+            request_status = "Submitted" if index % 3 == 0 else "Approved"
         elif index % 17 == 0:
             status, request_status = "Cancelled", "Cancelled"
-        elif index % 7 == 0:
-            status, request_status = "Extended", "Approved"
-            end += timedelta(days=21)
         elif end < AS_OF - timedelta(days=10):
             status, request_status = "Closed", "Approved"
         elif end < AS_OF:
             status, request_status = "Returned", "Approved"
+        elif index % 7 == 0:
+            status, request_status = "Extended", "Approved"
+            end += timedelta(days=21)
         else:
             status, request_status = "Active", "Approved"
         created = start - timedelta(days=4)
@@ -160,6 +160,8 @@ def main() -> None:
             "approval_date": iso(start - timedelta(days=2)) if request_status == "Approved" else "",
             "created_at": timestamp(created), "updated_at": timestamp(start), "correlation_id": correlation,
         })
+        if request_status != "Approved":
+            continue
         contracts.append({
             "contract_id": contract_id, "rental_request_id": request_id, "vendor_id": equipment["vendor_id"],
             "vendor_location_id": equipment["vendor_location_id"], "department_id": dept[0],
@@ -185,7 +187,10 @@ def main() -> None:
         event_types = [("Rent", start, "")]
         if status == "Extended": event_types.append(("Extend", start + timedelta(days=duration), "Project Delay"))
         if status == "Cancelled": event_types.append(("Cancel", start + timedelta(days=2), "No Longer Needed"))
-        if status in {"Returned", "Closed"}: event_types.extend([("Return Requested", end - timedelta(days=2), ""), ("Return", end, "")])
+        if status in {"Returned", "Closed"}:
+            event_types.extend([("Return Requested", end - timedelta(days=2), ""), ("Pickup Confirmed", end - timedelta(days=1), ""), ("Return", end, "")])
+            if index % 13 == 0:
+                event_types.extend([("Inspection", end, "Damage Found"), ("Case Updated", end, "Damage Review Required")])
         for event_number, (event_type, event_date, reason) in enumerate(event_types, start=1):
             events.append({
                 "event_id": f"RLE-{index:06d}-{event_number}", "contract_id": contract_id, "event_type": event_type,
@@ -196,12 +201,14 @@ def main() -> None:
                 "source_event_id": f"{correlation}-{event_number}", "created_at": timestamp(event_date), "updated_at": timestamp(event_date), "correlation_id": correlation,
             })
         if status in {"Returned", "Closed"}:
+            immediate_pickup = index % 11 == 0
+            damage_found = index % 13 == 0
             pickups.append({
                 "pickup_return_request_id": f"PRR-{index:06d}", "contract_id": contract_id, "vendor_id": equipment["vendor_id"],
-                "vendor_location_id": equipment["vendor_location_id"], "request_type": "Standard Pickup", "requested_date": iso(end - timedelta(days=3)),
+                "vendor_location_id": equipment["vendor_location_id"], "request_type": "Immediate Pickup" if immediate_pickup else "Standard Pickup", "requested_date": iso(end - timedelta(days=3)),
                 "preferred_pickup_date": iso(end - timedelta(days=1)), "scheduled_pickup_date": iso(end),
-                "vendor_confirmation_number": f"PICK-{index:06d}", "request_status": "Completed", "inspection_result": "Pass",
-                "damage_flags": "None", "equipment_returned_date": iso(end), "created_at": timestamp(end - timedelta(days=3)),
+                "vendor_confirmation_number": f"PICK-{index:06d}", "request_status": "Completed", "inspection_result": "Damage Found" if damage_found else "Pass",
+                "damage_flags": "Damage" if damage_found else "None", "equipment_returned_date": iso(end), "created_at": timestamp(end - timedelta(days=3)),
                 "updated_at": timestamp(end), "correlation_id": correlation,
             })
         if status in {"Active", "Extended"} and end <= AS_OF + timedelta(days=28):
@@ -214,6 +221,13 @@ def main() -> None:
                 "severity": "High" if days <= 1 else "Medium", "status": "Open", "assigned_to_staff_id": approver["staff_id"],
                 "resolution_notes": "", "alert_window": window, "alert_sent_at": timestamp(AS_OF),
                 "created_at": timestamp(AS_OF), "updated_at": timestamp(AS_OF), "correlation_id": correlation,
+            })
+            events.append({
+                "event_id": f"RLE-{index:06d}-ALERT", "contract_id": contract_id, "event_type": "Alert",
+                "event_timestamp": timestamp(AS_OF), "performed_by_staff_id": approver["staff_id"],
+                "old_end_date": "", "new_end_date": "", "reason_code": flag_type,
+                "notes": f"{flag_type} monitoring alert for {contract_id}", "source_system": "EquipmentRENTAL_LCversion",
+                "source_event_id": f"{correlation}-ALERT", "created_at": timestamp(AS_OF), "updated_at": timestamp(AS_OF), "correlation_id": correlation,
             })
 
     availability: list[dict[str, object]] = []

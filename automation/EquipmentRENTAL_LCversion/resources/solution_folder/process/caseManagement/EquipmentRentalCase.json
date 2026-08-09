@@ -1,0 +1,38 @@
+{
+  "docVersion": "1.0.0",
+  "resource": {
+    "name": "EquipmentRentalCase",
+    "kind": "process",
+    "type": "caseManagement",
+    "apiVersion": "orchestrator.uipath.com/v1",
+    "projectKey": "d343be7a-1a04-447b-a9d5-b3919ecf3038",
+    "dependencies": [
+      {
+        "kind": "package",
+        "name": "EquipmentRentalCase"
+      }
+    ],
+    "runtimeDependencies": [],
+    "folders": [
+      {
+        "fullyQualifiedName": "solution_folder"
+      }
+    ],
+    "spec": {
+      "type": "CaseManagement",
+      "name": "EquipmentRentalCase",
+      "package": {
+        "key": "d889ff59-7f4c-4bc9-8234-3c8b1d501d0a"
+      },
+      "packageName": "EquipmentRENTAL_LCversion.caseManagement.EquipmentRentalCase",
+      "targetFrameworkValue": "Portable",
+      "retentionAction": "Delete",
+      "retentionPeriod": 30,
+      "staleRetentionAction": "Delete",
+      "staleRetentionPeriod": 180
+    },
+    "locks": [],
+    "key": "3965b6b3-7fd5-432d-a74c-422c6922508a",
+    "files": []
+  }
+}
