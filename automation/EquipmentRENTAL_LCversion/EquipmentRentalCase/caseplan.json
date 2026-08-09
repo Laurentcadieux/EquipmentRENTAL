@@ -272,9 +272,23 @@
                             "isRequired": true,
                             "type": "api-workflow",
                             "data": {
-                                "name": "VendorPickupApi",
+                                "name": "RentalCommandsApi",
                                 "folderPath": "EquipmentRENTAL/LCversion"
-                            }
+                            },
+                            "entryConditions": [
+                                {
+                                    "id": "Condition_PSqAeO",
+                                    "displayName": "Cancel scheduled pickup",
+                                    "rules": [
+                                        [
+                                            {
+                                                "rule": "current-stage-entered",
+                                                "id": "Rule_EWGryK"
+                                            }
+                                        ]
+                                    ]
+                                }
+                            ]
                         },
                         {
                             "id": "tVfQRz7ts",
@@ -285,7 +299,24 @@
                             "data": {
                                 "name": "EquipmentRentalMastermindRpa",
                                 "folderPath": "EquipmentRENTAL/LCversion"
-                            }
+                            },
+                            "entryConditions": [
+                                {
+                                    "id": "Condition_M2RBls",
+                                    "displayName": "Update extension dates",
+                                    "rules": [
+                                        [
+                                            {
+                                                "rule": "selected-tasks-completed",
+                                                "id": "Rule_0Ubca5",
+                                                "selectedTasksIds": [
+                                                    "taXuXeqpv"
+                                                ]
+                                            }
+                                        ]
+                                    ]
+                                }
+                            ]
                         },
                         {
                             "id": "tfshB3bTJ",
@@ -296,154 +327,18 @@
                             "data": {
                                 "name": "RentalMonitoringApi",
                                 "folderPath": "EquipmentRENTAL/LCversion"
-                            }
-                        },
-                        {
-                            "id": "t7qwCW08P",
-                            "displayName": "Cancel existing pickup request",
-                            "description": "Cancels scheduled pickup before applying extension.",
-                            "isRequired": true,
-                            "type": "api-workflow",
-                            "data": {
-                                "name": "VendorPickupApi",
-                                "folderPath": "EquipmentRENTAL/LCversion"
                             },
                             "entryConditions": [
                                 {
-                                    "id": "Condition_OdBDyb",
-                                    "displayName": "Cancel scheduled pickup",
-                                    "rules": [
-                                        [
-                                            {
-                                                "rule": "current-stage-entered",
-                                                "id": "Rule_D65ZMP"
-                                            }
-                                        ]
-                                    ]
-                                },
-                                {
-                                    "id": "Condition_zaLJpr",
-                                    "displayName": "Cancel scheduled pickup",
-                                    "rules": [
-                                        [
-                                            {
-                                                "rule": "current-stage-entered",
-                                                "id": "Rule_eKptPm"
-                                            }
-                                        ]
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            "id": "tM7yemseh",
-                            "displayName": "Update rental extension in Mastermind",
-                            "description": "Writes extended rental date.",
-                            "isRequired": true,
-                            "type": "rpa",
-                            "data": {
-                                "name": "EquipmentRentalMastermindRpa",
-                                "folderPath": "EquipmentRENTAL/LCversion"
-                            },
-                            "entryConditions": [
-                                {
-                                    "id": "Condition_gVpxKD",
-                                    "displayName": "Update extension dates",
-                                    "rules": [
-                                        [
-                                            {
-                                                "rule": "selected-tasks-completed",
-                                                "id": "Rule_MoTjLU",
-                                                "selectedTasksIds": [
-                                                    "t7qwCW08P"
-                                                ]
-                                            }
-                                        ]
-                                    ]
-                                },
-                                {
-                                    "id": "Condition_Bnc64b",
-                                    "displayName": "Update extension dates",
-                                    "rules": [
-                                        [
-                                            {
-                                                "rule": "selected-tasks-completed",
-                                                "id": "Rule_LCp2Pq",
-                                                "selectedTasksIds": [
-                                                    "t7qwCW08P"
-                                                ]
-                                            }
-                                        ]
-                                    ]
-                                },
-                                {
-                                    "id": "Condition_YqeBoW",
-                                    "displayName": "Update extension dates",
-                                    "rules": [
-                                        [
-                                            {
-                                                "rule": "selected-tasks-completed",
-                                                "id": "Rule_iH2odq",
-                                                "selectedTasksIds": [
-                                                    "t7qwCW08P"
-                                                ]
-                                            }
-                                        ]
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            "id": "tyaqahFX6",
-                            "displayName": "Notify procurement & return to Active Rental",
-                            "description": "Notifies procurement and resumes monitoring.",
-                            "isRequired": true,
-                            "type": "api-workflow",
-                            "data": {
-                                "name": "RentalMonitoringApi",
-                                "folderPath": "EquipmentRENTAL/LCversion"
-                            },
-                            "entryConditions": [
-                                {
-                                    "id": "Condition_kBRAq9",
+                                    "id": "Condition_3Omjci",
                                     "displayName": "Notify procurement and resume monitoring",
                                     "rules": [
                                         [
                                             {
                                                 "rule": "selected-tasks-completed",
-                                                "id": "Rule_p7uEgD",
+                                                "id": "Rule_DcGKl9",
                                                 "selectedTasksIds": [
-                                                    "tM7yemseh"
-                                                ]
-                                            }
-                                        ]
-                                    ]
-                                },
-                                {
-                                    "id": "Condition_RYAkUq",
-                                    "displayName": "Notify procurement and resume monitoring",
-                                    "rules": [
-                                        [
-                                            {
-                                                "rule": "selected-tasks-completed",
-                                                "id": "Rule_0lw6es",
-                                                "selectedTasksIds": [
-                                                    "tM7yemseh"
-                                                ]
-                                            }
-                                        ]
-                                    ]
-                                },
-                                {
-                                    "id": "Condition_2T8kKP",
-                                    "displayName": "Notify procurement and resume monitoring",
-                                    "rules": [
-                                        [
-                                            {
-                                                "rule": "selected-tasks-completed",
-                                                "id": "Rule_u4800A",
-                                                "selectedTasksIds": [
-                                                    "tM7yemseh"
+                                                    "tVfQRz7ts"
                                                 ]
                                             }
                                         ]
@@ -453,7 +348,23 @@
                         }
                     ]
                 ],
-                "entryConditions": [],
+                "entryConditions": [
+                    {
+                        "id": "Condition_EJJjka",
+                        "displayName": "Start extension request",
+                        "rules": [
+                            [
+                                {
+                                    "rule": "selected-stage-exited",
+                                    "id": "Rule_atWMG0",
+                                    "selectedStageId": "Stage_RthiZf",
+                                    "conditionExpression": "=js:vars.returnIntent == \"Request Extension\""
+                                }
+                            ]
+                        ],
+                        "isInterrupting": false
+                    }
+                ],
                 "exitConditions": [
                     {
                         "id": "Condition_vcnJ92",
@@ -508,9 +419,23 @@
                             "isRequired": true,
                             "type": "api-workflow",
                             "data": {
-                                "name": "VendorPickupApi",
+                                "name": "RentalCommandsApi",
                                 "folderPath": "EquipmentRENTAL/LCversion"
-                            }
+                            },
+                            "entryConditions": [
+                                {
+                                    "id": "Condition_kDeQ1p",
+                                    "displayName": "Request expedited pickup",
+                                    "rules": [
+                                        [
+                                            {
+                                                "rule": "current-stage-entered",
+                                                "id": "Rule_A9xNxu"
+                                            }
+                                        ]
+                                    ]
+                                }
+                            ]
                         },
                         {
                             "id": "tIs7WTrx0",
@@ -522,45 +447,18 @@
                             "data": {
                                 "name": "EquipmentRentalMastermindRpa",
                                 "folderPath": "EquipmentRENTAL/LCversion"
-                            }
-                        },
-                        {
-                            "id": "tthqmSsV1",
-                            "displayName": "Update job status",
-                            "shouldRunOnlyOnce": true,
-                            "description": "Records expedited pickup status.",
-                            "isRequired": true,
-                            "type": "rpa",
-                            "data": {
-                                "name": "EquipmentRentalMastermindRpa",
-                                "folderPath": "EquipmentRENTAL/LCversion"
                             },
                             "entryConditions": [
                                 {
-                                    "id": "Condition_Zvwx47",
+                                    "id": "Condition_CDAq9e",
                                     "displayName": "Record expedited pickup",
                                     "rules": [
                                         [
                                             {
                                                 "rule": "selected-tasks-completed",
-                                                "id": "Rule_gFSYkz",
+                                                "id": "Rule_f2pUnR",
                                                 "selectedTasksIds": [
-                                                    "taHUcsQeg"
-                                                ]
-                                            }
-                                        ]
-                                    ]
-                                },
-                                {
-                                    "id": "Condition_tDzhLU",
-                                    "displayName": "Record expedited pickup",
-                                    "rules": [
-                                        [
-                                            {
-                                                "rule": "selected-tasks-completed",
-                                                "id": "Rule_KL3XPD",
-                                                "selectedTasksIds": [
-                                                    "taHUcsQeg"
+                                                    "tSfnfRPKH"
                                                 ]
                                             }
                                         ]
@@ -570,7 +468,23 @@
                         }
                     ]
                 ],
-                "entryConditions": [],
+                "entryConditions": [
+                    {
+                        "id": "Condition_lwE2v6",
+                        "displayName": "Start immediate pickup",
+                        "rules": [
+                            [
+                                {
+                                    "rule": "selected-stage-exited",
+                                    "id": "Rule_ucEwBK",
+                                    "selectedStageId": "Stage_RthiZf",
+                                    "conditionExpression": "=js:vars.returnIntent == \"Immediate Pickup\""
+                                }
+                            ]
+                        ],
+                        "isInterrupting": true
+                    }
+                ],
                 "exitConditions": [
                     {
                         "id": "Condition_RWJdXH",
@@ -655,7 +569,7 @@
                             "isRequired": true,
                             "type": "api-workflow",
                             "data": {
-                                "name": "VendorPickupApi",
+                                "name": "RentalCommandsApi",
                                 "folderPath": "EquipmentRENTAL/LCversion"
                             },
                             "entryConditions": [
@@ -736,21 +650,6 @@
                                             }
                                         ]
                                     ]
-                                },
-                                {
-                                    "id": "Condition_ZlTw11",
-                                    "displayName": "Inspect returned equipment",
-                                    "rules": [
-                                        [
-                                            {
-                                                "rule": "selected-tasks-completed",
-                                                "id": "Rule_FzPrsV",
-                                                "selectedTasksIds": [
-                                                    "tZVfZXDBJ"
-                                                ]
-                                            }
-                                        ]
-                                    ]
                                 }
                             ]
                         },
@@ -774,21 +673,6 @@
                                             {
                                                 "rule": "selected-tasks-completed",
                                                 "id": "Rule_Oram3i",
-                                                "selectedTasksIds": [
-                                                    "tIn7Q51oZ"
-                                                ]
-                                            }
-                                        ]
-                                    ]
-                                },
-                                {
-                                    "id": "Condition_QawI1P",
-                                    "displayName": "Close returned rental",
-                                    "rules": [
-                                        [
-                                            {
-                                                "rule": "selected-tasks-completed",
-                                                "id": "Rule_q7hLP8",
                                                 "selectedTasksIds": [
                                                     "tIn7Q51oZ"
                                                 ]
@@ -832,6 +716,44 @@
                         ],
                         "type": "exit-only",
                         "marksStageComplete": true
+                    },
+                    {
+                        "id": "Condition_rg8BdZ",
+                        "displayName": "Route to immediate pickup",
+                        "rules": [
+                            [
+                                {
+                                    "rule": "selected-tasks-completed",
+                                    "id": "Rule_15Din2",
+                                    "selectedTasksIds": [
+                                        "tO5J7EXwm"
+                                    ],
+                                    "conditionExpression": "=js:vars.returnIntent == \"Immediate Pickup\""
+                                }
+                            ]
+                        ],
+                        "type": "exit-only",
+                        "exitToStageId": "Stage_qx5YKL",
+                        "marksStageComplete": false
+                    },
+                    {
+                        "id": "Condition_JUnyOp",
+                        "displayName": "Route to extension request",
+                        "rules": [
+                            [
+                                {
+                                    "rule": "selected-tasks-completed",
+                                    "id": "Rule_QCFwK1",
+                                    "selectedTasksIds": [
+                                        "tO5J7EXwm"
+                                    ],
+                                    "conditionExpression": "=js:vars.returnIntent == \"Request Extension\""
+                                }
+                            ]
+                        ],
+                        "type": "exit-only",
+                        "exitToStageId": "Stage_7Xvjlc",
+                        "marksStageComplete": false
                     }
                 ]
             }
@@ -854,7 +776,7 @@
             "width": 304,
             "zIndex": 1001,
             "data": {
-                "label": "Active Rental Monitoring",
+                "label": "Active Rental (Monitoring)",
                 "parentElement": {
                     "id": "root",
                     "type": "case-management:root"
@@ -918,7 +840,7 @@
                         }
                     ]
                 ],
-                "description": "Monitor end dates and staged alerts.",
+                "description": "Monitors the active rental term and sends staged notices before the contract end date.",
                 "isRequired": true,
                 "entryConditions": [
                     {
@@ -930,6 +852,20 @@
                                     "rule": "selected-stage-completed",
                                     "id": "Rule_nJGyrh",
                                     "selectedStageId": "Stage_ErxzAl"
+                                }
+                            ]
+                        ],
+                        "isInterrupting": false
+                    },
+                    {
+                        "id": "Condition_GkNSLv",
+                        "displayName": "Resume monitoring after extension",
+                        "rules": [
+                            [
+                                {
+                                    "rule": "selected-stage-completed",
+                                    "id": "Rule_rsWCiM",
+                                    "selectedStageId": "Stage_7Xvjlc"
                                 }
                             ]
                         ],
@@ -1015,7 +951,7 @@
                             "isRequired": true,
                             "type": "agent",
                             "data": {
-                                "name": "RentalOrchestratorAgent",
+                                "name": "RentalCaseAgent",
                                 "folderPath": "EquipmentRENTAL/LCversion"
                             },
                             "entryConditions": [

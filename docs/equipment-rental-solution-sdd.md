@@ -63,16 +63,81 @@ The required invocation envelope is:
 }
 ```
 
-## Case Design
+## Case Design — EquipmentRental
 
-Primary stages: Intake, Approval, Fulfillment, Active Monitoring,
-Disposition, and Closure. Secondary stages: Extension Review, Cancellation
-Review, Return/Pickup Coordination, Damage Review, Overdue Escalation, and
-Exception Recovery.
+The following case definition is the authoritative scope for this showcase.
+It supersedes the earlier generic lifecycle outline: do **not** add separate
+Approval, Fulfillment, Cancellation Review, Damage Review, or Overdue stages
+unless this SDD is formally changed.
 
-Human tasks cover approvals, extension approval when required, damage-charge
-approval, and exception resolution. The case must only close after return is
-confirmed and any required damage review is complete.
+| Property | Value |
+|---|---|
+| Case name | `EquipmentRental` |
+| Case identifier | Constant prefix `ER` |
+| Priority | Low, Medium, High, Critical; default Medium |
+| Required completion condition | `vars.equipmentReturned == true` and required stages complete |
+| Vendor cancellation exit | Mock Mastermind event `RentalCancelledByVendor`, filtered by current job ID |
+
+### Variables
+
+`jobId`, `orderStatus`, `rentalContractId`, `rentalEndDate`, `branchEmail`,
+`equipmentItems`, `validationStatus`, `validationNotes`, `classification`,
+`classificationConfidence`, `routeTarget`, `daysRemaining`,
+`rentalEndDateReached`, `alertStatus`, `returnIntent`,
+`preferredPickupDate`, `pickupRequestId`, `pickupConfirmed`,
+`equipmentRequired`, `inspectionResult`, `damageFlags`, `equipmentReturned`,
+`extensionRequested`, `newRentalEndDate`, `rentalCancelled`, and `caseStatus`.
+Their source and destination data is the correlated Data Fabric mock model in
+`docs/equipment-rental-data-model.md`; `jobId` is the case-to-contract
+correlation key used in Mastermind and vendor mock calls.
+
+### Stages and Tasks
+
+| Stage | Required | Task ID | Type | Task | Entry / route |
+|---|---:|---|---|---|---|
+| Intake & Triage | Yes | t01 | RPA | Validate job & rental data | On case entry |
+| Intake & Triage | Yes | t02 | Agent | Classify order status & route case | When t01 validates data |
+| Active Rental (Monitoring) | Yes | t03 | API workflow | Monitor rental contract end date | After Intake or Extension Request |
+| Active Rental (Monitoring) | Yes | t04 | API workflow | Send staged expiry alerts | After t03; thresholds 30, 7, and 1 days |
+| Return & Close | Yes | t05 | Action | Notify branch & confirm return intent | After monitoring; Schedule Pickup, Request Extension, or Immediate Pickup |
+| Return & Close | Yes | t06 | API workflow | Submit pickup request & confirm scheduling | When intent is Schedule Pickup |
+| Return & Close | Yes | t07 | RPA | Verify equipment required status in Mastermind | When pickup is confirmed |
+| Return & Close | Yes | t08 | Action | Conduct return inspection & condition check | When equipment is no longer required |
+| Return & Close | Yes | t09 | RPA | Close rental job in Mastermind | When equipment return is confirmed |
+| Immediate Pickup (exception) | No | t10 | API workflow | Notify United Rentals for ASAP pickup | When t05 selects Immediate Pickup |
+| Immediate Pickup (exception) | No | t11 | RPA | Update job status | After t10, then return to Return & Close |
+| Extension Request (exception) | No | t12 | API workflow | Cancel existing pickup request | When t05 selects Request Extension |
+| Extension Request (exception) | No | t13 | RPA | Update rental extension in Mastermind | After t12 |
+| Extension Request (exception) | No | t14 | API workflow | Notify procurement & return to Active Rental | After t13, then resume monitoring |
+
+### Task Contract
+
+- **t01** consumes job, contract, end-date, and equipment data; writes
+  `validationStatus` and `validationNotes`.
+- **t02** consumes `orderStatus` and `validationNotes`; writes
+  `classification`, `classificationConfidence`, and `routeTarget`.
+- **t03** writes `daysRemaining` and `rentalEndDateReached`; **t04** writes
+  `alertStatus` and sends the staged alert outcome to the branch.
+- **t05** is the Return Intent Action App task and writes `returnIntent` and
+  `preferredPickupDate`. **t06** writes `pickupRequestId` and
+  `pickupConfirmed`. **t07** writes `equipmentRequired`.
+- **t08** is the Return Inspection Action App task and writes
+  `inspectionResult`, `damageFlags`, and `equipmentReturned`. **t09** sets
+  `caseStatus = "Completed"` only after confirmed return.
+- **t10** writes `pickupRequestId` and the expedited request status; **t11**
+  sets `orderStatus = "Z2-PICKUP"` and resumes normal pickup.
+- **t12** writes cancellation status; **t13** sets `rentalEndDate` from
+  `newRentalEndDate` and `extensionRequested = true`; **t14** sets
+  `routeTarget = "Active Rental (Monitoring)"` and clears the extension flag.
+
+### SLA and Human Work
+
+Intake has a 30-minute SLA (75% at-risk notification to Mock Case Worker;
+breach escalation to Rental Orchestrator Agent). Return & Close has a 48-hour
+SLA with the same 75% escalation model. The two Action tasks are assigned to
+the **Mock Case Worker** role and use the Action Apps **Equipment Rental Return
+Intent** and **Equipment Rental Return Inspection**. They must not be replaced
+by generic approval or damage-review tasks.
 
 ## Integration Design
 
