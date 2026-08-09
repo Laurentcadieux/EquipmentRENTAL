@@ -7,6 +7,21 @@
             "Type": "CaseManagement",
             "ProjectRelativePath": "EquipmentRentalCase/project.uiproj",
             "Id": "d343be7a-1a04-447b-a9d5-b3919ecf3038"
+        },
+        {
+            "Type": "Api",
+            "ProjectRelativePath": "RentalMonitoringApi/project.uiproj",
+            "Id": "585bd5a2-2177-4609-8def-0ea0c86f9b8f"
+        },
+        {
+            "Type": "Api",
+            "ProjectRelativePath": "VendorPickupApi/project.uiproj",
+            "Id": "d6547841-cb29-40c0-87ef-0235b392d810"
+        },
+        {
+            "Type": "Agent",
+            "ProjectRelativePath": "RentalOrchestratorAgent/project.uiproj",
+            "Id": "558e51f6-7f2c-47b4-9ce1-507051cceb5c"
         }
     ]
 }

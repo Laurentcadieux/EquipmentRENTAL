@@ -1,16 +1,16 @@
 {
   "docVersion": "1.0.0",
   "resource": {
-    "name": "EquipmentRentalCase",
+    "name": "RentalMonitoringApi",
     "kind": "process",
-    "type": "caseManagement",
+    "type": "api",
     "apiVersion": "orchestrator.uipath.com/v1",
-    "projectKey": "d343be7a-1a04-447b-a9d5-b3919ecf3038",
+    "projectKey": "585bd5a2-2177-4609-8def-0ea0c86f9b8f",
     "isOverridable": true,
     "dependencies": [
       {
         "kind": "package",
-        "name": "EquipmentRentalCase"
+        "name": "RentalMonitoringApi"
       }
     ],
     "runtimeDependencies": [],
@@ -20,12 +20,12 @@
       }
     ],
     "spec": {
-      "type": "CaseManagement",
-      "name": "EquipmentRentalCase",
+      "type": "Api",
+      "name": "RentalMonitoringApi",
       "package": {
-        "key": "d889ff59-7f4c-4bc9-8234-3c8b1d501d0a"
+        "key": "a579bfb1-9176-4a53-afaa-7c2b5e6a225c"
       },
-      "packageName": "EquipmentRENTAL_LCversion.caseManagement.EquipmentRentalCase",
+      "packageName": "EquipmentRENTAL_LCversion.api.RentalMonitoringApi",
       "targetFrameworkValue": "Portable",
       "retentionAction": "Delete",
       "retentionPeriod": 30,
@@ -33,7 +33,7 @@
       "staleRetentionPeriod": 180
     },
     "locks": [],
-    "key": "3965b6b3-7fd5-432d-a74c-422c6922508a",
+    "key": "9c995779-f8db-4628-aab2-7f1978164bc9",
     "files": []
   }
 }

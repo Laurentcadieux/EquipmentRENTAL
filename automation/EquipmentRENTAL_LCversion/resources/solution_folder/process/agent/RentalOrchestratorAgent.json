@@ -1,16 +1,16 @@
 {
   "docVersion": "1.0.0",
   "resource": {
-    "name": "EquipmentRentalCase",
+    "name": "RentalOrchestratorAgent",
     "kind": "process",
-    "type": "caseManagement",
+    "type": "agent",
     "apiVersion": "orchestrator.uipath.com/v1",
-    "projectKey": "d343be7a-1a04-447b-a9d5-b3919ecf3038",
+    "projectKey": "558e51f6-7f2c-47b4-9ce1-507051cceb5c",
     "isOverridable": true,
     "dependencies": [
       {
         "kind": "package",
-        "name": "EquipmentRentalCase"
+        "name": "RentalOrchestratorAgent"
       }
     ],
     "runtimeDependencies": [],
@@ -20,12 +20,12 @@
       }
     ],
     "spec": {
-      "type": "CaseManagement",
-      "name": "EquipmentRentalCase",
+      "type": "Agent",
+      "name": "RentalOrchestratorAgent",
       "package": {
-        "key": "d889ff59-7f4c-4bc9-8234-3c8b1d501d0a"
+        "key": "3bed8c37-c75d-4d72-86e3-0919d29d2f9d"
       },
-      "packageName": "EquipmentRENTAL_LCversion.caseManagement.EquipmentRentalCase",
+      "packageName": "EquipmentRENTAL_LCversion.agent.RentalOrchestratorAgent",
       "targetFrameworkValue": "Portable",
       "retentionAction": "Delete",
       "retentionPeriod": 30,
@@ -33,7 +33,7 @@
       "staleRetentionPeriod": 180
     },
     "locks": [],
-    "key": "3965b6b3-7fd5-432d-a74c-422c6922508a",
+    "key": "100f326a-9887-4feb-9967-7f3ea06a17ff",
     "files": []
   }
 }

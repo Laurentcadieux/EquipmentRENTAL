@@ -1,16 +1,16 @@
 {
   "docVersion": "1.0.0",
   "resource": {
-    "name": "EquipmentRentalCase",
+    "name": "VendorPickupApi",
     "kind": "process",
-    "type": "caseManagement",
+    "type": "api",
     "apiVersion": "orchestrator.uipath.com/v1",
-    "projectKey": "d343be7a-1a04-447b-a9d5-b3919ecf3038",
+    "projectKey": "d6547841-cb29-40c0-87ef-0235b392d810",
     "isOverridable": true,
     "dependencies": [
       {
         "kind": "package",
-        "name": "EquipmentRentalCase"
+        "name": "VendorPickupApi"
       }
     ],
     "runtimeDependencies": [],
@@ -20,12 +20,12 @@
       }
     ],
     "spec": {
-      "type": "CaseManagement",
-      "name": "EquipmentRentalCase",
+      "type": "Api",
+      "name": "VendorPickupApi",
       "package": {
-        "key": "d889ff59-7f4c-4bc9-8234-3c8b1d501d0a"
+        "key": "3c46892d-547f-4a92-b336-16d1a2832b37"
       },
-      "packageName": "EquipmentRENTAL_LCversion.caseManagement.EquipmentRentalCase",
+      "packageName": "EquipmentRENTAL_LCversion.api.VendorPickupApi",
       "targetFrameworkValue": "Portable",
       "retentionAction": "Delete",
       "retentionPeriod": 30,
@@ -33,7 +33,7 @@
       "staleRetentionPeriod": 180
     },
     "locks": [],
-    "key": "3965b6b3-7fd5-432d-a74c-422c6922508a",
+    "key": "c20c438a-c1ad-409d-96f5-a75f268f3a3f",
     "files": []
   }
 }

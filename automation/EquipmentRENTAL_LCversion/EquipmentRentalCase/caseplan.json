@@ -1,0 +1,151 @@
+{
+    "id": "case-tjeX5zYkeY",
+    "name": "EquipmentRental",
+    "version": "20.0.0",
+    "description": "Manages ACME equipment rentals from intake through monitoring, return, and closure.",
+    "bindings": [],
+    "variables": {
+        "inputOutputs": []
+    },
+    "metadata": {
+        "caseIdentifier": "ER",
+        "caseAppEnabled": true,
+        "caseIdentifierType": "constant",
+        "publishVersion": 2
+    },
+    "nodes": [
+        {
+            "id": "Stage_qx5YKL",
+            "type": "case-management:ExceptionStage",
+            "position": {
+                "x": 1600,
+                "y": 200
+            },
+            "style": {
+                "width": 304,
+                "opacity": 0.8
+            },
+            "measured": {
+                "width": 304,
+                "height": 128
+            },
+            "width": 304,
+            "zIndex": 1001,
+            "data": {
+                "label": "Immediate Pickup",
+                "parentElement": {
+                    "id": "root",
+                    "type": "case-management:root"
+                },
+                "isInvalidDropTarget": false,
+                "isPendingParent": false,
+                "tasks": [],
+                "entryConditions": [],
+                "exitConditions": [],
+                "description": "Expedite pickup when required."
+            }
+        },
+        {
+            "id": "Stage_RthiZf",
+            "type": "case-management:Stage",
+            "position": {
+                "x": 1100,
+                "y": 200
+            },
+            "style": {
+                "width": 304,
+                "opacity": 0.8
+            },
+            "measured": {
+                "width": 304,
+                "height": 128
+            },
+            "width": 304,
+            "zIndex": 1001,
+            "data": {
+                "label": "Return & Close",
+                "parentElement": {
+                    "id": "root",
+                    "type": "case-management:root"
+                },
+                "isInvalidDropTarget": false,
+                "isPendingParent": false,
+                "tasks": [],
+                "description": "Confirm return intent, pickup, inspection, and closure.",
+                "isRequired": true
+            }
+        },
+        {
+            "id": "Stage_eA5aIT",
+            "type": "case-management:Stage",
+            "position": {
+                "x": 600,
+                "y": 200
+            },
+            "style": {
+                "width": 304,
+                "opacity": 0.8
+            },
+            "measured": {
+                "width": 304,
+                "height": 128
+            },
+            "width": 304,
+            "zIndex": 1001,
+            "data": {
+                "label": "Active Rental Monitoring",
+                "parentElement": {
+                    "id": "root",
+                    "type": "case-management:root"
+                },
+                "isInvalidDropTarget": false,
+                "isPendingParent": false,
+                "tasks": [],
+                "description": "Monitor end dates and staged alerts.",
+                "isRequired": true
+            }
+        },
+        {
+            "id": "Stage_ErxzAl",
+            "type": "case-management:Stage",
+            "position": {
+                "x": 100,
+                "y": 200
+            },
+            "style": {
+                "width": 304,
+                "opacity": 0.8
+            },
+            "measured": {
+                "width": 304,
+                "height": 128
+            },
+            "width": 304,
+            "zIndex": 1001,
+            "data": {
+                "label": "Intake & Triage",
+                "parentElement": {
+                    "id": "root",
+                    "type": "case-management:root"
+                },
+                "isInvalidDropTarget": false,
+                "isPendingParent": false,
+                "tasks": [],
+                "description": "Validate rental data and classify the incoming request.",
+                "isRequired": true
+            }
+        },
+        {
+            "id": "trigger_1",
+            "type": "case-management:Trigger",
+            "position": {
+                "x": 0,
+                "y": 0
+            },
+            "data": {
+                "label": "Trigger 1"
+            }
+        }
+    ],
+    "edges": []
+}

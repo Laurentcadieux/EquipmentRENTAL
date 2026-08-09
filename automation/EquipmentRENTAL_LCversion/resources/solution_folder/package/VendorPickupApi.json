@@ -1,10 +1,10 @@
 {
   "docVersion": "1.0.0",
   "resource": {
-    "name": "EquipmentRentalCase",
+    "name": "VendorPickupApi",
     "kind": "package",
     "apiVersion": "orchestrator.uipath.com/v1",
-    "projectKey": "d343be7a-1a04-447b-a9d5-b3919ecf3038",
+    "projectKey": "d6547841-cb29-40c0-87ef-0235b392d810",
     "isOverridable": true,
     "dependencies": [],
     "runtimeDependencies": [],
@@ -14,10 +14,10 @@
       }
     ],
     "spec": {
-      "name": "EquipmentRentalCase"
+      "name": "VendorPickupApi"
     },
     "locks": [],
-    "key": "d889ff59-7f4c-4bc9-8234-3c8b1d501d0a",
+    "key": "3c46892d-547f-4a92-b336-16d1a2832b37",
     "files": []
   }
 }
