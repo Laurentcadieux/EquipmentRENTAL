@@ -4,11 +4,12 @@ from __future__ import annotations
 
 import csv
 import json
+import os
 import subprocess
 import sys
 from pathlib import Path
 
-FOLDER_KEY = "11b28f3b-294e-4593-aba1-a5079c54e7aa"
+FOLDER_KEY = os.environ.get("UIPATH_DATA_FABRIC_FOLDER_KEY", "11b28f3b-294e-4593-aba1-a5079c54e7aa")
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data" / "mock" / "LCversion"
 ENTITIES = [
