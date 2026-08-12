@@ -40,9 +40,12 @@ DISPLAY_FIELDS = {
 
 
 def run(*args: str) -> dict:
+    print(f"Running: {' '.join(args)}", flush=True)
     command = ["uip", *args, "--output", "json"]
     result = subprocess.run(command, text=True, capture_output=True)
     if result.returncode:
+        print(result.stderr, flush=True)
+        print(result.stdout, flush=True)
         raise RuntimeError(f"{' '.join(command)}\n{result.stderr}\n{result.stdout}")
     payload = json.loads(result.stdout)
     if payload.get("Result") != "Success":
