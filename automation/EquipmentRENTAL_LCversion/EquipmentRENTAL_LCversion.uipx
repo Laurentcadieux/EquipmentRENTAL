@@ -1,27 +1,37 @@
 {
-    "DocVersion": "1.0.0",
-    "StudioMinVersion": "2025.10.0",
-    "SolutionId": "2579a88c-633d-44dd-57de-08def46ec69f",
-    "Projects": [
-        {
-            "Type": "CaseManagement",
-            "ProjectRelativePath": "EquipmentRentalCase/project.uiproj",
-            "Id": "d343be7a-1a04-447b-a9d5-b3919ecf3038"
-        },
-        {
-            "Type": "Api",
-            "ProjectRelativePath": "RentalMonitoringApi/project.uiproj",
-            "Id": "585bd5a2-2177-4609-8def-0ea0c86f9b8f"
-        },
-        {
-            "Type": "Api",
-            "ProjectRelativePath": "VendorPickupApi/project.uiproj",
-            "Id": "d6547841-cb29-40c0-87ef-0235b392d810"
-        },
-        {
-            "Type": "Agent",
-            "ProjectRelativePath": "RentalOrchestratorAgent/project.uiproj",
-            "Id": "558e51f6-7f2c-47b4-9ce1-507051cceb5c"
-        }
-    ]
+  "DocVersion": "1.0.0",
+  "StudioMinVersion": "2025.10.0",
+  "SolutionId": "2579a88c-633d-44dd-57de-08def46ec69f",
+  "Projects": [
+    {
+      "Type": "CaseManagement",
+      "ProjectRelativePath": "EquipmentRentalCase/project.uiproj",
+      "Id": "d343be7a-1a04-447b-a9d5-b3919ecf3038"
+    },
+    {
+      "Type": "Api",
+      "ProjectRelativePath": "RentalMonitoringApi/project.uiproj",
+      "Id": "585bd5a2-2177-4609-8def-0ea0c86f9b8f"
+    },
+    {
+      "Type": "Api",
+      "ProjectRelativePath": "VendorPickupApi/project.uiproj",
+      "Id": "d6547841-cb29-40c0-87ef-0235b392d810"
+    },
+    {
+      "Type": "Agent",
+      "ProjectRelativePath": "RentalOrchestratorAgent/project.uiproj",
+      "Id": "558e51f6-7f2c-47b4-9ce1-507051cceb5c"
+    },
+    {
+      "Type": "Api",
+      "ProjectRelativePath": "RentalCommandsApi/project.uiproj",
+      "Id": "a4991422-5d75-4b33-83c4-00a41968c1f3"
+    },
+    {
+      "Type": "Agent",
+      "ProjectRelativePath": "RentalCaseAgent/project.uiproj",
+      "Id": "563bd4df-8f20-4d44-b10f-a8e4af7744d3"
+    }
+  ]
 }

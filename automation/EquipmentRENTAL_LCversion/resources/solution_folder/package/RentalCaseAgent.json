@@ -1,0 +1,22 @@
+{
+  "docVersion": "1.0.0",
+  "resource": {
+    "name": "RentalCaseAgent",
+    "kind": "package",
+    "apiVersion": "orchestrator.uipath.com/v1",
+    "projectKey": "563bd4df-8f20-4d44-b10f-a8e4af7744d3",
+    "dependencies": [],
+    "runtimeDependencies": [],
+    "folders": [
+      {
+        "fullyQualifiedName": "solution_folder"
+      }
+    ],
+    "spec": {
+      "name": "RentalCaseAgent"
+    },
+    "locks": [],
+    "key": "38c0ab80-b1c6-472d-8b63-fdcaade21871",
+    "files": []
+  }
+}
