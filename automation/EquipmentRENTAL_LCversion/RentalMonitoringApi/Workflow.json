@@ -1,14 +1,69 @@
 {
   "document": {
     "dsl": "1.0.0",
-    "name": "Workflow",
-    "tags": {
-      "projectId": "e2d3501c-92e3-44a2-b801-e043a2b7949e"
-    },
-    "version": "0.0.1",
+    "name": "RentalMonitoringApi",
+    "version": "1.0.0",
     "namespace": "default",
     "metadata": {
-      "variables": []
+      "variables": {
+        "schema": {
+          "format": "json",
+          "document": {
+            "type": "object",
+            "properties": {},
+            "title": "Variables"
+          }
+        }
+      }
+    }
+  },
+  "input": {
+    "schema": {
+      "format": "json",
+      "document": {
+        "type": "object",
+        "properties": {
+          "contract_id": {
+            "type": "string"
+          },
+          "rental_end_date": {
+            "type": "string"
+          },
+          "days_remaining": {
+            "type": "number"
+          },
+          "correlation_id": {
+            "type": "string"
+          }
+        },
+        "title": "Inputs"
+      }
+    }
+  },
+  "output": {
+    "schema": {
+      "format": "json",
+      "document": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "alert_stage": {
+            "type": "string"
+          },
+          "days_remaining": {
+            "type": "number"
+          },
+          "correlation_id": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "title": "Outputs"
+      }
     }
   },
   "do": [
@@ -29,6 +84,40 @@
                 "displayName": "Workflow start",
                 "fullName": "Assign",
                 "isTransparent": true
+              }
+            }
+          },
+          {
+            "Javascript_1": {
+              "run": {
+                "script": {
+                  "code": "const input = $workflow.input || {};\nconst days = Number.isFinite(Number(input.days_remaining)) ? Number(input.days_remaining) : null;\nconst correlationId = input.correlation_id || input.contract_id || 'unassigned';\nif (days === null) return { status: 'needs_input', alert_stage: 'none', days_remaining: 0, correlation_id: correlationId, message: 'days_remaining is required for monitoring.' };\nconst alertStage = days <= 1 ? '1-day' : days <= 7 ? '7-day' : days <= 30 ? '30-day' : 'none';\nreturn { status: days < 0 ? 'expired' : 'monitored', alert_stage: alertStage, days_remaining: days, correlation_id: correlationId, message: alertStage === 'none' ? 'No staged alert is due.' : `Rental expiry ${alertStage} alert is due.` };",
+                  "language": "javascript",
+                  "arguments": "${{ \"$context\": $context, \"$workflow\": $workflow, \"$input\": $input }}"
+                }
+              },
+              "export": {
+                "as": "{ ...$context, outputs: { ...$context?.outputs, \"Javascript_1\": $output } }"
+              },
+              "metadata": {
+                "activityType": "JsInvoke",
+                "displayName": "Evaluate rental request",
+                "fullName": "JsInvoke"
+              }
+            }
+          },
+          {
+            "Response_1": {
+              "response": "${$context.outputs.Javascript_1}",
+              "markJobAsFailed": false,
+              "then": "end",
+              "export": {
+                "as": "{ ...$context, outputs: { ...$context?.outputs, \"Response_1\": $output } }"
+              },
+              "metadata": {
+                "activityType": "Response",
+                "displayName": "Return result",
+                "fullName": "Response"
               }
             }
           }

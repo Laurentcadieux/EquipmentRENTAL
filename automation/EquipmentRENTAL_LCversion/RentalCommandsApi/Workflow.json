@@ -1,14 +1,81 @@
 {
   "document": {
     "dsl": "1.0.0",
-    "name": "Workflow",
-    "tags": {
-      "projectId": "9f6994c7-f2a6-472c-940b-3fb0923cc180"
-    },
-    "version": "0.0.1",
+    "name": "RentalCommandsApi",
+    "version": "1.0.0",
     "namespace": "default",
     "metadata": {
-      "variables": []
+      "variables": {
+        "schema": {
+          "format": "json",
+          "document": {
+            "type": "object",
+            "properties": {},
+            "title": "Variables"
+          }
+        }
+      }
+    }
+  },
+  "input": {
+    "schema": {
+      "format": "json",
+      "document": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string"
+          },
+          "correlation_id": {
+            "type": "string"
+          },
+          "rental_request_id": {
+            "type": "string"
+          },
+          "contract_id": {
+            "type": "string"
+          },
+          "job_id": {
+            "type": "string"
+          },
+          "preferred_pickup_date": {
+            "type": "string"
+          }
+        },
+        "title": "Inputs"
+      }
+    }
+  },
+  "output": {
+    "schema": {
+      "format": "json",
+      "document": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "action": {
+            "type": "string"
+          },
+          "correlation_id": {
+            "type": "string"
+          },
+          "rental_request_id": {
+            "type": "string"
+          },
+          "contract_id": {
+            "type": "string"
+          },
+          "pickup_request_id": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "title": "Outputs"
+      }
     }
   },
   "do": [
@@ -29,6 +96,40 @@
                 "displayName": "Workflow start",
                 "fullName": "Assign",
                 "isTransparent": true
+              }
+            }
+          },
+          {
+            "Javascript_1": {
+              "run": {
+                "script": {
+                  "code": "const input = $workflow.input || {};\nconst action = input.action || 'submit_pickup';\nconst supportedActions = ['submit_pickup', 'cancel_pickup', 'asap_pickup'];\nconst correlationId = input.correlation_id || input.contract_id || input.rental_request_id || input.job_id || 'unassigned';\nif (!supportedActions.includes(action)) {\n  return { status: 'rejected', action, correlation_id: correlationId, message: 'Unsupported rental command.' };\n}\nconst pickupRequestId = `PICKUP-${correlationId}-${action}`;\nreturn {\n  status: 'accepted', action, correlation_id: correlationId,\n  rental_request_id: input.rental_request_id || '', contract_id: input.contract_id || '',\n  pickup_request_id: pickupRequestId,\n  message: action === 'cancel_pickup' ? 'Pickup cancellation accepted.' : 'Pickup command accepted for scheduling.'\n};",
+                  "language": "javascript",
+                  "arguments": "${{ \"$context\": $context, \"$workflow\": $workflow, \"$input\": $input }}"
+                }
+              },
+              "export": {
+                "as": "{ ...$context, outputs: { ...$context?.outputs, \"Javascript_1\": $output } }"
+              },
+              "metadata": {
+                "activityType": "JsInvoke",
+                "displayName": "Evaluate rental request",
+                "fullName": "JsInvoke"
+              }
+            }
+          },
+          {
+            "Response_1": {
+              "response": "${$context.outputs.Javascript_1}",
+              "markJobAsFailed": false,
+              "then": "end",
+              "export": {
+                "as": "{ ...$context, outputs: { ...$context?.outputs, \"Response_1\": $output } }"
+              },
+              "metadata": {
+                "activityType": "Response",
+                "displayName": "Return result",
+                "fullName": "Response"
               }
             }
           }
