@@ -39,11 +39,11 @@
   "messages": [
     {
       "role": "system",
-      "content": "You are a helpful agentic assistant.",
+      "content": "Use the EquipmentRENTAL_LCversion Data Fabric context to assess rental requests, contracts, monitoring flags, pickups, vendors, equipment, locations, departments, and staff. Ground recommendations in the retrieved dataset. Do not invent record values; flag missing or inconsistent data for human review.",
       "contentTokens": [
         {
           "type": "simpleText",
-          "rawString": "You are a helpful agentic assistant."
+          "rawString": "Use the EquipmentRENTAL_LCversion Data Fabric context to assess rental requests, contracts, monitoring flags, pickups, vendors, equipment, locations, departments, and staff. Ground recommendations in the retrieved dataset. Do not invent record values; flag missing or inconsistent data for human review."
         }
       ]
     },
@@ -61,6 +61,121 @@
   "projectId": "9194ff24-a35d-4d49-b682-afd556a7f3c5",
   "id": "9194ff24-a35d-4d49-b682-afd556a7f3c5",
   "name": "RentalCaseAgent",
-  "resources": [],
+  "resources": [
+    {
+      "$resourceType": "context",
+      "id": "e5ec50a7-f6c6-4e55-8e02-b070bcf69821",
+      "referenceKey": null,
+      "name": "EquipmentRentalData",
+      "description": "Target solution Data Fabric entities for equipment-rental case assessment.",
+      "contextType": "datafabricentityset",
+      "entitySet": [
+        {
+          "id": "794b6d8d-8896-f111-9b33-000d3a64f664",
+          "referenceKey": "794b6d8d-8896-f111-9b33-000d3a64f664",
+          "name": "Rental_Requests",
+          "folderId": "5e6c96e4-ee96-4055-a02b-d62993318509",
+          "folderDisplayName": "EquipmentRENTAL_LCversion",
+          "description": null
+        },
+        {
+          "id": "914b6d8d-8896-f111-9b33-000d3a64f664",
+          "referenceKey": "914b6d8d-8896-f111-9b33-000d3a64f664",
+          "name": "Rental_Contracts",
+          "folderId": "5e6c96e4-ee96-4055-a02b-d62993318509",
+          "folderDisplayName": "EquipmentRENTAL_LCversion",
+          "description": null
+        },
+        {
+          "id": "24e6589a-8896-f111-9b33-000d3a64f664",
+          "referenceKey": "24e6589a-8896-f111-9b33-000d3a64f664",
+          "name": "Rental_Equipment_Items",
+          "folderId": "5e6c96e4-ee96-4055-a02b-d62993318509",
+          "folderDisplayName": "EquipmentRENTAL_LCversion",
+          "description": null
+        },
+        {
+          "id": "ac9a95a0-8896-f111-9b33-000d3a64f664",
+          "referenceKey": "ac9a95a0-8896-f111-9b33-000d3a64f664",
+          "name": "Rental_Lifecycle_Events",
+          "folderId": "5e6c96e4-ee96-4055-a02b-d62993318509",
+          "folderDisplayName": "EquipmentRENTAL_LCversion",
+          "description": null
+        },
+        {
+          "id": "d09a95a0-8896-f111-9b33-000d3a64f664",
+          "referenceKey": "d09a95a0-8896-f111-9b33-000d3a64f664",
+          "name": "Rental_Monitoring_Flags",
+          "folderId": "5e6c96e4-ee96-4055-a02b-d62993318509",
+          "folderDisplayName": "EquipmentRENTAL_LCversion",
+          "description": null
+        },
+        {
+          "id": "9458c8a6-8896-f111-9b33-000d3a64f664",
+          "referenceKey": "9458c8a6-8896-f111-9b33-000d3a64f664",
+          "name": "Pickup_Return_Requests",
+          "folderId": "5e6c96e4-ee96-4055-a02b-d62993318509",
+          "folderDisplayName": "EquipmentRENTAL_LCversion",
+          "description": null
+        },
+        {
+          "id": "bfd22971-8896-f111-9b33-000d3a64f664",
+          "referenceKey": "bfd22971-8896-f111-9b33-000d3a64f664",
+          "name": "Vendor_Master",
+          "folderId": "5e6c96e4-ee96-4055-a02b-d62993318509",
+          "folderDisplayName": "EquipmentRENTAL_LCversion",
+          "description": null
+        },
+        {
+          "id": "752a6377-8896-f111-9b33-000d3a64f664",
+          "referenceKey": "752a6377-8896-f111-9b33-000d3a64f664",
+          "name": "Vendor_Locations",
+          "folderId": "5e6c96e4-ee96-4055-a02b-d62993318509",
+          "folderDisplayName": "EquipmentRENTAL_LCversion",
+          "description": null
+        },
+        {
+          "id": "bac26185-8896-f111-9b33-000d3a64f664",
+          "referenceKey": "bac26185-8896-f111-9b33-000d3a64f664",
+          "name": "Vendor_Equipment_Catalog",
+          "folderId": "5e6c96e4-ee96-4055-a02b-d62993318509",
+          "folderDisplayName": "EquipmentRENTAL_LCversion",
+          "description": null
+        },
+        {
+          "id": "d76035c7-8896-f111-9b33-000d3a64f664",
+          "referenceKey": "d76035c7-8896-f111-9b33-000d3a64f664",
+          "name": "Vendor_Equipment_Availability",
+          "folderId": "5e6c96e4-ee96-4055-a02b-d62993318509",
+          "folderDisplayName": "EquipmentRENTAL_LCversion",
+          "description": null
+        },
+        {
+          "id": "0d1ce66a-8896-f111-9b33-000d3a64f664",
+          "referenceKey": "0d1ce66a-8896-f111-9b33-000d3a64f664",
+          "name": "ACME_Locations",
+          "folderId": "5e6c96e4-ee96-4055-a02b-d62993318509",
+          "folderDisplayName": "EquipmentRENTAL_LCversion",
+          "description": null
+        },
+        {
+          "id": "221ce66a-8896-f111-9b33-000d3a64f664",
+          "referenceKey": "221ce66a-8896-f111-9b33-000d3a64f664",
+          "name": "ACME_Departments",
+          "folderId": "5e6c96e4-ee96-4055-a02b-d62993318509",
+          "folderDisplayName": "EquipmentRENTAL_LCversion",
+          "description": null
+        },
+        {
+          "id": "abd22971-8896-f111-9b33-000d3a64f664",
+          "referenceKey": "abd22971-8896-f111-9b33-000d3a64f664",
+          "name": "ACME_Staff",
+          "folderId": "5e6c96e4-ee96-4055-a02b-d62993318509",
+          "folderDisplayName": "EquipmentRENTAL_LCversion",
+          "description": null
+        }
+      ]
+    }
+  ],
   "features": []
 }

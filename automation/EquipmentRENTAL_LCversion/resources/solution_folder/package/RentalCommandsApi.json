@@ -1,0 +1,22 @@
+{
+  "docVersion": "1.0.0",
+  "resource": {
+    "name": "RentalCommandsApi",
+    "kind": "package",
+    "apiVersion": "orchestrator.uipath.com/v1",
+    "projectKey": "a4991422-5d75-4b33-83c4-00a41968c1f3",
+    "dependencies": [],
+    "runtimeDependencies": [],
+    "folders": [
+      {
+        "fullyQualifiedName": "solution_folder"
+      }
+    ],
+    "spec": {
+      "name": "RentalCommandsApi"
+    },
+    "locks": [],
+    "key": "67dbca4c-b459-499c-98ec-bbfdefb37df9",
+    "files": []
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "docVersion": "1.0.0",
+  "resource": {
+    "name": "Rental_Contracts",
+    "kind": "entity",
+    "apiVersion": "dataservice.uipath.com/v1",
+    "dependencies": [],
+    "runtimeDependencies": [],
+    "folders": [],
+    "spec": {
+      "resourceJson": "",
+      "displayName": "",
+      "name": "Rental_Contracts"
+    },
+    "locks": [],
+    "key": "da5fb862-4d8b-43ac-93c3-e7f99c4b9ad4",
+    "files": []
+  }
+}

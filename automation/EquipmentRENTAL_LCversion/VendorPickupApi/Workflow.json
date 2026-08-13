@@ -1,14 +1,47 @@
 {
   "document": {
     "dsl": "1.0.0",
-    "name": "Workflow",
-    "tags": {
-      "projectId": "a143e3fc-df97-43ea-b07b-ddd0501a7462"
-    },
-    "version": "0.0.1",
+    "name": "VendorPickupApi",
+    "version": "1.0.0",
     "namespace": "default",
     "metadata": {
-      "variables": []
+      "variables": {
+        "schema": {
+          "format": "json",
+          "document": { "type": "object", "properties": {}, "title": "Variables" }
+        }
+      }
+    }
+  },
+  "input": {
+    "schema": {
+      "format": "json",
+      "document": {
+        "type": "object",
+        "properties": {
+          "contract_id": { "type": "string" },
+          "vendor_id": { "type": "string" },
+          "request_type": { "type": "string" },
+          "preferred_pickup_date": { "type": "string" },
+          "correlation_id": { "type": "string" }
+        },
+        "title": "Inputs"
+      }
+    }
+  },
+  "output": {
+    "schema": {
+      "format": "json",
+      "document": {
+        "type": "object",
+        "properties": {
+          "status": { "type": "string" },
+          "pickup_request_id": { "type": "string" },
+          "correlation_id": { "type": "string" },
+          "message": { "type": "string" }
+        },
+        "title": "Outputs"
+      }
     }
   },
   "do": [
@@ -18,31 +51,83 @@
           {
             "WorkflowStart": {
               "set": "${Object.entries($workflow.definition?.document?.metadata?.variables?.schema?.document?.properties || {}).reduce((acc, [name, def]) => ({ ...acc, [name]: def?.default }), {}) }",
-              "output": {
-                "as": "${$input}"
+              "output": { "as": "${$input}" },
+              "export": { "as": "{ ...$context, variables: { ...$context.variables, ...$output } }" },
+              "metadata": { "activityType": "Assign", "displayName": "Workflow start", "fullName": "Assign", "isTransparent": true }
+            }
+          },
+          {
+            "QueryVendorLocations": {
+              "call": "UiPath.IntSvc",
+              "with": {
+                "connector": "uipath-uipath-dataservice",
+                "connectionId": "5799c39b-43b3-42e0-8860-c23cf05d681d",
+                "connectionResourceId": "5799c39b-43b3-42e0-8860-c23cf05d681d",
+                "method": "POST",
+                "endpoint": "/v2/{entityName}/qer",
+                "queryParameters": { "queryExpression": "${$workflow.input.vendor_id ? `VendorId = '${$workflow.input.vendor_id}'` : ''}", "limit": 1, "expansionLevel": 1 },
+                "pathParameters": { "entityName": "Vendor_Locations" },
+                "bodyParameters": {}
               },
-              "export": {
-                "as": "{ ...$context, variables: { ...$context.variables, ...$output } }"
-              },
+              "export": { "as": "{ ...$context, outputs: { ...$context?.outputs, \"QueryEntityRecordsCurated_1\": $output } }" },
               "metadata": {
-                "activityType": "Assign",
-                "displayName": "Workflow start",
-                "fullName": "Assign",
-                "isTransparent": true
+                "fullName": "Connector", "activityType": "Connector", "displayName": "Find vendor location", "uiPathActivityTypeId": "703065b9-a310-33b8-9d4d-12df0a6f520b", "assemblyQualifiedName": "Connector",
+                "configuration": "{\"essentialConfiguration\":{\"connectorVersion\":\"\",\"executionType\":null,\"customFieldsRequestDetails\":null,\"instanceParameters\":{\"version\":\"1.0.0\",\"connectorKey\":\"uipath-uipath-dataservice\",\"activityType\":\"Curated\",\"objectName\":\"QueryEntityRecordsCurated\",\"httpMethod\":\"POST\",\"operation\":null,\"eventOperation\":null,\"eventMode\":null,\"connectorObjects\":null,\"previewEndpoint\":null},\"objectName\":\"QueryEntityRecordsCurated\",\"operation\":null,\"packageVersion\":\"1.0.0\",\"httpMethod\":\"POST\",\"path\":\"/v2/{entityName}/qer\",\"unifiedTypesCompatible\":true,\"savedJitInputFieldId\":\"in_QueryEntityRecordsCurated\"}}"
               }
+            }
+          },
+          {
+            "CreatePickupRequest": {
+              "call": "UiPath.IntSvc",
+              "with": {
+                "connector": "uipath-uipath-dataservice",
+                "connectionId": "5799c39b-43b3-42e0-8860-c23cf05d681d",
+                "connectionResourceId": "5799c39b-43b3-42e0-8860-c23cf05d681d",
+                "method": "POST",
+                "endpoint": "/v2/{entityName}/CreateEntityRecord",
+                "queryParameters": { "expansionLevel": 1 },
+                "pathParameters": { "entityName": "Pickup_Return_Requests" },
+                "bodyParameters": {
+                  "PickupReturnRequestId": "${`PICKUP-${$workflow.input.correlation_id || $workflow.input.contract_id || Date.now()}`}",
+                  "RequestType": "${$workflow.input.request_type || 'Pickup'}",
+                  "RequestedDate": "${new Date().toISOString().slice(0, 10)}",
+                  "PreferredPickupDate": "${$workflow.input.preferred_pickup_date || ''}",
+                  "RequestStatus": "Submitted",
+                  "VendorConfirmationNumber": "${`PENDING-${$workflow.input.correlation_id || Date.now()}`}",
+                  "CorrelationId": "${$workflow.input.correlation_id || $workflow.input.contract_id || 'unassigned'}"
+                }
+              },
+              "export": { "as": "{ ...$context, outputs: { ...$context?.outputs, \"CreateEntityRecordCurated_1\": $output } }" },
+              "metadata": {
+                "fullName": "Connector", "activityType": "Connector", "displayName": "Create pickup request", "uiPathActivityTypeId": "dfd2bc7a-ca4b-3316-8a1f-57c9e106dfbf", "assemblyQualifiedName": "Connector",
+                "configuration": "{\"essentialConfiguration\":{\"connectorVersion\":\"\",\"executionType\":null,\"customFieldsRequestDetails\":null,\"instanceParameters\":{\"version\":\"1.0.0\",\"connectorKey\":\"uipath-uipath-dataservice\",\"activityType\":\"Curated\",\"objectName\":\"CreateEntityRecordCurated\",\"httpMethod\":\"POST\",\"operation\":null,\"eventOperation\":null,\"eventMode\":null,\"connectorObjects\":null,\"previewEndpoint\":null},\"objectName\":\"CreateEntityRecordCurated\",\"operation\":null,\"packageVersion\":\"1.0.0\",\"httpMethod\":\"POST\",\"path\":\"/v2/{entityName}/CreateEntityRecord\",\"unifiedTypesCompatible\":true,\"savedJitInputFieldId\":\"in_CreateEntityRecordCurated\"}}"
+              }
+            }
+          },
+          {
+            "Javascript_1": {
+              "run": {
+                "script": {
+                  "code": "const input = $workflow.input || {}; const correlationId = input.correlation_id || input.contract_id || 'unassigned'; return { status: 'submitted', pickup_request_id: `PICKUP-${correlationId}`, correlation_id: correlationId, message: 'Pickup request was recorded in Data Fabric.' };",
+                  "language": "javascript",
+                  "arguments": "${{ \"$context\": $context, \"$workflow\": $workflow, \"$input\": $input }}"
+                }
+              },
+              "export": { "as": "{ ...$context, outputs: { ...$context?.outputs, \"Javascript_1\": $output } }" },
+              "metadata": { "activityType": "JsInvoke", "displayName": "Create pickup response", "fullName": "JsInvoke" }
+            }
+          },
+          {
+            "Response_1": {
+              "response": "${$context.outputs.Javascript_1}", "markJobAsFailed": false, "then": "end",
+              "export": { "as": "{ ...$context, outputs: { ...$context?.outputs, \"Response_1\": $output } }" },
+              "metadata": { "activityType": "Response", "displayName": "Return result", "fullName": "Response" }
             }
           }
         ],
-        "metadata": {
-          "activityType": "Sequence",
-          "displayName": "Sequence",
-          "fullName": "Sequence"
-        }
+        "metadata": { "activityType": "Sequence", "displayName": "Sequence", "fullName": "Sequence" }
       }
     }
   ],
-  "evaluate": {
-    "mode": "strict",
-    "language": "javascript"
-  }
+  "evaluate": { "mode": "strict", "language": "javascript" }
 }

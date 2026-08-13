@@ -1,0 +1,38 @@
+{
+  "docVersion": "1.0.0",
+  "resource": {
+    "name": "RentalCommandsApi",
+    "kind": "process",
+    "type": "api",
+    "apiVersion": "orchestrator.uipath.com/v1",
+    "projectKey": "a4991422-5d75-4b33-83c4-00a41968c1f3",
+    "dependencies": [
+      {
+        "kind": "package",
+        "name": "RentalCommandsApi"
+      }
+    ],
+    "runtimeDependencies": [],
+    "folders": [
+      {
+        "fullyQualifiedName": "solution_folder"
+      }
+    ],
+    "spec": {
+      "type": "Api",
+      "name": "RentalCommandsApi",
+      "package": {
+        "key": "67dbca4c-b459-499c-98ec-bbfdefb37df9"
+      },
+      "packageName": "EquipmentRENTAL_LCversion.api.RentalCommandsApi",
+      "targetFrameworkValue": "Portable",
+      "retentionAction": "Delete",
+      "retentionPeriod": 30,
+      "staleRetentionAction": "Delete",
+      "staleRetentionPeriod": 180
+    },
+    "locks": [],
+    "key": "97e01490-2ab3-48ae-8955-e8f62b155d41",
+    "files": []
+  }
+}

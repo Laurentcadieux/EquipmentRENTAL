@@ -119,6 +119,76 @@
             }
           },
           {
+            "QueryRentalContracts": {
+              "call": "UiPath.IntSvc",
+              "with": {
+                "connector": "uipath-uipath-dataservice",
+                "connectionId": "5799c39b-43b3-42e0-8860-c23cf05d681d",
+                "connectionResourceId": "5799c39b-43b3-42e0-8860-c23cf05d681d",
+                "method": "POST",
+                "endpoint": "/v2/{entityName}/qer",
+                "queryParameters": {
+                  "queryExpression": "${$workflow.input.contract_id ? `ContractId = '${$workflow.input.contract_id}'` : ''}",
+                  "limit": 1,
+                  "expansionLevel": 1
+                },
+                "pathParameters": {
+                  "entityName": "Rental_Contracts"
+                },
+                "bodyParameters": {}
+              },
+              "export": {
+                "as": "{ ...$context, outputs: { ...$context?.outputs, \"QueryEntityRecordsCurated_1\": $output } }"
+              },
+              "metadata": {
+                "fullName": "Connector",
+                "activityType": "Connector",
+                "displayName": "Find rental contract",
+                "uiPathActivityTypeId": "703065b9-a310-33b8-9d4d-12df0a6f520b",
+                "assemblyQualifiedName": "Connector",
+                "configuration": "{\"essentialConfiguration\":{\"connectorVersion\":\"\",\"executionType\":null,\"customFieldsRequestDetails\":null,\"instanceParameters\":{\"version\":\"1.0.0\",\"connectorKey\":\"uipath-uipath-dataservice\",\"activityType\":\"Curated\",\"objectName\":\"QueryEntityRecordsCurated\",\"httpMethod\":\"POST\",\"operation\":null,\"eventOperation\":null,\"eventMode\":null,\"connectorObjects\":null,\"previewEndpoint\":null},\"objectName\":\"QueryEntityRecordsCurated\",\"operation\":null,\"packageVersion\":\"1.0.0\",\"httpMethod\":\"POST\",\"path\":\"/v2/{entityName}/qer\",\"unifiedTypesCompatible\":true,\"savedJitInputFieldId\":\"in_QueryEntityRecordsCurated\"}}"
+              }
+            }
+          },
+          {
+            "CreateLifecycleEvent": {
+              "call": "UiPath.IntSvc",
+              "with": {
+                "connector": "uipath-uipath-dataservice",
+                "connectionId": "5799c39b-43b3-42e0-8860-c23cf05d681d",
+                "connectionResourceId": "5799c39b-43b3-42e0-8860-c23cf05d681d",
+                "method": "POST",
+                "endpoint": "/v2/{entityName}/CreateEntityRecord",
+                "queryParameters": {
+                  "expansionLevel": 1
+                },
+                "pathParameters": {
+                  "entityName": "Rental_Lifecycle_Events"
+                },
+                "bodyParameters": {
+                  "EventId": "${`EVT-${$workflow.input.correlation_id || $workflow.input.contract_id || Date.now()}`}",
+                  "EventType": "${$workflow.input.action || 'submit_pickup'}",
+                  "EventTimestamp": "${new Date().toISOString()}",
+                  "ReasonCode": "RentalCommand",
+                  "Notes": "${`Rental command ${$workflow.input.action || 'submit_pickup'} accepted.`}",
+                  "SourceSystem": "EquipmentRENTAL_LCversion",
+                  "CorrelationId": "${$workflow.input.correlation_id || $workflow.input.contract_id || $workflow.input.rental_request_id || $workflow.input.job_id || 'unassigned'}"
+                }
+              },
+              "export": {
+                "as": "{ ...$context, outputs: { ...$context?.outputs, \"CreateEntityRecordCurated_1\": $output } }"
+              },
+              "metadata": {
+                "fullName": "Connector",
+                "activityType": "Connector",
+                "displayName": "Record rental command",
+                "uiPathActivityTypeId": "dfd2bc7a-ca4b-3316-8a1f-57c9e106dfbf",
+                "assemblyQualifiedName": "Connector",
+                "configuration": "{\"essentialConfiguration\":{\"connectorVersion\":\"\",\"executionType\":null,\"customFieldsRequestDetails\":null,\"instanceParameters\":{\"version\":\"1.0.0\",\"connectorKey\":\"uipath-uipath-dataservice\",\"activityType\":\"Curated\",\"objectName\":\"CreateEntityRecordCurated\",\"httpMethod\":\"POST\",\"operation\":null,\"eventOperation\":null,\"eventMode\":null,\"connectorObjects\":null,\"previewEndpoint\":null},\"objectName\":\"CreateEntityRecordCurated\",\"operation\":null,\"packageVersion\":\"1.0.0\",\"httpMethod\":\"POST\",\"path\":\"/v2/{entityName}/CreateEntityRecord\",\"unifiedTypesCompatible\":true,\"savedJitInputFieldId\":\"in_CreateEntityRecordCurated\"}}"
+              }
+            }
+          },
+          {
             "Response_1": {
               "response": "${$context.outputs.Javascript_1}",
               "markJobAsFailed": false,

@@ -1,0 +1,19 @@
+{
+  "docVersion": "1.0.0",
+  "resource": {
+    "name": "ACME_Locations",
+    "kind": "entity",
+    "apiVersion": "dataservice.uipath.com/v1",
+    "dependencies": [],
+    "runtimeDependencies": [],
+    "folders": [],
+    "spec": {
+      "resourceJson": "",
+      "displayName": "",
+      "name": "ACME_Locations"
+    },
+    "locks": [],
+    "key": "5459f3a8-43fa-4b83-96f9-0b9873896f34",
+    "files": []
+  }
+}

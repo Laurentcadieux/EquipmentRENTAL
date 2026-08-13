@@ -18,6 +18,8 @@ ENTITIES = [
     "Rental_Contracts", "Rental_Equipment_Items", "Rental_Lifecycle_Events",
     "Rental_Monitoring_Flags", "Pickup_Return_Requests", "Vendor_Equipment_Availability",
 ]
+SELECTED_ENTITIES = set(filter(None, os.environ.get("UIPATH_DATA_FABRIC_ENTITIES", "").split(",")))
+RESUME_ONLY = os.environ.get("UIPATH_DATA_FABRIC_RESUME_ONLY") == "1"
 RELATIONS = {
     "ACME_Departments": {"manager_staff_id": "ACME_Staff", "default_location_id": "ACME_Locations"},
     "ACME_Staff": {"department_id": "ACME_Departments", "location_id": "ACME_Locations"},
@@ -40,7 +42,7 @@ DISPLAY_FIELDS = {
 
 
 def run(*args: str) -> dict:
-    print(f"Running: {' '.join(args)}", flush=True)
+    print(f"Running: {' '.join(args[:3])}", flush=True)
     command = ["uip", *args, "--output", "json"]
     result = subprocess.run(command, text=True, capture_output=True)
     if result.returncode:
@@ -88,6 +90,10 @@ def csv_rows(entity: str) -> list[dict[str, str]]:
 
 
 def main() -> None:
+    selected_entities = [entity for entity in ENTITIES if not SELECTED_ENTITIES or entity in SELECTED_ENTITIES]
+    if SELECTED_ENTITIES - set(ENTITIES):
+        unknown = ", ".join(sorted(SELECTED_ENTITIES - set(ENTITIES)))
+        raise ValueError(f"Unknown Data Fabric entity selection: {unknown}")
     existing = run("df", "entities", "list", "--native-only", "--folder-key", FOLDER_KEY)
     entity_ids = {item["Name"]: item["Id"] for item in existing if item["Name"] in ENTITIES}
     schemas: dict[str, list[str]] = {}
@@ -114,19 +120,30 @@ def main() -> None:
         body = {"displayName": f"EquipmentRENTAL LCversion {entity}", "description": "EquipmentRENTAL LCversion approved mock dataset", "fields": fields}
         created = run("df", "entities", "create", entity, "--folder-key", FOLDER_KEY, "--body", json.dumps(body))
         entity_ids[entity] = created["Id"]
-    metadata = {entity: run("df", "entities", "get", identifier, "--folder-key", FOLDER_KEY) for entity, identifier in entity_ids.items()}
-    for entity, relation_columns in RELATIONS.items():
-        existing_fields = {field["Name"] for field in metadata[entity]["Fields"]}
-        additions = []
-        for column, target in relation_columns.items():
-            if field_name(column) in existing_fields:
-                continue
-            target_fields = {field["Name"]: field["Id"] for field in metadata[target]["Fields"]}
-            additions.append({"fieldName": field_name(column), "displayName": column, "type": "RELATIONSHIP", "referenceEntityId": entity_ids[target], "referenceFieldId": target_fields[DISPLAY_FIELDS[target]], "referenceFolderKey": FOLDER_KEY, "isRequired": False})
-        if additions:
-            run("df", "entities", "update", entity_ids[entity], "--folder-key", FOLDER_KEY, "--body", json.dumps({"addFields": additions}))
+    if not RESUME_ONLY:
+        metadata = {entity: run("df", "entities", "get", identifier, "--folder-key", FOLDER_KEY) for entity, identifier in entity_ids.items()}
+        for entity, relation_columns in RELATIONS.items():
+            existing_fields = {field["Name"] for field in metadata[entity]["Fields"]}
+            additions = []
+            for column, target in relation_columns.items():
+                if field_name(column) in existing_fields:
+                    continue
+                target_fields = {field["Name"]: field["Id"] for field in metadata[target]["Fields"]}
+                additions.append({"fieldName": field_name(column), "displayName": column, "type": "RELATIONSHIP", "referenceEntityId": entity_ids[target], "referenceFieldId": target_fields[DISPLAY_FIELDS[target]], "referenceFolderKey": FOLDER_KEY, "isRequired": False})
+            if additions:
+                run("df", "entities", "update", entity_ids[entity], "--folder-key", FOLDER_KEY, "--body", json.dumps({"addFields": additions}))
     record_ids: dict[str, dict[str, str]] = {entity: {} for entity in ENTITIES}
-    for entity in ENTITIES:
+    reference_entities = {
+        target
+        for entity in selected_entities
+        for target in RELATIONS.get(entity, {}).values()
+    }
+    for entity in reference_entities:
+        key = next(column for column in schemas[entity] if column.endswith("_id") and column not in RELATIONS.get(entity, {}))
+        name = field_name(key)
+        listed = list_all_records(entity_ids[entity])
+        record_ids[entity] = {item[name]: item["Id"] for item in listed}
+    for entity in selected_entities:
         rows = csv_rows(entity)
         key = next(column for column in schemas[entity] if column.endswith("_id") and column not in RELATIONS.get(entity, {}))
         name = field_name(key)
@@ -143,6 +160,8 @@ def main() -> None:
             listed = list_all_records(entity_ids[entity])
             record_ids[entity] = {item[name]: item["Id"] for item in listed}
     for entity, relation_columns in RELATIONS.items():
+        if entity not in selected_entities:
+            continue
         rows = csv_rows(entity)
         key = next(column for column in schemas[entity] if column.endswith("_id") and column not in relation_columns)
         updates = []
@@ -150,12 +169,16 @@ def main() -> None:
             update = {"Id": record_ids[entity][row[key]]}
             for column, target in relation_columns.items():
                 if row[column]:
-                    update[field_name(column)] = record_ids[target][row[column]]
+                    target_id = record_ids[target].get(row[column])
+                    if target_id:
+                        update[field_name(column)] = target_id
+                    else:
+                        print(f"Skipping unresolved relationship {entity}.{column}={row[column]}", flush=True)
             if len(update) > 1:
                 updates.append(update)
         for offset in range(0, len(updates), 200):
             run("df", "records", "update", entity_ids[entity], "--folder-key", FOLDER_KEY, "--body", json.dumps(updates[offset:offset + 200]))
-    print(json.dumps({"folderKey": FOLDER_KEY, "entities": entity_ids, "recordCounts": {name: len(csv_rows(name)) for name in ENTITIES}}, indent=2))
+    print(json.dumps({"folderKey": FOLDER_KEY, "entities": entity_ids, "recordCounts": {name: len(csv_rows(name)) for name in selected_entities}}, indent=2))
 
 
 if __name__ == "__main__":

@@ -39,11 +39,11 @@
   "messages": [
     {
       "role": "system",
-      "content": "Assess EquipmentRental cases, explain recommended routing, and require human review for exceptions.",
+      "content": "Use the EquipmentRENTAL_LCversion Data Fabric context to assess EquipmentRental cases, explain recommended routing, and require human review for exceptions. Ground each recommendation in retrieved rental, vendor, equipment, availability, monitoring, and pickup records. Do not invent record values.",
       "contentTokens": [
         {
           "type": "simpleText",
-          "rawString": "Assess EquipmentRental cases, explain recommended routing, and require human review for exceptions."
+          "rawString": "Use the EquipmentRENTAL_LCversion Data Fabric context to assess EquipmentRental cases, explain recommended routing, and require human review for exceptions. Ground each recommendation in retrieved rental, vendor, equipment, availability, monitoring, and pickup records. Do not invent record values."
         }
       ]
     },
