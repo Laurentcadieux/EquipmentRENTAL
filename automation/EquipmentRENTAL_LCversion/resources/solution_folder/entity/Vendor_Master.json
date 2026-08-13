@@ -4,9 +4,14 @@
     "name": "Vendor_Master",
     "kind": "entity",
     "apiVersion": "dataservice.uipath.com/v1",
+    "isOverridable": true,
     "dependencies": [],
     "runtimeDependencies": [],
-    "folders": [],
+    "folders": [
+      {
+        "fullyQualifiedName": "solution_folder"
+      }
+    ],
     "spec": {
       "resourceJson": "",
       "displayName": "",

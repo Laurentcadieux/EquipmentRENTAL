@@ -6,13 +6,275 @@
     "type": "agent",
     "apiVersion": "orchestrator.uipath.com/v1",
     "projectKey": "563bd4df-8f20-4d44-b10f-a8e4af7744d3",
+    "isOverridable": true,
     "dependencies": [
       {
         "kind": "package",
         "name": "RentalCaseAgent"
       }
     ],
-    "runtimeDependencies": [],
+    "runtimeDependencies": [
+      {
+        "bindingType": "entity",
+        "bindingKey": "794b6d8d-8896-f111-9b33-000d3a64f664",
+        "bindingValues": {
+          "name": {
+            "defaultValue": "Rental_Requests",
+            "isExpression": false
+          },
+          "folderPath": {
+            "defaultValue": "5e6c96e4-ee96-4055-a02b-d62993318509",
+            "isExpression": false
+          }
+        },
+        "bindingMetadata": {
+          "bindingsVersion": "2.2",
+          "solutionsSupport": "true",
+          "scope": "folder"
+        },
+        "resourceKind": "Entity"
+      },
+      {
+        "bindingType": "entity",
+        "bindingKey": "914b6d8d-8896-f111-9b33-000d3a64f664",
+        "bindingValues": {
+          "name": {
+            "defaultValue": "Rental_Contracts",
+            "isExpression": false
+          },
+          "folderPath": {
+            "defaultValue": "5e6c96e4-ee96-4055-a02b-d62993318509",
+            "isExpression": false
+          }
+        },
+        "bindingMetadata": {
+          "bindingsVersion": "2.2",
+          "solutionsSupport": "true",
+          "scope": "folder"
+        },
+        "resourceKind": "Entity"
+      },
+      {
+        "bindingType": "entity",
+        "bindingKey": "24e6589a-8896-f111-9b33-000d3a64f664",
+        "bindingValues": {
+          "name": {
+            "defaultValue": "Rental_Equipment_Items",
+            "isExpression": false
+          },
+          "folderPath": {
+            "defaultValue": "5e6c96e4-ee96-4055-a02b-d62993318509",
+            "isExpression": false
+          }
+        },
+        "bindingMetadata": {
+          "bindingsVersion": "2.2",
+          "solutionsSupport": "true",
+          "scope": "folder"
+        },
+        "resourceKind": "Entity"
+      },
+      {
+        "bindingType": "entity",
+        "bindingKey": "ac9a95a0-8896-f111-9b33-000d3a64f664",
+        "bindingValues": {
+          "name": {
+            "defaultValue": "Rental_Lifecycle_Events",
+            "isExpression": false
+          },
+          "folderPath": {
+            "defaultValue": "5e6c96e4-ee96-4055-a02b-d62993318509",
+            "isExpression": false
+          }
+        },
+        "bindingMetadata": {
+          "bindingsVersion": "2.2",
+          "solutionsSupport": "true",
+          "scope": "folder"
+        },
+        "resourceKind": "Entity"
+      },
+      {
+        "bindingType": "entity",
+        "bindingKey": "d09a95a0-8896-f111-9b33-000d3a64f664",
+        "bindingValues": {
+          "name": {
+            "defaultValue": "Rental_Monitoring_Flags",
+            "isExpression": false
+          },
+          "folderPath": {
+            "defaultValue": "5e6c96e4-ee96-4055-a02b-d62993318509",
+            "isExpression": false
+          }
+        },
+        "bindingMetadata": {
+          "bindingsVersion": "2.2",
+          "solutionsSupport": "true",
+          "scope": "folder"
+        },
+        "resourceKind": "Entity"
+      },
+      {
+        "bindingType": "entity",
+        "bindingKey": "9458c8a6-8896-f111-9b33-000d3a64f664",
+        "bindingValues": {
+          "name": {
+            "defaultValue": "Pickup_Return_Requests",
+            "isExpression": false
+          },
+          "folderPath": {
+            "defaultValue": "5e6c96e4-ee96-4055-a02b-d62993318509",
+            "isExpression": false
+          }
+        },
+        "bindingMetadata": {
+          "bindingsVersion": "2.2",
+          "solutionsSupport": "true",
+          "scope": "folder"
+        },
+        "resourceKind": "Entity"
+      },
+      {
+        "bindingType": "entity",
+        "bindingKey": "bfd22971-8896-f111-9b33-000d3a64f664",
+        "bindingValues": {
+          "name": {
+            "defaultValue": "Vendor_Master",
+            "isExpression": false
+          },
+          "folderPath": {
+            "defaultValue": "5e6c96e4-ee96-4055-a02b-d62993318509",
+            "isExpression": false
+          }
+        },
+        "bindingMetadata": {
+          "bindingsVersion": "2.2",
+          "solutionsSupport": "true",
+          "scope": "folder"
+        },
+        "resourceKind": "Entity"
+      },
+      {
+        "bindingType": "entity",
+        "bindingKey": "752a6377-8896-f111-9b33-000d3a64f664",
+        "bindingValues": {
+          "name": {
+            "defaultValue": "Vendor_Locations",
+            "isExpression": false
+          },
+          "folderPath": {
+            "defaultValue": "5e6c96e4-ee96-4055-a02b-d62993318509",
+            "isExpression": false
+          }
+        },
+        "bindingMetadata": {
+          "bindingsVersion": "2.2",
+          "solutionsSupport": "true",
+          "scope": "folder"
+        },
+        "resourceKind": "Entity"
+      },
+      {
+        "bindingType": "entity",
+        "bindingKey": "bac26185-8896-f111-9b33-000d3a64f664",
+        "bindingValues": {
+          "name": {
+            "defaultValue": "Vendor_Equipment_Catalog",
+            "isExpression": false
+          },
+          "folderPath": {
+            "defaultValue": "5e6c96e4-ee96-4055-a02b-d62993318509",
+            "isExpression": false
+          }
+        },
+        "bindingMetadata": {
+          "bindingsVersion": "2.2",
+          "solutionsSupport": "true",
+          "scope": "folder"
+        },
+        "resourceKind": "Entity"
+      },
+      {
+        "bindingType": "entity",
+        "bindingKey": "d76035c7-8896-f111-9b33-000d3a64f664",
+        "bindingValues": {
+          "name": {
+            "defaultValue": "Vendor_Equipment_Availability",
+            "isExpression": false
+          },
+          "folderPath": {
+            "defaultValue": "5e6c96e4-ee96-4055-a02b-d62993318509",
+            "isExpression": false
+          }
+        },
+        "bindingMetadata": {
+          "bindingsVersion": "2.2",
+          "solutionsSupport": "true",
+          "scope": "folder"
+        },
+        "resourceKind": "Entity"
+      },
+      {
+        "bindingType": "entity",
+        "bindingKey": "0d1ce66a-8896-f111-9b33-000d3a64f664",
+        "bindingValues": {
+          "name": {
+            "defaultValue": "ACME_Locations",
+            "isExpression": false
+          },
+          "folderPath": {
+            "defaultValue": "5e6c96e4-ee96-4055-a02b-d62993318509",
+            "isExpression": false
+          }
+        },
+        "bindingMetadata": {
+          "bindingsVersion": "2.2",
+          "solutionsSupport": "true",
+          "scope": "folder"
+        },
+        "resourceKind": "Entity"
+      },
+      {
+        "bindingType": "entity",
+        "bindingKey": "221ce66a-8896-f111-9b33-000d3a64f664",
+        "bindingValues": {
+          "name": {
+            "defaultValue": "ACME_Departments",
+            "isExpression": false
+          },
+          "folderPath": {
+            "defaultValue": "5e6c96e4-ee96-4055-a02b-d62993318509",
+            "isExpression": false
+          }
+        },
+        "bindingMetadata": {
+          "bindingsVersion": "2.2",
+          "solutionsSupport": "true",
+          "scope": "folder"
+        },
+        "resourceKind": "Entity"
+      },
+      {
+        "bindingType": "entity",
+        "bindingKey": "abd22971-8896-f111-9b33-000d3a64f664",
+        "bindingValues": {
+          "name": {
+            "defaultValue": "ACME_Staff",
+            "isExpression": false
+          },
+          "folderPath": {
+            "defaultValue": "5e6c96e4-ee96-4055-a02b-d62993318509",
+            "isExpression": false
+          }
+        },
+        "bindingMetadata": {
+          "bindingsVersion": "2.2",
+          "solutionsSupport": "true",
+          "scope": "folder"
+        },
+        "resourceKind": "Entity"
+      }
+    ],
     "folders": [
       {
         "fullyQualifiedName": "solution_folder"
