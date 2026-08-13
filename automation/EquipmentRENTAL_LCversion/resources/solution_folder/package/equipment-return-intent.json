@@ -1,0 +1,32 @@
+{
+  "docVersion": "1.0.0",
+  "resource": {
+    "name": "equipment-return-intent",
+    "kind": "package",
+    "apiVersion": "orchestrator.uipath.com/v1",
+    "isOverridable": true,
+    "dependencies": [],
+    "runtimeDependencies": [],
+    "folders": [
+      {
+        "fullyQualifiedName": "solution_folder"
+      }
+    ],
+    "spec": {
+      "fileName": "equipment-return-intent.1.0.0.nupkg",
+      "fileReference": "equipment-return-intent_1.0.0",
+      "name": "equipment-return-intent"
+    },
+    "locks": [],
+    "key": "equipment-return-intent:1.0.0",
+    "files": [
+      {
+        "key": "equipment-return-intent_1.0.0",
+        "name": "equipment-return-intent.1.0.0.nupkg",
+        "url": "https://cloud.uipath.com/uipathlabs/Playground/orchestrator_/odata/Processes/UiPath.Server.Configuration.OData.DownloadPackage(key='equipment-return-intent:1.0.0')?feedId=93949a13-9388-45bb-af90-5783a67e1b33",
+        "kind": "Package",
+        "version": "1.0.0"
+      }
+    ]
+  }
+}

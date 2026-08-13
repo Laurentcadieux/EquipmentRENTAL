@@ -1,0 +1,36 @@
+{
+  "docVersion": "1.0.0",
+  "resource": {
+    "name": "equipment-return-intent",
+    "kind": "app",
+    "type": "CodedAction",
+    "apiVersion": "apps.uipath.com/v1",
+    "isOverridable": true,
+    "dependencies": [
+      {
+        "kind": "Package",
+        "name": "equipment-return-intent"
+      }
+    ],
+    "runtimeDependencies": [],
+    "folders": [
+      {
+        "fullyQualifiedName": "solution_folder"
+      }
+    ],
+    "spec": {
+      "name": "equipment-return-intent",
+      "version": "1.0.0",
+      "package": {
+        "name": "equipment-return-intent",
+        "key": "equipment-return-intent:1.0.0"
+      },
+      "externalClientId": "",
+      "appSystemName": "ID78f81d0081154809b4d57534e2abbc8a",
+      "actionSchema": "{\"key\":\"71d773a3-9770-44bc-b2b1-627b74ff8ce7\",\"version\":1,\"description\":\"Action Schema\",\"id\":\"ID24829fce5f0449c5bf8c5fd4fe82bc8d\",\"name\":\"ActionSchema\",\"inOuts\":[],\"inputs\":[],\"outputs\":[{\"name\":\"reviewerComment\",\"key\":\"1249503d-8a5e-4df1-819c-5b01261260a5\",\"required\":true,\"description\":\"Reason for approving or rejecting the return intent\",\"version\":0,\"typeNamespace\":\"system\",\"isList\":false,\"collectionDataType\":null,\"type\":\"System.String\",\"properties\":[]}],\"outcomes\":[{\"name\":\"Approve\",\"key\":\"7f65db47-ba10-4db6-9801-080cc0f2d316\",\"required\":false,\"type\":\"System.String\",\"typeNamespace\":\"system\",\"isList\":false,\"properties\":[],\"version\":0},{\"name\":\"Reject\",\"key\":\"456fde8e-f29b-4d40-bd5e-ea2c22c256e8\",\"required\":false,\"type\":\"System.String\",\"typeNamespace\":\"system\",\"isList\":false,\"properties\":[],\"version\":0}],\"__isDeleted\":false,\"dateLastModified\":\"2026-08-13T13:44:01.335Z\"}"
+    },
+    "locks": [],
+    "key": "be7f61e3-2424-4ed7-8eed-c74422765a41",
+    "files": []
+  }
+}
