@@ -1,0 +1,349 @@
+{
+  "Result": "Success",
+  "Code": "InstanceVariables",
+  "Data": {
+    "Elements": [
+      {
+        "ElementId": "trigger_1",
+        "ElementRunId": "78ed303d-909d-4b0e-b83e-419817493bc4",
+        "IsMarker": false,
+        "Inputs": {},
+        "InputDefinitions": {},
+        "Outputs": {}
+      },
+      {
+        "ElementId": "triggerActivatedVariableTask_trigger_1",
+        "ElementRunId": "cd751d89-24ad-46e0-ad46-2e4701df314b",
+        "IsMarker": false,
+        "Inputs": {},
+        "InputDefinitions": {},
+        "Outputs": {}
+      },
+      {
+        "ElementId": "CaseInitialVariablesSetupNode",
+        "ElementRunId": "b71d7c91-4489-436e-8f67-2ae753231a3c",
+        "IsMarker": false,
+        "Inputs": {},
+        "InputDefinitions": {},
+        "Outputs": {}
+      },
+      {
+        "ElementId": "CaseGlobalsVariablesSetupNode",
+        "ElementRunId": "8575b27d-84ac-433a-a7c2-c165d41b654f",
+        "IsMarker": false,
+        "Inputs": {},
+        "InputDefinitions": {},
+        "Outputs": {}
+      },
+      {
+        "ElementId": "caseStartedSendMessageEvent",
+        "ElementRunId": "6fcc907d-4cef-4e01-a4f6-f96756d06262",
+        "IsMarker": false,
+        "Inputs": {
+          "Body": {
+            "SpecificContent": {
+              "Event": "CaseEntered",
+              "TriggerName": "Trigger 1",
+              "TriggerType": "manual"
+            },
+            "Reference": "case-a570558e-99a2-4a45-b617-3238eed9c198",
+            "Error": null,
+            "TimeToLive": null
+          }
+        },
+        "InputDefinitions": {},
+        "Outputs": {
+          "MessageId": "6fcc907d-4cef-4e01-a4f6-f96756d06262"
+        }
+      },
+      {
+        "ElementId": "adhocCaseEventSubProcess",
+        "ElementRunId": "0703aa6a-0f75-4c77-a746-d6ef39edfbbf",
+        "IsMarker": false,
+        "Inputs": {},
+        "InputDefinitions": {},
+        "Outputs": {
+          "UpdatedEventsScriptResponseError": {
+            "UpsertKeys": {
+              "CM:stagesEntered:Intake&Triage": true
+            },
+            "DeleteKeys": [
+              "CM:stagesExited:Intake & Triage",
+              "CM:stagesCompleted:Intake & Triage"
+            ]
+          },
+          "EventSubProcessPreviousStagesExited": [],
+          "MainEventSubprocessResponse": {
+            "Event": "CaseEntered",
+            "TriggerName": "Trigger 1",
+            "TriggerType": "manual"
+          },
+          "MainEventSubprocessLocalLastStageExited": null,
+          "EventSubProcessEventIdentifier": "CaseEntered",
+          "EventSubProcessLatestEventType": "CaseEntered",
+          "UpdatedEventsScriptResponse": {
+            "UpsertKeys": {
+              "CM:stagesEntered:Intake&Triage": true
+            },
+            "DeleteKeys": [
+              "CM:stagesExited:Intake & Triage",
+              "CM:stagesCompleted:Intake & Triage"
+            ]
+          },
+          "EventMetadata": {
+            "EventIdentifier": "CaseEntered",
+            "Type": "CaseEntered",
+            "Parameters": {
+              "TriggerNames": [
+                "Trigger 1"
+              ],
+              "TriggerType": "manual"
+            },
+            "IsExternal": true
+          },
+          "CaseManagerDecisions": {
+            "Version": 1,
+            "CaseAgent": {
+              "RunCaseAgent": true
+            },
+            "StagesEntered": [
+              {
+                "StageName": "Intake & Triage",
+                "TriggeringDecision": "CaseEntered:manual",
+                "RuleName": "Start rental intake",
+                "Index": 0,
+                "Chain": [
+                  [
+                    "CaseEntered:manual"
+                  ],
+                  [
+                    "StageEntered:Intake & Triage"
+                  ]
+                ]
+              }
+            ],
+            "TasksToRun": [
+              {
+                "TaskName": "Validate job and rental data",
+                "TriggeringDecision": "StageEntered:Intake & Triage",
+                "RuleName": "Validate intake data",
+                "Index": 1,
+                "Chain": [
+                  [
+                    "CaseEntered:manual"
+                  ],
+                  [
+                    "StageEntered:Intake & Triage"
+                  ],
+                  [
+                    "TaskToRun:Validate job and rental data"
+                  ]
+                ]
+              }
+            ]
+          },
+          "CaseRulesDecisions": {
+            "Version": 1,
+            "CaseAgent": {
+              "RunCaseAgent": true
+            },
+            "StagesEntered": [
+              {
+                "StageName": "Intake & Triage",
+                "TriggeringDecision": "CaseEntered:manual",
+                "RuleName": "Start rental intake",
+                "Index": 0,
+                "Chain": [
+                  [
+                    "CaseEntered:manual"
+                  ],
+                  [
+                    "StageEntered:Intake & Triage"
+                  ]
+                ]
+              }
+            ],
+            "TasksToRun": [
+              {
+                "TaskName": "Validate job and rental data",
+                "TriggeringDecision": "StageEntered:Intake & Triage",
+                "RuleName": "Validate intake data",
+                "Index": 1,
+                "Chain": [
+                  [
+                    "CaseEntered:manual"
+                  ],
+                  [
+                    "StageEntered:Intake & Triage"
+                  ],
+                  [
+                    "TaskToRun:Validate job and rental data"
+                  ]
+                ]
+              }
+            ]
+          },
+          "EventSubProcessLatestEventParams": {
+            "TriggerNames": [
+              "Trigger 1"
+            ],
+            "TriggerType": "manual"
+          },
+          "MainEventSubprocessLocalLastPrimaryStageExited": null,
+          "EventSubProcessPreviousStagesEntered": [],
+          "CaseState": {
+            "StagesEntered": [
+              "Intake & Triage"
+            ],
+            "StagesExited": [],
+            "StagesCompleted": [],
+            "TasksRunning": [],
+            "TasksCompleted": [],
+            "TasksCompletedV2": []
+          }
+        }
+      },
+      {
+        "ElementId": "caseSLASendMessageEvent",
+        "ElementRunId": "c6a4d211-48ab-4082-8b74-31fdcb2ff16a",
+        "IsMarker": false,
+        "Inputs": {
+          "Body": {
+            "SpecificContent": {},
+            "Reference": "case-a570558e-99a2-4a45-b617-3238eed9c198",
+            "Error": null,
+            "TimeToLive": null
+          }
+        },
+        "InputDefinitions": {},
+        "Outputs": {
+          "MessageId": "c6a4d211-48ab-4082-8b74-31fdcb2ff16a"
+        }
+      },
+      {
+        "ElementId": "caseSlaEventSubprocess",
+        "ElementRunId": "b85978c6-5732-49af-a4db-3a92f4c80b80",
+        "IsMarker": false,
+        "Inputs": {},
+        "InputDefinitions": {},
+        "Outputs": {
+          "CaseSlaEventSubprocessResponse": {}
+        }
+      },
+      {
+        "ElementId": "caseEndMessageCatchEvent",
+        "ElementRunId": "1fefb18a-86b8-465d-9394-12e0eb8d753b",
+        "IsMarker": false,
+        "Inputs": {
+          "Reference": "case-a570558e-99a2-4a45-b617-3238eed9c198"
+        },
+        "InputDefinitions": {},
+        "Outputs": {}
+      },
+      {
+        "ElementId": "tasksEventSubProcess",
+        "ElementRunId": "cf2a8f40-6c10-4e43-8dd1-ea6c7eda1973",
+        "IsMarker": false,
+        "Inputs": {},
+        "InputDefinitions": {},
+        "Outputs": {}
+      },
+      {
+        "ElementId": "stageSlaEventSubprocess_Stage_ErxzAl",
+        "ElementRunId": "679b4559-8c8e-4744-ae7d-dfb762067a19",
+        "IsMarker": false,
+        "Inputs": {},
+        "InputDefinitions": {},
+        "Outputs": {
+          "StageSlaEventSubprocessResponseStageErxzAl": {}
+        }
+      }
+    ],
+    "Globals": {
+      "StageHasRunExtensionRequest": false,
+      "CaseGlobalsLastStageExited": "",
+      "CaseLocalLatestCaseState": {
+        "StagesEntered": [
+          "Intake & Triage"
+        ],
+        "StagesExited": [],
+        "StagesCompleted": [],
+        "TasksRunning": [],
+        "TasksCompleted": [],
+        "TasksCompletedV2": []
+      },
+      "CaseGlobalsLastPrimaryStageExited": "",
+      "StageHasRunActiveRentalMonitoring": false,
+      "StageHasRunReturnClose": false,
+      "CaseLocalTriggerTypeActivatedTrigger1": "manual",
+      "StageHasRunImmediatePickup": false,
+      "CaseId": "ER-634277302",
+      "CaseLocalLastPrimaryStageExited": "",
+      "CaseLocalLastStageExited": "",
+      "CaseEndMessageResponse": null,
+      "StageHasRunIntakeTriage": false,
+      "CaseLocalTriggerActivatedTrigger1": "Trigger 1"
+    },
+    "InstanceId": "a570558e-99a2-4a45-b617-3238eed9c198",
+    "WorkflowId": "a570558e-99a2-4a45-b617-3238eed9c198/BpmnGenericWorkflow",
+    "ParentElementId": null,
+    "GlobalDefinitions": {
+      "StageHasRunExtensionRequest": {
+        "Name": "Extension Request has run before",
+        "Type": "boolean"
+      },
+      "CaseGlobalsLastStageExited": {
+        "Name": "globalLastStageExited",
+        "Type": "string"
+      },
+      "CaseLocalLatestCaseState": {
+        "Name": "latestCaseState",
+        "Type": "json"
+      },
+      "CaseGlobalsLastPrimaryStageExited": {
+        "Name": "globalLastPrimaryStageExited",
+        "Type": "string"
+      },
+      "StageHasRunActiveRentalMonitoring": {
+        "Name": "Active Rental Monitoring has run before",
+        "Type": "boolean"
+      },
+      "StageHasRunReturnClose": {
+        "Name": "Return & Close has run before",
+        "Type": "boolean"
+      },
+      "CaseLocalTriggerTypeActivatedTrigger1": {
+        "Name": "localTriggerTypeActivated_trigger_1",
+        "Type": "string"
+      },
+      "StageHasRunImmediatePickup": {
+        "Name": "Immediate Pickup has run before",
+        "Type": "boolean"
+      },
+      "CaseId": {
+        "Name": "Case ID",
+        "Type": "string"
+      },
+      "CaseLocalLastPrimaryStageExited": {
+        "Name": "localLastPrimaryStageExited",
+        "Type": "string"
+      },
+      "CaseLocalLastStageExited": {
+        "Name": "localLastStageExited",
+        "Type": "string"
+      },
+      "CaseEndMessageResponse": {
+        "Name": "CaseEndMessageResponse",
+        "Type": "json"
+      },
+      "StageHasRunIntakeTriage": {
+        "Name": "Intake & Triage has run before",
+        "Type": "boolean"
+      },
+      "CaseLocalTriggerActivatedTrigger1": {
+        "Name": "localTriggerActivated_trigger_1",
+        "Type": "string"
+      }
+    }
+  }
+}

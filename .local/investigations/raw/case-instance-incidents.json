@@ -1,0 +1,14 @@
+{
+  "Result": "Failure",
+  "Code": "Http_400",
+  "Message": "Error getting incidents",
+  "Instructions": "Status: 400 Bad Request\nResource: GET /instances/a570558e-99a2-4a45-b617-3238eed9c198/incidents\nBody: {\"type\":\"PIMS-150001\",\"title\":\"Required header 'x-uipath-folderkey' is missing or empty\",\"status\":400,\"traceId\":\"f8bc4401919b44538d0d98ec45004382\"}\nTrace ID: f8bc4401919b44538d0d98ec45004382\nRemediation: verify the folder scope and identifiers, then retry. If the error persists, contact UiPath support with the status, resource, and trace/request ID.",
+  "Context": {
+    "HttpStatus": 400,
+    "Endpoint": "/instances/a570558e-99a2-4a45-b617-3238eed9c198/incidents",
+    "Method": "GET",
+    "TraceId": "f8bc4401919b44538d0d98ec45004382"
+  },
+  "ErrorCode": "invalid_argument",
+  "Retry": "RetryWillNotFix"
+}

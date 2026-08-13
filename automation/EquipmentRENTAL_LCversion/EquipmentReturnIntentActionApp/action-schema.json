@@ -1,0 +1,27 @@
+{
+  "inputs": {
+    "type": "object",
+    "properties": {}
+  },
+  "outputs": {
+    "type": "object",
+    "properties": {
+      "reviewerComment": {
+        "type": "string",
+        "required": true,
+        "description": "Reason for approving or rejecting the return intent"
+      }
+    }
+  },
+  "inOuts": {
+    "type": "object",
+    "properties": {}
+  },
+  "outcomes": {
+    "type": "object",
+    "properties": {
+      "Approve": { "type": "string" },
+      "Reject": { "type": "string" }
+    }
+  }
+}

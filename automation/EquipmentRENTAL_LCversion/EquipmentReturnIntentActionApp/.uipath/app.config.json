@@ -1,0 +1,12 @@
+{
+  "appName": "equipment-return-intent",
+  "displayName": "equipment-return-intent",
+  "appVersion": "1.0.0",
+  "systemName": "ID78f81d0081154809b4d57534e2abbc8a",
+  "appUrl": null,
+  "registeredAt": "2026-08-13T13:44:01.519Z",
+  "appType": "Action",
+  "personalWorkspace": false,
+  "deploymentId": "be7f61e3-2424-4ed7-8eed-c74422765a41",
+  "deployedAt": "2026-08-13T13:44:10.961Z"
+}

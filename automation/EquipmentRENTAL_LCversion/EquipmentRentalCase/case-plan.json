@@ -1,0 +1,513 @@
+{
+  "case": {
+    "completionConditions": [
+      {
+        "completionConditionType": "StagesCompleted",
+        "parameters": {
+          "stageNames": [
+            "Return & Close",
+            "Active Rental (Monitoring)",
+            "Intake & Triage"
+          ]
+        },
+        "ruleName": "Equipment returned and required stages complete"
+      }
+    ]
+  },
+  "stages": [
+    {
+      "name": "Extension Request",
+      "entryConditions": [
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "StagesExited",
+              "parameters": {
+                "stageNames": [
+                  "Return & Close"
+                ],
+                "cancelStagesAndTasks": true
+              }
+            },
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:vars.returnIntent == \"Request Extension\"",
+                "expressionString": "vars.returnIntent == \"Request Extension\"",
+                "cancelStagesAndTasks": true
+              }
+            }
+          ],
+          "ruleName": "Start extension request"
+        }
+      ],
+      "exitConditions": [],
+      "completionConditions": [
+        {
+          "completionConditionType": "TasksCompleted",
+          "parameters": {
+            "taskNames": [
+              "Cancel existing pickup request",
+              "Update rental extension in Mastermind",
+              "Notify procurement & return to Active Rental"
+            ]
+          },
+          "ruleName": "Resume active rental"
+        }
+      ],
+      "tasks": [
+        {
+          "name": "Cancel existing pickup request",
+          "entryConditions": [
+            {
+              "entryConditionType": "StageEntered",
+              "parameters": {
+                "stageNames": [
+                  "Extension Request"
+                ]
+              },
+              "ruleName": "Cancel scheduled pickup"
+            }
+          ]
+        },
+        {
+          "name": "Update rental extension in Mastermind",
+          "entryConditions": [
+            {
+              "entryConditionType": "TasksCompleted",
+              "parameters": {
+                "taskNames": [
+                  "Cancel existing pickup request"
+                ]
+              },
+              "ruleName": "Update extension dates"
+            }
+          ]
+        },
+        {
+          "name": "Notify procurement & return to Active Rental",
+          "entryConditions": [
+            {
+              "entryConditionType": "TasksCompleted",
+              "parameters": {
+                "taskNames": [
+                  "Update rental extension in Mastermind"
+                ]
+              },
+              "ruleName": "Notify procurement and resume monitoring"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Immediate Pickup",
+      "entryConditions": [
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "StagesExited",
+              "parameters": {
+                "stageNames": [
+                  "Return & Close"
+                ],
+                "cancelStagesAndTasks": true
+              }
+            },
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:vars.returnIntent == \"Immediate Pickup\"",
+                "expressionString": "vars.returnIntent == \"Immediate Pickup\"",
+                "cancelStagesAndTasks": true
+              }
+            }
+          ],
+          "ruleName": "Start immediate pickup"
+        }
+      ],
+      "exitConditions": [],
+      "completionConditions": [
+        {
+          "completionConditionType": "TasksCompleted",
+          "parameters": {
+            "taskNames": [
+              "Notify United Rentals for ASAP pickup",
+              "Update job status"
+            ]
+          },
+          "ruleName": "Resume return and close"
+        }
+      ],
+      "tasks": [
+        {
+          "name": "Notify United Rentals for ASAP pickup",
+          "entryConditions": [
+            {
+              "entryConditionType": "StageEntered",
+              "parameters": {
+                "stageNames": [
+                  "Immediate Pickup"
+                ]
+              },
+              "ruleName": "Request expedited pickup"
+            }
+          ]
+        },
+        {
+          "name": "Update job status",
+          "entryConditions": [
+            {
+              "entryConditionType": "TasksCompleted",
+              "parameters": {
+                "taskNames": [
+                  "Notify United Rentals for ASAP pickup"
+                ]
+              },
+              "ruleName": "Record expedited pickup"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Return & Close",
+      "entryConditions": [
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Return & Close\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Return & Close\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Immediate Pickup"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Resume return and close"
+        },
+        {
+          "entryConditionType": "StagesCompleted",
+          "parameters": {
+            "stageNames": [
+              "Active Rental (Monitoring)"
+            ]
+          },
+          "ruleName": "Begin return and closure"
+        }
+      ],
+      "exitConditions": [
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "exitConditionType": "TasksCompleted",
+              "parameters": {
+                "taskNames": [
+                  "Notify branch & confirm return intent"
+                ]
+              }
+            },
+            {
+              "exitConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:vars.returnIntent == \"Immediate Pickup\"",
+                "expressionString": "vars.returnIntent == \"Immediate Pickup\""
+              }
+            }
+          ],
+          "ruleName": "Route to immediate pickup"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "exitConditionType": "TasksCompleted",
+              "parameters": {
+                "taskNames": [
+                  "Notify branch & confirm return intent"
+                ]
+              }
+            },
+            {
+              "exitConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:vars.returnIntent == \"Request Extension\"",
+                "expressionString": "vars.returnIntent == \"Request Extension\""
+              }
+            }
+          ],
+          "ruleName": "Route to extension request"
+        }
+      ],
+      "completionConditions": [
+        {
+          "completionConditionType": "TasksCompleted",
+          "parameters": {
+            "taskNames": [
+              "Notify branch & confirm return intent",
+              "Submit pickup request & confirm scheduling",
+              "Verify equipment required status in Mastermind",
+              "Conduct return inspection & condition check",
+              "Close rental job in Mastermind"
+            ]
+          },
+          "ruleName": "Rental return complete"
+        }
+      ],
+      "tasks": [
+        {
+          "name": "Notify branch & confirm return intent",
+          "runOnlyOnce": false,
+          "entryConditions": [
+            {
+              "entryConditionType": "StageEntered",
+              "parameters": {
+                "stageNames": [
+                  "Return & Close"
+                ]
+              },
+              "ruleName": "Request return intent"
+            }
+          ]
+        },
+        {
+          "name": "Submit pickup request & confirm scheduling",
+          "runOnlyOnce": true,
+          "entryConditions": [
+            {
+              "entryConditionType": "TasksCompleted",
+              "parameters": {
+                "taskNames": [
+                  "Notify branch & confirm return intent"
+                ]
+              },
+              "ruleName": "Schedule standard pickup"
+            }
+          ]
+        },
+        {
+          "name": "Verify equipment required status in Mastermind",
+          "runOnlyOnce": true,
+          "entryConditions": [
+            {
+              "entryConditionType": "TasksCompleted",
+              "parameters": {
+                "taskNames": [
+                  "Submit pickup request & confirm scheduling"
+                ]
+              },
+              "ruleName": "Verify equipment status"
+            }
+          ]
+        },
+        {
+          "name": "Conduct return inspection & condition check",
+          "runOnlyOnce": true,
+          "entryConditions": [
+            {
+              "entryConditionType": "TasksCompleted",
+              "parameters": {
+                "taskNames": [
+                  "Verify equipment required status in Mastermind"
+                ]
+              },
+              "ruleName": "Inspect returned equipment"
+            }
+          ]
+        },
+        {
+          "name": "Close rental job in Mastermind",
+          "runOnlyOnce": true,
+          "entryConditions": [
+            {
+              "entryConditionType": "TasksCompleted",
+              "parameters": {
+                "taskNames": [
+                  "Conduct return inspection & condition check"
+                ]
+              },
+              "ruleName": "Close returned rental"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Active Rental (Monitoring)",
+      "entryConditions": [
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Active Rental (Monitoring)\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Active Rental (Monitoring)\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Immediate Pickup"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Resume return and close"
+        },
+        {
+          "entryConditionType": "StagesCompleted",
+          "parameters": {
+            "stageNames": [
+              "Intake & Triage"
+            ]
+          },
+          "ruleName": "Begin active rental monitoring"
+        },
+        {
+          "entryConditionType": "StagesCompleted",
+          "parameters": {
+            "stageNames": [
+              "Extension Request"
+            ]
+          },
+          "ruleName": "Resume monitoring after extension"
+        }
+      ],
+      "exitConditions": [],
+      "completionConditions": [
+        {
+          "completionConditionType": "TasksCompleted",
+          "parameters": {
+            "taskNames": [
+              "Monitor rental contract end date",
+              "Send staged expiry alerts"
+            ]
+          },
+          "ruleName": "Monitoring cycle complete"
+        }
+      ],
+      "tasks": [
+        {
+          "name": "Monitor rental contract end date",
+          "runOnlyOnce": false,
+          "entryConditions": [
+            {
+              "entryConditionType": "StageEntered",
+              "parameters": {
+                "stageNames": [
+                  "Active Rental (Monitoring)"
+                ]
+              },
+              "ruleName": "Check rental dates"
+            }
+          ]
+        },
+        {
+          "name": "Send staged expiry alerts",
+          "runOnlyOnce": false,
+          "entryConditions": [
+            {
+              "entryConditionType": "TasksCompleted",
+              "parameters": {
+                "taskNames": [
+                  "Monitor rental contract end date"
+                ]
+              },
+              "ruleName": "Send rental expiry alerts"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Intake & Triage",
+      "entryConditions": [
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Intake & Triage\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Intake & Triage\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Immediate Pickup"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Resume return and close"
+        },
+        {
+          "entryConditionType": "CaseEntered",
+          "parameters": {},
+          "ruleName": "Start rental intake"
+        }
+      ],
+      "exitConditions": [],
+      "completionConditions": [
+        {
+          "completionConditionType": "TasksCompleted",
+          "parameters": {
+            "taskNames": [
+              "Validate job & rental data",
+              "Classify order status & route case"
+            ]
+          },
+          "ruleName": "Intake complete"
+        }
+      ],
+      "tasks": [
+        {
+          "name": "Validate job & rental data",
+          "runOnlyOnce": true,
+          "entryConditions": [
+            {
+              "entryConditionType": "StageEntered",
+              "parameters": {
+                "stageNames": [
+                  "Intake & Triage"
+                ]
+              },
+              "ruleName": "Validate intake data"
+            }
+          ]
+        },
+        {
+          "name": "Classify order status & route case",
+          "runOnlyOnce": true,
+          "entryConditions": [
+            {
+              "entryConditionType": "TasksCompleted",
+              "parameters": {
+                "taskNames": [
+                  "Validate job & rental data"
+                ]
+              },
+              "ruleName": "Classify validated rental"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "version": 1
+}

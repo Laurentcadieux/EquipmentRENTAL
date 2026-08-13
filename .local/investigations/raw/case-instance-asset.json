@@ -1,0 +1,1029 @@
+{
+  "Result": "Success",
+  "Code": "InstanceAsset",
+  "Data": {
+    "Id": "case-tjeX5zYkeY",
+    "Name": "EquipmentRental",
+    "Version": "20.0.0",
+    "Description": "Manages ACME equipment rentals from intake through monitoring, return, and closure.",
+    "Bindings": [],
+    "Variables": {
+      "InputOutputs": [
+        {
+          "Id": "jobId",
+          "Name": "jobId",
+          "Type": "string",
+          "ElementId": "root",
+          "Default": "JOB-10042",
+          "Custom": true
+        },
+        {
+          "Id": "orderStatus",
+          "Name": "orderStatus",
+          "Type": "string",
+          "ElementId": "root",
+          "Default": "Z1",
+          "Custom": true
+        },
+        {
+          "Id": "rentalContractId",
+          "Name": "rentalContractId",
+          "Type": "string",
+          "ElementId": "root",
+          "Default": "RC-2026-0815",
+          "Custom": true
+        },
+        {
+          "Id": "rentalEndDate",
+          "Name": "rentalEndDate",
+          "Type": "string",
+          "ElementId": "root",
+          "Default": "2026-09-30T17:00:00-05:00",
+          "Custom": true
+        },
+        {
+          "Id": "branchEmail",
+          "Name": "branchEmail",
+          "Type": "string",
+          "ElementId": "root",
+          "Default": "branch.manager@example.com",
+          "Custom": true
+        },
+        {
+          "Id": "equipmentItems",
+          "Name": "equipmentItems",
+          "Type": "string",
+          "ElementId": "root",
+          "Default": "EQ-1001: 60-ft boom lift; EQ-1002: towable generator",
+          "Custom": true
+        },
+        {
+          "Id": "validationStatus",
+          "Name": "validationStatus",
+          "Type": "string",
+          "ElementId": "root",
+          "Default": "Pending",
+          "Custom": true
+        },
+        {
+          "Id": "validationNotes",
+          "Name": "validationNotes",
+          "Type": "string",
+          "ElementId": "root",
+          "Default": "",
+          "Custom": true
+        },
+        {
+          "Id": "classification",
+          "Name": "classification",
+          "Type": "string",
+          "ElementId": "root",
+          "Default": "",
+          "Custom": true
+        },
+        {
+          "Id": "classificationConfidence",
+          "Name": "classificationConfidence",
+          "Type": "number",
+          "ElementId": "root",
+          "Default": 0,
+          "Custom": true
+        },
+        {
+          "Id": "routeTarget",
+          "Name": "routeTarget",
+          "Type": "string",
+          "ElementId": "root",
+          "Default": "",
+          "Custom": true
+        },
+        {
+          "Id": "daysRemaining",
+          "Name": "daysRemaining",
+          "Type": "number",
+          "ElementId": "root",
+          "Default": 45,
+          "Custom": true
+        },
+        {
+          "Id": "rentalEndDateReached",
+          "Name": "rentalEndDateReached",
+          "Type": "boolean",
+          "ElementId": "root",
+          "Default": false,
+          "Custom": true
+        },
+        {
+          "Id": "alertStatus",
+          "Name": "alertStatus",
+          "Type": "string",
+          "ElementId": "root",
+          "Default": "Pending",
+          "Custom": true
+        },
+        {
+          "Id": "returnIntent",
+          "Name": "returnIntent",
+          "Type": "string",
+          "ElementId": "root",
+          "Default": "Schedule Pickup",
+          "Custom": true
+        },
+        {
+          "Id": "preferredPickupDate",
+          "Name": "preferredPickupDate",
+          "Type": "string",
+          "ElementId": "root",
+          "Default": "",
+          "Custom": true
+        },
+        {
+          "Id": "pickupRequestId",
+          "Name": "pickupRequestId",
+          "Type": "string",
+          "ElementId": "root",
+          "Default": "",
+          "Custom": true
+        },
+        {
+          "Id": "pickupConfirmed",
+          "Name": "pickupConfirmed",
+          "Type": "boolean",
+          "ElementId": "root",
+          "Default": false,
+          "Custom": true
+        },
+        {
+          "Id": "equipmentRequired",
+          "Name": "equipmentRequired",
+          "Type": "boolean",
+          "ElementId": "root",
+          "Default": false,
+          "Custom": true
+        },
+        {
+          "Id": "inspectionResult",
+          "Name": "inspectionResult",
+          "Type": "string",
+          "ElementId": "root",
+          "Default": "",
+          "Custom": true
+        },
+        {
+          "Id": "damageFlags",
+          "Name": "damageFlags",
+          "Type": "string",
+          "ElementId": "root",
+          "Default": "None",
+          "Custom": true
+        },
+        {
+          "Id": "equipmentReturned",
+          "Name": "equipmentReturned",
+          "Type": "boolean",
+          "ElementId": "root",
+          "Default": false,
+          "Custom": true
+        },
+        {
+          "Id": "extensionRequested",
+          "Name": "extensionRequested",
+          "Type": "boolean",
+          "ElementId": "root",
+          "Default": false,
+          "Custom": true
+        },
+        {
+          "Id": "newRentalEndDate",
+          "Name": "newRentalEndDate",
+          "Type": "string",
+          "ElementId": "root",
+          "Default": "2026-10-15T17:00:00-05:00",
+          "Custom": true
+        },
+        {
+          "Id": "rentalCancelled",
+          "Name": "rentalCancelled",
+          "Type": "boolean",
+          "ElementId": "root",
+          "Default": false,
+          "Custom": true
+        },
+        {
+          "Id": "caseStatus",
+          "Name": "caseStatus",
+          "Type": "string",
+          "ElementId": "root",
+          "Default": "Open",
+          "Custom": true
+        }
+      ]
+    },
+    "Metadata": {
+      "CaseIdentifier": "ER",
+      "CaseAppEnabled": true,
+      "CaseIdentifierType": "constant",
+      "PublishVersion": 2,
+      "CaseExitRules": [
+        {
+          "Id": "Condition_y1zTIG",
+          "DisplayName": "Equipment returned and required stages complete",
+          "Rules": [
+            [
+              {
+                "Rule": "required-stages-completed",
+                "Id": "Rule_bDnTHz"
+              }
+            ]
+          ],
+          "MarksCaseComplete": true
+        }
+      ]
+    },
+    "Nodes": [
+      {
+        "Id": "Stage_7Xvjlc",
+        "Type": "case-management:ExceptionStage",
+        "Position": {
+          "X": 2100,
+          "Y": 200
+        },
+        "Style": {
+          "Width": 304,
+          "Opacity": 0.8
+        },
+        "Measured": {
+          "Width": 304,
+          "Height": 128
+        },
+        "Width": 304,
+        "ZIndex": 1001,
+        "Data": {
+          "Label": "Extension Request",
+          "ParentElement": {
+            "Id": "root",
+            "Type": "case-management:root"
+          },
+          "IsInvalidDropTarget": false,
+          "IsPendingParent": false,
+          "Tasks": [
+            [
+              {
+                "Id": "taXuXeqpv",
+                "DisplayName": "Cancel existing pickup request",
+                "Description": "Cancels scheduled pickup before applying extension.",
+                "IsRequired": true,
+                "Type": "api-workflow",
+                "Data": {
+                  "Name": "RentalCommandsApi",
+                  "FolderPath": "EquipmentRENTAL/LCversion"
+                },
+                "EntryConditions": [
+                  {
+                    "Id": "Condition_PSqAeO",
+                    "DisplayName": "Cancel scheduled pickup",
+                    "Rules": [
+                      [
+                        {
+                          "Rule": "current-stage-entered",
+                          "Id": "Rule_EWGryK"
+                        }
+                      ]
+                    ]
+                  }
+                ]
+              },
+              {
+                "Id": "tVfQRz7ts",
+                "DisplayName": "Update rental extension in Mastermind",
+                "Description": "Writes extended rental date.",
+                "IsRequired": true,
+                "Type": "rpa",
+                "Data": {
+                  "Name": "EquipmentRentalMastermindRpa",
+                  "FolderPath": "EquipmentRENTAL/LCversion"
+                },
+                "EntryConditions": [
+                  {
+                    "Id": "Condition_M2RBls",
+                    "DisplayName": "Update extension dates",
+                    "Rules": [
+                      [
+                        {
+                          "Rule": "selected-tasks-completed",
+                          "Id": "Rule_0Ubca5",
+                          "SelectedTasksIds": [
+                            "taXuXeqpv"
+                          ]
+                        }
+                      ]
+                    ]
+                  }
+                ]
+              },
+              {
+                "Id": "tfshB3bTJ",
+                "DisplayName": "Notify procurement & return to Active Rental",
+                "Description": "Notifies procurement and resumes monitoring.",
+                "IsRequired": true,
+                "Type": "api-workflow",
+                "Data": {
+                  "Name": "RentalMonitoringApi",
+                  "FolderPath": "EquipmentRENTAL/LCversion"
+                },
+                "EntryConditions": [
+                  {
+                    "Id": "Condition_3Omjci",
+                    "DisplayName": "Notify procurement and resume monitoring",
+                    "Rules": [
+                      [
+                        {
+                          "Rule": "selected-tasks-completed",
+                          "Id": "Rule_DcGKl9",
+                          "SelectedTasksIds": [
+                            "tVfQRz7ts"
+                          ]
+                        }
+                      ]
+                    ]
+                  }
+                ]
+              }
+            ]
+          ],
+          "EntryConditions": [
+            {
+              "Id": "Condition_EJJjka",
+              "DisplayName": "Start extension request",
+              "Rules": [
+                [
+                  {
+                    "Rule": "selected-stage-exited",
+                    "Id": "Rule_atWMG0",
+                    "SelectedStageId": "Stage_RthiZf",
+                    "ConditionExpression": "=js:vars.returnIntent == \"Request Extension\""
+                  }
+                ]
+              ],
+              "IsInterrupting": false
+            }
+          ],
+          "ExitConditions": [
+            {
+              "Id": "Condition_vcnJ92",
+              "DisplayName": "Resume active rental",
+              "Rules": [
+                [
+                  {
+                    "Rule": "required-tasks-completed",
+                    "Id": "Rule_PXSMng"
+                  }
+                ]
+              ],
+              "Type": "exit-only",
+              "MarksStageComplete": true
+            }
+          ],
+          "Description": "Handle approved rental extensions."
+        }
+      },
+      {
+        "Id": "Stage_qx5YKL",
+        "Type": "case-management:ExceptionStage",
+        "Position": {
+          "X": 1600,
+          "Y": 200
+        },
+        "Style": {
+          "Width": 304,
+          "Opacity": 0.8
+        },
+        "Measured": {
+          "Width": 304,
+          "Height": 128
+        },
+        "Width": 304,
+        "ZIndex": 1001,
+        "Data": {
+          "Label": "Immediate Pickup",
+          "ParentElement": {
+            "Id": "root",
+            "Type": "case-management:root"
+          },
+          "IsInvalidDropTarget": false,
+          "IsPendingParent": false,
+          "Tasks": [
+            [
+              {
+                "Id": "tSfnfRPKH",
+                "DisplayName": "Notify United Rentals for ASAP pickup",
+                "ShouldRunOnlyOnce": true,
+                "Description": "Sends expedited pickup request.",
+                "IsRequired": true,
+                "Type": "api-workflow",
+                "Data": {
+                  "Name": "RentalCommandsApi",
+                  "FolderPath": "EquipmentRENTAL/LCversion"
+                },
+                "EntryConditions": [
+                  {
+                    "Id": "Condition_kDeQ1p",
+                    "DisplayName": "Request expedited pickup",
+                    "Rules": [
+                      [
+                        {
+                          "Rule": "current-stage-entered",
+                          "Id": "Rule_A9xNxu"
+                        }
+                      ]
+                    ]
+                  }
+                ]
+              },
+              {
+                "Id": "tIs7WTrx0",
+                "DisplayName": "Update job status",
+                "ShouldRunOnlyOnce": true,
+                "Description": "Records expedited pickup status.",
+                "IsRequired": true,
+                "Type": "rpa",
+                "Data": {
+                  "Name": "EquipmentRentalMastermindRpa",
+                  "FolderPath": "EquipmentRENTAL/LCversion"
+                },
+                "EntryConditions": [
+                  {
+                    "Id": "Condition_CDAq9e",
+                    "DisplayName": "Record expedited pickup",
+                    "Rules": [
+                      [
+                        {
+                          "Rule": "selected-tasks-completed",
+                          "Id": "Rule_f2pUnR",
+                          "SelectedTasksIds": [
+                            "tSfnfRPKH"
+                          ]
+                        }
+                      ]
+                    ]
+                  }
+                ]
+              }
+            ]
+          ],
+          "EntryConditions": [
+            {
+              "Id": "Condition_lwE2v6",
+              "DisplayName": "Start immediate pickup",
+              "Rules": [
+                [
+                  {
+                    "Rule": "selected-stage-exited",
+                    "Id": "Rule_ucEwBK",
+                    "SelectedStageId": "Stage_RthiZf",
+                    "ConditionExpression": "=js:vars.returnIntent == \"Immediate Pickup\""
+                  }
+                ]
+              ],
+              "IsInterrupting": true
+            }
+          ],
+          "ExitConditions": [
+            {
+              "Id": "Condition_RWJdXH",
+              "DisplayName": "Resume return and close",
+              "Rules": [
+                [
+                  {
+                    "Rule": "required-tasks-completed",
+                    "Id": "Rule_N7zej9"
+                  }
+                ]
+              ],
+              "Type": "return-to-origin",
+              "MarksStageComplete": true
+            }
+          ],
+          "Description": "Expedite pickup when required."
+        }
+      },
+      {
+        "Id": "Stage_RthiZf",
+        "Type": "case-management:Stage",
+        "Position": {
+          "X": 1100,
+          "Y": 200
+        },
+        "Style": {
+          "Width": 304,
+          "Opacity": 0.8
+        },
+        "Measured": {
+          "Width": 304,
+          "Height": 128
+        },
+        "Width": 304,
+        "ZIndex": 1001,
+        "Data": {
+          "Label": "Return & Close",
+          "ParentElement": {
+            "Id": "root",
+            "Type": "case-management:root"
+          },
+          "IsInvalidDropTarget": false,
+          "IsPendingParent": false,
+          "Tasks": [
+            [
+              {
+                "Id": "tO5J7EXwm",
+                "DisplayName": "Notify branch & confirm return intent",
+                "Description": "Branch chooses normal pickup, extension, or immediate pickup.",
+                "IsRequired": true,
+                "Type": "action",
+                "Data": {
+                  "TaskTitle": "Confirm equipment return intent",
+                  "Priority": "High",
+                  "AssignmentCriteria": "user",
+                  "Recipient": {
+                    "Type": 2,
+                    "Value": "laurent.cadieux@uipath.com"
+                  }
+                },
+                "EntryConditions": [
+                  {
+                    "Id": "Condition_mQMIbA",
+                    "DisplayName": "Request return intent",
+                    "Rules": [
+                      [
+                        {
+                          "Rule": "current-stage-entered",
+                          "Id": "Rule_OHXTmc"
+                        }
+                      ]
+                    ]
+                  }
+                ]
+              },
+              {
+                "Id": "t5Fs1fa3z",
+                "DisplayName": "Submit pickup request & confirm scheduling",
+                "ShouldRunOnlyOnce": true,
+                "Description": "Submits a mock pickup request and returns confirmation.",
+                "IsRequired": true,
+                "Type": "api-workflow",
+                "Data": {
+                  "Name": "RentalCommandsApi",
+                  "FolderPath": "EquipmentRENTAL/LCversion"
+                },
+                "EntryConditions": [
+                  {
+                    "Id": "Condition_8D2yxy",
+                    "DisplayName": "Schedule standard pickup",
+                    "Rules": [
+                      [
+                        {
+                          "Rule": "selected-tasks-completed",
+                          "Id": "Rule_jc24h6",
+                          "SelectedTasksIds": [
+                            "tO5J7EXwm"
+                          ]
+                        }
+                      ]
+                    ]
+                  }
+                ]
+              },
+              {
+                "Id": "tZVfZXDBJ",
+                "DisplayName": "Verify equipment required status in Mastermind",
+                "ShouldRunOnlyOnce": true,
+                "Description": "Checks whether equipment is still required.",
+                "IsRequired": true,
+                "Type": "rpa",
+                "Data": {
+                  "Name": "EquipmentRentalMastermindRpa",
+                  "FolderPath": "EquipmentRENTAL/LCversion"
+                },
+                "EntryConditions": [
+                  {
+                    "Id": "Condition_fwimCY",
+                    "DisplayName": "Verify equipment status",
+                    "Rules": [
+                      [
+                        {
+                          "Rule": "selected-tasks-completed",
+                          "Id": "Rule_xSAWCC",
+                          "SelectedTasksIds": [
+                            "t5Fs1fa3z"
+                          ]
+                        }
+                      ]
+                    ]
+                  }
+                ]
+              },
+              {
+                "Id": "tIn7Q51oZ",
+                "DisplayName": "Conduct return inspection & condition check",
+                "ShouldRunOnlyOnce": true,
+                "Description": "Captures inspection result, damage flags, and returned confirmation.",
+                "IsRequired": true,
+                "Type": "action",
+                "Data": {
+                  "TaskTitle": "Complete equipment return inspection",
+                  "Priority": "High",
+                  "AssignmentCriteria": "user",
+                  "Recipient": {
+                    "Type": 2,
+                    "Value": "laurent.cadieux@uipath.com"
+                  }
+                },
+                "EntryConditions": [
+                  {
+                    "Id": "Condition_PKRsWV",
+                    "DisplayName": "Inspect returned equipment",
+                    "Rules": [
+                      [
+                        {
+                          "Rule": "selected-tasks-completed",
+                          "Id": "Rule_uggBWC",
+                          "SelectedTasksIds": [
+                            "tZVfZXDBJ"
+                          ]
+                        }
+                      ]
+                    ]
+                  }
+                ]
+              },
+              {
+                "Id": "tyOchX3gy",
+                "DisplayName": "Close rental job in Mastermind",
+                "ShouldRunOnlyOnce": true,
+                "Description": "Closes the rental job after confirmed return.",
+                "IsRequired": true,
+                "Type": "rpa",
+                "Data": {
+                  "Name": "EquipmentRentalMastermindRpa",
+                  "FolderPath": "EquipmentRENTAL/LCversion"
+                },
+                "EntryConditions": [
+                  {
+                    "Id": "Condition_jZSmBH",
+                    "DisplayName": "Close returned rental",
+                    "Rules": [
+                      [
+                        {
+                          "Rule": "selected-tasks-completed",
+                          "Id": "Rule_Oram3i",
+                          "SelectedTasksIds": [
+                            "tIn7Q51oZ"
+                          ]
+                        }
+                      ]
+                    ]
+                  }
+                ]
+              }
+            ]
+          ],
+          "Description": "Confirm return intent, pickup, inspection, and closure.",
+          "IsRequired": true,
+          "EntryConditions": [
+            {
+              "Id": "Condition_Ia8CbK",
+              "DisplayName": "Begin return and closure",
+              "Rules": [
+                [
+                  {
+                    "Rule": "selected-stage-completed",
+                    "Id": "Rule_hpbexM",
+                    "SelectedStageId": "Stage_eA5aIT"
+                  }
+                ]
+              ],
+              "IsInterrupting": false
+            }
+          ],
+          "ExitConditions": [
+            {
+              "Id": "Condition_zCNyQz",
+              "DisplayName": "Rental return complete",
+              "Rules": [
+                [
+                  {
+                    "Rule": "required-tasks-completed",
+                    "Id": "Rule_jNrcjj"
+                  }
+                ]
+              ],
+              "Type": "exit-only",
+              "MarksStageComplete": true
+            },
+            {
+              "Id": "Condition_rg8BdZ",
+              "DisplayName": "Route to immediate pickup",
+              "Rules": [
+                [
+                  {
+                    "Rule": "selected-tasks-completed",
+                    "Id": "Rule_15Din2",
+                    "SelectedTasksIds": [
+                      "tO5J7EXwm"
+                    ],
+                    "ConditionExpression": "=js:vars.returnIntent == \"Immediate Pickup\""
+                  }
+                ]
+              ],
+              "Type": "exit-only",
+              "ExitToStageId": "Stage_qx5YKL",
+              "MarksStageComplete": false
+            },
+            {
+              "Id": "Condition_JUnyOp",
+              "DisplayName": "Route to extension request",
+              "Rules": [
+                [
+                  {
+                    "Rule": "selected-tasks-completed",
+                    "Id": "Rule_QCFwK1",
+                    "SelectedTasksIds": [
+                      "tO5J7EXwm"
+                    ],
+                    "ConditionExpression": "=js:vars.returnIntent == \"Request Extension\""
+                  }
+                ]
+              ],
+              "Type": "exit-only",
+              "ExitToStageId": "Stage_7Xvjlc",
+              "MarksStageComplete": false
+            }
+          ]
+        }
+      },
+      {
+        "Id": "Stage_eA5aIT",
+        "Type": "case-management:Stage",
+        "Position": {
+          "X": 600,
+          "Y": 200
+        },
+        "Style": {
+          "Width": 304,
+          "Opacity": 0.8
+        },
+        "Measured": {
+          "Width": 304,
+          "Height": 128
+        },
+        "Width": 304,
+        "ZIndex": 1001,
+        "Data": {
+          "Label": "Active Rental (Monitoring)",
+          "ParentElement": {
+            "Id": "root",
+            "Type": "case-management:root"
+          },
+          "IsInvalidDropTarget": false,
+          "IsPendingParent": false,
+          "Tasks": [
+            [
+              {
+                "Id": "t7SZTVUlX",
+                "DisplayName": "Monitor rental contract end date",
+                "Description": "Calculates days remaining and whether the rental end date has been reached.",
+                "IsRequired": true,
+                "Type": "api-workflow",
+                "Data": {
+                  "Name": "RentalMonitoringApi",
+                  "FolderPath": "EquipmentRENTAL/LCversion"
+                },
+                "EntryConditions": [
+                  {
+                    "Id": "Condition_m5TvOr",
+                    "DisplayName": "Check rental dates",
+                    "Rules": [
+                      [
+                        {
+                          "Rule": "current-stage-entered",
+                          "Id": "Rule_NU8JKh"
+                        }
+                      ]
+                    ]
+                  }
+                ]
+              },
+              {
+                "Id": "t5ix8ZKQJ",
+                "DisplayName": "Send staged expiry alerts",
+                "Description": "Sends staged 30-day, 7-day, and 1-day expiry alerts.",
+                "IsRequired": true,
+                "Type": "api-workflow",
+                "Data": {
+                  "Name": "RentalMonitoringApi",
+                  "FolderPath": "EquipmentRENTAL/LCversion"
+                },
+                "EntryConditions": [
+                  {
+                    "Id": "Condition_zYCv25",
+                    "DisplayName": "Send rental expiry alerts",
+                    "Rules": [
+                      [
+                        {
+                          "Rule": "selected-tasks-completed",
+                          "Id": "Rule_Kh7QQu",
+                          "SelectedTasksIds": [
+                            "t7SZTVUlX"
+                          ]
+                        }
+                      ]
+                    ]
+                  }
+                ]
+              }
+            ]
+          ],
+          "Description": "Monitors the active rental term and sends staged notices before the contract end date.",
+          "IsRequired": true,
+          "EntryConditions": [
+            {
+              "Id": "Condition_fFcoBn",
+              "DisplayName": "Begin active rental monitoring",
+              "Rules": [
+                [
+                  {
+                    "Rule": "selected-stage-completed",
+                    "Id": "Rule_nJGyrh",
+                    "SelectedStageId": "Stage_ErxzAl"
+                  }
+                ]
+              ],
+              "IsInterrupting": false
+            },
+            {
+              "Id": "Condition_GkNSLv",
+              "DisplayName": "Resume monitoring after extension",
+              "Rules": [
+                [
+                  {
+                    "Rule": "selected-stage-completed",
+                    "Id": "Rule_rsWCiM",
+                    "SelectedStageId": "Stage_7Xvjlc"
+                  }
+                ]
+              ],
+              "IsInterrupting": false
+            }
+          ],
+          "ExitConditions": [
+            {
+              "Id": "Condition_ecdiD0",
+              "DisplayName": "Monitoring cycle complete",
+              "Rules": [
+                [
+                  {
+                    "Rule": "required-tasks-completed",
+                    "Id": "Rule_wfhe3f"
+                  }
+                ]
+              ],
+              "Type": "exit-only",
+              "MarksStageComplete": true
+            }
+          ]
+        }
+      },
+      {
+        "Id": "Stage_ErxzAl",
+        "Type": "case-management:Stage",
+        "Position": {
+          "X": 100,
+          "Y": 200
+        },
+        "Style": {
+          "Width": 304,
+          "Opacity": 0.8
+        },
+        "Measured": {
+          "Width": 304,
+          "Height": 128
+        },
+        "Width": 304,
+        "ZIndex": 1001,
+        "Data": {
+          "Label": "Intake & Triage",
+          "ParentElement": {
+            "Id": "root",
+            "Type": "case-management:root"
+          },
+          "IsInvalidDropTarget": false,
+          "IsPendingParent": false,
+          "Tasks": [
+            [
+              {
+                "Id": "tj7weHDHG",
+                "DisplayName": "Validate job & rental data",
+                "ShouldRunOnlyOnce": true,
+                "Description": "Validates required job, contract, date, branch, and equipment fields.",
+                "IsRequired": true,
+                "Type": "rpa",
+                "Data": {
+                  "Name": "EquipmentRentalValidationRpa",
+                  "FolderPath": "EquipmentRENTAL/LCversion"
+                },
+                "EntryConditions": [
+                  {
+                    "Id": "Condition_d8pGVn",
+                    "DisplayName": "Validate intake data",
+                    "Rules": [
+                      [
+                        {
+                          "Rule": "current-stage-entered",
+                          "Id": "Rule_Y39GnJ"
+                        }
+                      ]
+                    ]
+                  }
+                ]
+              },
+              {
+                "Id": "tThN7UuOr",
+                "DisplayName": "Classify order status & route case",
+                "ShouldRunOnlyOnce": true,
+                "Description": "Classifies order status and recommends the next case stage.",
+                "IsRequired": true,
+                "Type": "agent",
+                "Data": {
+                  "Name": "RentalCaseAgent",
+                  "FolderPath": "EquipmentRENTAL/LCversion"
+                },
+                "EntryConditions": [
+                  {
+                    "Id": "Condition_b13VgG",
+                    "DisplayName": "Classify validated rental",
+                    "Rules": [
+                      [
+                        {
+                          "Rule": "selected-tasks-completed",
+                          "Id": "Rule_95pQlz",
+                          "SelectedTasksIds": [
+                            "tj7weHDHG"
+                          ]
+                        }
+                      ]
+                    ]
+                  }
+                ]
+              }
+            ]
+          ],
+          "Description": "Validate rental data and classify the incoming request.",
+          "IsRequired": true,
+          "EntryConditions": [
+            {
+              "Id": "Condition_RSEtpR",
+              "DisplayName": "Start rental intake",
+              "Rules": [
+                [
+                  {
+                    "Rule": "case-entered",
+                    "Id": "Rule_pIyMNu"
+                  }
+                ]
+              ],
+              "IsInterrupting": false
+            }
+          ],
+          "ExitConditions": [
+            {
+              "Id": "Condition_uISCoa",
+              "DisplayName": "Intake complete",
+              "Rules": [
+                [
+                  {
+                    "Rule": "required-tasks-completed",
+                    "Id": "Rule_k6diRl"
+                  }
+                ]
+              ],
+              "Type": "exit-only",
+              "MarksStageComplete": true
+            }
+          ]
+        }
+      },
+      {
+        "Id": "trigger_1",
+        "Type": "case-management:Trigger",
+        "Position": {
+          "X": 0,
+          "Y": 0
+        },
+        "Data": {
+          "Label": "Trigger 1"
+        }
+      }
+    ],
+    "Edges": []
+  }
+}
