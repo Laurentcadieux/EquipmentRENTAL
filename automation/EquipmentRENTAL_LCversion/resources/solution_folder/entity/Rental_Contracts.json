@@ -4,6 +4,7 @@
     "name": "Rental_Contracts",
     "kind": "entity",
     "apiVersion": "dataservice.uipath.com/v1",
+    "isOverridable": true,
     "dependencies": [],
     "runtimeDependencies": [],
     "folders": [

@@ -4,6 +4,7 @@
     "name": "ACME_Locations",
     "kind": "entity",
     "apiVersion": "dataservice.uipath.com/v1",
+    "isOverridable": true,
     "dependencies": [],
     "runtimeDependencies": [],
     "folders": [

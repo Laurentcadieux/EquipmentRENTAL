@@ -13,7 +13,80 @@
         "name": "EquipmentRentalCase"
       }
     ],
-    "runtimeDependencies": [],
+    "runtimeDependencies": [
+      {
+        "bindingType": "app",
+        "bindingKey": "EquipmentRENTAL/EquipmentRENTAL_LCversion.equipment-return-intent",
+        "bindingValues": {
+          "name": {
+            "defaultValue": "equipment-return-intent",
+            "isExpression": false
+          },
+          "folderPath": {
+            "defaultValue": "EquipmentRENTAL/EquipmentRENTAL_LCversion",
+            "isExpression": false
+          }
+        },
+        "resourceKind": "App",
+        "resourceKey": "be7f61e3-2424-4ed7-8eed-c74422765a41",
+        "resourceName": "equipment-return-intent",
+        "folderKey": "5e6c96e4-ee96-4055-a02b-d62993318509"
+      },
+      {
+        "bindingType": "process",
+        "bindingKey": "EquipmentRENTAL/EquipmentRENTAL_LCversion.RentalCommandsApi",
+        "bindingValues": {
+          "name": {
+            "defaultValue": "RentalCommandsApi",
+            "isExpression": false
+          },
+          "folderPath": {
+            "defaultValue": "EquipmentRENTAL/EquipmentRENTAL_LCversion",
+            "isExpression": false
+          }
+        },
+        "bindingMetadata": {},
+        "resourceKind": "Process"
+      },
+      {
+        "bindingType": "process",
+        "bindingKey": "EquipmentRENTAL/EquipmentRENTAL_LCversion.RentalMonitoringApi",
+        "bindingValues": {
+          "name": {
+            "defaultValue": "RentalMonitoringApi",
+            "isExpression": false
+          },
+          "folderPath": {
+            "defaultValue": "EquipmentRENTAL/EquipmentRENTAL_LCversion",
+            "isExpression": false
+          }
+        },
+        "bindingMetadata": {},
+        "resourceKind": "Process",
+        "resourceKey": "713d65d2-b46d-4168-92bc-9e3c82c19936",
+        "resourceName": "RentalMonitoringApi_1",
+        "folderKey": "5e6c96e4-ee96-4055-a02b-d62993318509"
+      },
+      {
+        "bindingType": "process",
+        "bindingKey": "EquipmentRENTAL/EquipmentRENTAL_LCversion.RentalOrchestratorAgent",
+        "bindingValues": {
+          "name": {
+            "defaultValue": "RentalOrchestratorAgent",
+            "isExpression": false
+          },
+          "folderPath": {
+            "defaultValue": "EquipmentRENTAL/EquipmentRENTAL_LCversion",
+            "isExpression": false
+          }
+        },
+        "bindingMetadata": {},
+        "resourceKind": "Process",
+        "resourceKey": "509ff122-5e46-4f34-8ecd-125b8a7f4e01",
+        "resourceName": "RentalOrchestratorAgent_1",
+        "folderKey": "5e6c96e4-ee96-4055-a02b-d62993318509"
+      }
+    ],
     "folders": [
       {
         "fullyQualifiedName": "solution_folder"
