@@ -1,0 +1,72 @@
+{
+  "Result": "Success",
+  "Code": "ProcessList",
+  "Pagination": {
+    "Returned": 5,
+    "Limit": 50,
+    "Offset": 0,
+    "HasMore": false
+  },
+  "Data": [
+    {
+      "Key": "6D5F7137-79C3-40B5-BF4D-4E6B0163AEF8",
+      "Name": "EquipmentRentalCase-v1.0.1",
+      "ProcessKey": "EquipmentRENTAL_LCversion.caseManagement.EquipmentRentalCase.case.Case",
+      "ProcessVersion": "1.0.1",
+      "Description": "EquipmentRental case with return-intent Action App",
+      "IsLatestVersion": true,
+      "RetentionPeriod": 30,
+      "RetentionAction": "Delete",
+      "FolderKey": "5e6c96e4-ee96-4055-a02b-d62993318509",
+      "FolderPath": "EquipmentRENTAL/EquipmentRENTAL_LCversion"
+    },
+    {
+      "Key": "713D65D2-B46D-4168-92BC-9E3C82C19936",
+      "Name": "RentalMonitoringApi",
+      "ProcessKey": "EquipmentRENTAL_LCversion.api.RentalMonitoringApi",
+      "ProcessVersion": "1.0.0",
+      "Description": "",
+      "IsLatestVersion": true,
+      "RetentionPeriod": 30,
+      "RetentionAction": "Delete",
+      "FolderKey": "5e6c96e4-ee96-4055-a02b-d62993318509",
+      "FolderPath": "EquipmentRENTAL/EquipmentRENTAL_LCversion"
+    },
+    {
+      "Key": "60B4E06B-B964-4B9D-9D46-3F1C524A85A8",
+      "Name": "VendorPickupApi",
+      "ProcessKey": "EquipmentRENTAL_LCversion.api.VendorPickupApi",
+      "ProcessVersion": "1.0.0",
+      "Description": "",
+      "IsLatestVersion": true,
+      "RetentionPeriod": 30,
+      "RetentionAction": "Delete",
+      "FolderKey": "5e6c96e4-ee96-4055-a02b-d62993318509",
+      "FolderPath": "EquipmentRENTAL/EquipmentRENTAL_LCversion"
+    },
+    {
+      "Key": "509FF122-5E46-4F34-8ECD-125B8A7F4E01",
+      "Name": "RentalOrchestratorAgent",
+      "ProcessKey": "EquipmentRENTAL_LCversion.agent.RentalOrchestratorAgent",
+      "ProcessVersion": "1.0.0",
+      "Description": "",
+      "IsLatestVersion": true,
+      "RetentionPeriod": 30,
+      "RetentionAction": "Delete",
+      "FolderKey": "5e6c96e4-ee96-4055-a02b-d62993318509",
+      "FolderPath": "EquipmentRENTAL/EquipmentRENTAL_LCversion"
+    },
+    {
+      "Key": "19A27130-2C80-41B5-AAB8-4927DBEE17B6",
+      "Name": "EquipmentRentalCase",
+      "ProcessKey": "EquipmentRENTAL_LCversion.caseManagement.EquipmentRentalCase",
+      "ProcessVersion": "1.0.0",
+      "Description": "",
+      "IsLatestVersion": true,
+      "RetentionPeriod": 30,
+      "RetentionAction": "Delete",
+      "FolderKey": "5e6c96e4-ee96-4055-a02b-d62993318509",
+      "FolderPath": "EquipmentRENTAL/EquipmentRENTAL_LCversion"
+    }
+  ]
+}

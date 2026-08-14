@@ -1,0 +1,7 @@
+{
+  "Result": "Failure",
+  "Message": "Error getting process",
+  "Instructions": "Invalid process key 'tj7weHDHG': must be a valid UUID. Use 'processes list --folder-path <path>' to find process keys.",
+  "ErrorCode": "unknown_error",
+  "Retry": "RetryWillNotFix"
+}

@@ -1,0 +1,541 @@
+{
+  "Result": "Success",
+  "Code": "InstanceElementExecutions",
+  "Data": {
+    "CreationUserKey": "b8d5b005-2889-4823-aed8-7cdf50592198",
+    "FolderKey": "5e6c96e4-ee96-4055-a02b-d62993318509",
+    "InstanceDisplayName": "EquipmentRentalCase-v1.0.1-634771744",
+    "InstanceId": "7b503631-9349-4ac5-b54b-0068392c98c3",
+    "OrganizationId": "a17c9af1-091d-4dd2-9cec-ed787c6601c8",
+    "PackageId": "EquipmentRENTAL_LCversion.caseManagement.EquipmentRentalCase.case.Case",
+    "PackageKey": "EquipmentRENTAL_LCversion.caseManagement.EquipmentRentalCase.case.Case:1.0.1",
+    "PackageVersion": "1.0.1",
+    "ProcessKey": "6d5f7137-79c3-40b5-bf4d-4e6b0163aef8",
+    "Source": "Manual",
+    "TenantId": "15eb07e5-edfb-4fcc-9229-7681ff056ff0",
+    "Status": "Faulted",
+    "StartedTimeUtc": "2026-08-14T14:37:51.2628215Z",
+    "CompletedTimeUtc": null,
+    "ElementExecutions": [
+      {
+        "CompletedTimeUtc": "2026-08-14T14:37:54.5349038Z",
+        "ElementId": "trigger_1",
+        "ElementType": "StartEvent",
+        "ElementExtensionType": null,
+        "ParentRunId": null,
+        "ParentElementId": null,
+        "ParentElementRunId": null,
+        "RunId": "",
+        "StartedTimeUtc": "2026-08-14T14:37:52.2531831Z",
+        "Status": "Completed",
+        "ExternalLink": "",
+        "MaestroLink": "",
+        "ElementRuns": [
+          {
+            "Status": "Completed",
+            "StartedTimeUtc": "2026-08-14T14:37:52.0692798Z",
+            "CompletedTimeUtc": "2026-08-14T14:37:54.5349038Z",
+            "IncomingFlowId": null,
+            "IncomingFlowIds": [],
+            "ElementRunId": "523f0960-7bf8-4dda-b338-9b389afd097f",
+            "MarkerItemIndex": null,
+            "WorkflowId": "7b503631-9349-4ac5-b54b-0068392c98c3/BpmnGenericWorkflow",
+            "TemporalExecutionId": "7b503631-9349-4ac5-b54b-0068392c98c3/BpmnGenericWorkflow/trigger_1/523f0960-7bf8-4dda-b338-9b389afd097f",
+            "Version": 2,
+            "ParentElementRunId": null,
+            "JobKey": null
+          }
+        ],
+        "JobKey": null
+      },
+      {
+        "CompletedTimeUtc": "2026-08-14T14:37:54.9977547Z",
+        "ElementId": "triggerActivatedVariableTask_trigger_1",
+        "ElementType": "Task",
+        "ElementExtensionType": null,
+        "ParentRunId": null,
+        "ParentElementId": null,
+        "ParentElementRunId": null,
+        "RunId": "",
+        "StartedTimeUtc": "2026-08-14T14:37:54.7904561Z",
+        "Status": "Completed",
+        "ExternalLink": "",
+        "MaestroLink": "",
+        "ElementRuns": [
+          {
+            "Status": "Completed",
+            "StartedTimeUtc": "2026-08-14T14:37:54.7223172Z",
+            "CompletedTimeUtc": "2026-08-14T14:37:54.9977547Z",
+            "IncomingFlowId": "edge_trigger_1-triggerActivatedVariableTask_trigger_1",
+            "IncomingFlowIds": [
+              "edge_trigger_1-triggerActivatedVariableTask_trigger_1"
+            ],
+            "ElementRunId": "35611bbb-a6ef-4140-bcc8-1894eccf084a",
+            "MarkerItemIndex": null,
+            "WorkflowId": "7b503631-9349-4ac5-b54b-0068392c98c3/BpmnGenericWorkflow",
+            "TemporalExecutionId": "7b503631-9349-4ac5-b54b-0068392c98c3/BpmnGenericWorkflow/triggerActivatedVariableTask_trigger_1/35611bbb-a6ef-4140-bcc8-1894eccf084a",
+            "Version": 2,
+            "ParentElementRunId": null,
+            "JobKey": null
+          }
+        ],
+        "JobKey": null
+      },
+      {
+        "CompletedTimeUtc": "2026-08-14T14:37:55.4071698Z",
+        "ElementId": "CaseInitialVariablesSetupNode",
+        "ElementType": "Task",
+        "ElementExtensionType": null,
+        "ParentRunId": null,
+        "ParentElementId": null,
+        "ParentElementRunId": null,
+        "RunId": "",
+        "StartedTimeUtc": "2026-08-14T14:37:55.1821826Z",
+        "Status": "Completed",
+        "ExternalLink": "",
+        "MaestroLink": "",
+        "ElementRuns": [
+          {
+            "Status": "Completed",
+            "StartedTimeUtc": "2026-08-14T14:37:55.1313783Z",
+            "CompletedTimeUtc": "2026-08-14T14:37:55.4071698Z",
+            "IncomingFlowId": "edge_triggerActivatedVariableTask_trigger_1-CaseInitialVariablesSetupNode",
+            "IncomingFlowIds": [
+              "edge_triggerActivatedVariableTask_trigger_1-CaseInitialVariablesSetupNode"
+            ],
+            "ElementRunId": "5987b647-e6fd-45db-bb6f-251f11c45e6c",
+            "MarkerItemIndex": null,
+            "WorkflowId": "7b503631-9349-4ac5-b54b-0068392c98c3/BpmnGenericWorkflow",
+            "TemporalExecutionId": "7b503631-9349-4ac5-b54b-0068392c98c3/BpmnGenericWorkflow/CaseInitialVariablesSetupNode/5987b647-e6fd-45db-bb6f-251f11c45e6c",
+            "Version": 2,
+            "ParentElementRunId": null,
+            "JobKey": null
+          }
+        ],
+        "JobKey": null
+      },
+      {
+        "CompletedTimeUtc": "2026-08-14T14:37:55.9720818Z",
+        "ElementId": "CaseGlobalsVariablesSetupNode",
+        "ElementType": "Task",
+        "ElementExtensionType": null,
+        "ParentRunId": null,
+        "ParentElementId": null,
+        "ParentElementRunId": null,
+        "RunId": "",
+        "StartedTimeUtc": "2026-08-14T14:37:55.6057361Z",
+        "Status": "Completed",
+        "ExternalLink": "",
+        "MaestroLink": "",
+        "ElementRuns": [
+          {
+            "Status": "Completed",
+            "StartedTimeUtc": "2026-08-14T14:37:55.5377417Z",
+            "CompletedTimeUtc": "2026-08-14T14:37:55.9720818Z",
+            "IncomingFlowId": "edge_CaseInitialVariablesSetupNode-CaseGlobalsVariablesSetupNode",
+            "IncomingFlowIds": [
+              "edge_CaseInitialVariablesSetupNode-CaseGlobalsVariablesSetupNode"
+            ],
+            "ElementRunId": "fbc8106c-c39c-4d51-ba05-c450767f5f48",
+            "MarkerItemIndex": null,
+            "WorkflowId": "7b503631-9349-4ac5-b54b-0068392c98c3/BpmnGenericWorkflow",
+            "TemporalExecutionId": "7b503631-9349-4ac5-b54b-0068392c98c3/BpmnGenericWorkflow/CaseGlobalsVariablesSetupNode/fbc8106c-c39c-4d51-ba05-c450767f5f48",
+            "Version": 2,
+            "ParentElementRunId": null,
+            "JobKey": null
+          }
+        ],
+        "JobKey": null
+      },
+      {
+        "CompletedTimeUtc": "2026-08-14T14:37:57.0701622Z",
+        "ElementId": "caseStartedSendMessageEvent",
+        "ElementType": "IntermediateThrowEvent",
+        "ElementExtensionType": "Maestro.SendMessageEvent",
+        "ParentRunId": null,
+        "ParentElementId": null,
+        "ParentElementRunId": null,
+        "RunId": "",
+        "StartedTimeUtc": "2026-08-14T14:37:56.3247569Z",
+        "Status": "Completed",
+        "ExternalLink": "",
+        "MaestroLink": "",
+        "ElementRuns": [
+          {
+            "Status": "Completed",
+            "StartedTimeUtc": "2026-08-14T14:37:56.2613493Z",
+            "CompletedTimeUtc": "2026-08-14T14:37:57.0701622Z",
+            "IncomingFlowId": "edge_CaseGlobalsVariablesSetupNode-caseStartedSendMessageEvent",
+            "IncomingFlowIds": [
+              "edge_CaseGlobalsVariablesSetupNode-caseStartedSendMessageEvent"
+            ],
+            "ElementRunId": "7163ceda-e382-48f1-98c1-8d731da7ada3",
+            "MarkerItemIndex": null,
+            "WorkflowId": "7b503631-9349-4ac5-b54b-0068392c98c3/BpmnGenericWorkflow",
+            "TemporalExecutionId": "7b503631-9349-4ac5-b54b-0068392c98c3/BpmnGenericWorkflow/caseStartedSendMessageEvent/7163ceda-e382-48f1-98c1-8d731da7ada3",
+            "Version": 2,
+            "ParentElementRunId": null,
+            "JobKey": null
+          }
+        ],
+        "JobKey": null
+      },
+      {
+        "CompletedTimeUtc": "2026-08-14T14:38:02.8424387Z",
+        "ElementId": "adhocCaseEventSubProcess",
+        "ElementType": "SubProcess",
+        "ElementExtensionType": null,
+        "ParentRunId": null,
+        "ParentElementId": null,
+        "ParentElementRunId": null,
+        "RunId": "",
+        "StartedTimeUtc": "2026-08-14T14:37:57.0559066Z",
+        "Status": "Completed",
+        "ExternalLink": "",
+        "MaestroLink": "",
+        "ElementRuns": [
+          {
+            "Status": "Completed",
+            "StartedTimeUtc": "2026-08-14T14:37:56.9943438Z",
+            "CompletedTimeUtc": "2026-08-14T14:38:02.8424387Z",
+            "IncomingFlowId": null,
+            "IncomingFlowIds": [],
+            "ElementRunId": "26c4dbda-a6a7-4ada-80d8-53c50adfaad2",
+            "MarkerItemIndex": null,
+            "WorkflowId": "7b503631-9349-4ac5-b54b-0068392c98c3/BpmnGenericWorkflow",
+            "TemporalExecutionId": "7b503631-9349-4ac5-b54b-0068392c98c3/BpmnGenericWorkflow/adhocCaseEventSubProcess/26c4dbda-a6a7-4ada-80d8-53c50adfaad2",
+            "Version": 2,
+            "ParentElementRunId": null,
+            "JobKey": null
+          }
+        ],
+        "JobKey": null
+      },
+      {
+        "CompletedTimeUtc": "2026-08-14T14:37:57.9290952Z",
+        "ElementId": "caseSLASendMessageEvent",
+        "ElementType": "IntermediateThrowEvent",
+        "ElementExtensionType": "Maestro.SendMessageEvent",
+        "ParentRunId": null,
+        "ParentElementId": null,
+        "ParentElementRunId": null,
+        "RunId": "",
+        "StartedTimeUtc": "2026-08-14T14:37:57.4121466Z",
+        "Status": "Completed",
+        "ExternalLink": "",
+        "MaestroLink": "",
+        "ElementRuns": [
+          {
+            "Status": "Completed",
+            "StartedTimeUtc": "2026-08-14T14:37:57.340874Z",
+            "CompletedTimeUtc": "2026-08-14T14:37:57.9290952Z",
+            "IncomingFlowId": "edge_caseStartedSendMessageEvent-caseSLASendMessageEvent",
+            "IncomingFlowIds": [
+              "edge_caseStartedSendMessageEvent-caseSLASendMessageEvent"
+            ],
+            "ElementRunId": "ac535a8f-1e6f-499e-acbd-2473ebd1cc88",
+            "MarkerItemIndex": null,
+            "WorkflowId": "7b503631-9349-4ac5-b54b-0068392c98c3/BpmnGenericWorkflow",
+            "TemporalExecutionId": "7b503631-9349-4ac5-b54b-0068392c98c3/BpmnGenericWorkflow/caseSLASendMessageEvent/ac535a8f-1e6f-499e-acbd-2473ebd1cc88",
+            "Version": 2,
+            "ParentElementRunId": null,
+            "JobKey": null
+          }
+        ],
+        "JobKey": null
+      },
+      {
+        "CompletedTimeUtc": "2026-08-14T14:38:00.1064024Z",
+        "ElementId": "caseSlaEventSubprocess",
+        "ElementType": "SubProcess",
+        "ElementExtensionType": null,
+        "ParentRunId": null,
+        "ParentElementId": null,
+        "ParentElementRunId": null,
+        "RunId": "",
+        "StartedTimeUtc": "2026-08-14T14:37:57.9168751Z",
+        "Status": "Completed",
+        "ExternalLink": "",
+        "MaestroLink": "",
+        "ElementRuns": [
+          {
+            "Status": "Completed",
+            "StartedTimeUtc": "2026-08-14T14:37:57.8496306Z",
+            "CompletedTimeUtc": "2026-08-14T14:38:00.1064024Z",
+            "IncomingFlowId": null,
+            "IncomingFlowIds": [],
+            "ElementRunId": "2d39fb02-1c24-41d3-9def-56a2d0940525",
+            "MarkerItemIndex": null,
+            "WorkflowId": "7b503631-9349-4ac5-b54b-0068392c98c3/BpmnGenericWorkflow",
+            "TemporalExecutionId": "7b503631-9349-4ac5-b54b-0068392c98c3/BpmnGenericWorkflow/caseSlaEventSubprocess/2d39fb02-1c24-41d3-9def-56a2d0940525",
+            "Version": 2,
+            "ParentElementRunId": null,
+            "JobKey": null
+          }
+        ],
+        "JobKey": null
+      },
+      {
+        "CompletedTimeUtc": null,
+        "ElementId": "caseEndMessageCatchEvent",
+        "ElementType": "IntermediateCatchEvent",
+        "ElementExtensionType": "Maestro.ReceiveMessageEvent",
+        "ParentRunId": null,
+        "ParentElementId": null,
+        "ParentElementRunId": null,
+        "RunId": "",
+        "StartedTimeUtc": "2026-08-14T14:37:58.2205911Z",
+        "Status": "InProgress",
+        "ExternalLink": "",
+        "MaestroLink": "",
+        "ElementRuns": [
+          {
+            "Status": "InProgress",
+            "StartedTimeUtc": "2026-08-14T14:37:58.1536524Z",
+            "CompletedTimeUtc": null,
+            "IncomingFlowId": "edge_caseSLASendMessageEvent-caseEndMessageCatchEvent",
+            "IncomingFlowIds": [
+              "edge_caseSLASendMessageEvent-caseEndMessageCatchEvent"
+            ],
+            "ElementRunId": "1383e042-39f9-4125-89db-bd01891fafa9",
+            "MarkerItemIndex": null,
+            "WorkflowId": "7b503631-9349-4ac5-b54b-0068392c98c3/BpmnGenericWorkflow",
+            "TemporalExecutionId": "7b503631-9349-4ac5-b54b-0068392c98c3/BpmnGenericWorkflow/caseEndMessageCatchEvent/1383e042-39f9-4125-89db-bd01891fafa9",
+            "Version": 2,
+            "ParentElementRunId": null,
+            "JobKey": null
+          }
+        ],
+        "JobKey": null
+      },
+      {
+        "CompletedTimeUtc": "2026-08-14T14:38:00.1035804Z",
+        "ElementId": "CaseRulesEvaluatorNode",
+        "ElementType": "Task",
+        "ElementExtensionType": "Maestro.CaseRulesEvaluator",
+        "ParentRunId": null,
+        "ParentElementId": "adhocCaseEventSubProcess",
+        "ParentElementRunId": null,
+        "RunId": "",
+        "StartedTimeUtc": "2026-08-14T14:37:59.8263165Z",
+        "Status": "Completed",
+        "ExternalLink": "",
+        "MaestroLink": "",
+        "ElementRuns": [
+          {
+            "Status": "Completed",
+            "StartedTimeUtc": "2026-08-14T14:37:59.7588496Z",
+            "CompletedTimeUtc": "2026-08-14T14:38:00.1035804Z",
+            "IncomingFlowId": "edge_EventSubProcessEventMetadataNode-CaseRulesEvaluatorNode",
+            "IncomingFlowIds": [
+              "edge_EventSubProcessEventMetadataNode-CaseRulesEvaluatorNode"
+            ],
+            "ElementRunId": "fd8db95f-3e9a-4118-aa9d-b7debf16fa68",
+            "MarkerItemIndex": null,
+            "WorkflowId": "7b503631-9349-4ac5-b54b-0068392c98c3/BpmnGenericWorkflow/adhocCaseEventSubProcess/26c4dbda-a6a7-4ada-80d8-53c50adfaad2",
+            "TemporalExecutionId": "7b503631-9349-4ac5-b54b-0068392c98c3/BpmnGenericWorkflow/CaseRulesEvaluatorNode/fd8db95f-3e9a-4118-aa9d-b7debf16fa68",
+            "Version": 2,
+            "ParentElementRunId": "9c511a9b766a3b44",
+            "JobKey": null
+          }
+        ],
+        "JobKey": null
+      },
+      {
+        "CompletedTimeUtc": "2026-08-14T14:38:00.6032729Z",
+        "ElementId": "CaseManagerNode",
+        "ElementType": "Task",
+        "ElementExtensionType": "Maestro.CaseManagerPlaceholder",
+        "ParentRunId": null,
+        "ParentElementId": "adhocCaseEventSubProcess",
+        "ParentElementRunId": null,
+        "RunId": "",
+        "StartedTimeUtc": "2026-08-14T14:38:00.3110336Z",
+        "Status": "Completed",
+        "ExternalLink": "",
+        "MaestroLink": "",
+        "ElementRuns": [
+          {
+            "Status": "Completed",
+            "StartedTimeUtc": "2026-08-14T14:38:00.2622282Z",
+            "CompletedTimeUtc": "2026-08-14T14:38:00.6032729Z",
+            "IncomingFlowId": "edge_CaseRulesEvaluatorNode-CaseManagerNode",
+            "IncomingFlowIds": [
+              "edge_CaseRulesEvaluatorNode-CaseManagerNode"
+            ],
+            "ElementRunId": "8ed1797d-6c72-4640-8664-e116602d82df",
+            "MarkerItemIndex": null,
+            "WorkflowId": "7b503631-9349-4ac5-b54b-0068392c98c3/BpmnGenericWorkflow/adhocCaseEventSubProcess/26c4dbda-a6a7-4ada-80d8-53c50adfaad2",
+            "TemporalExecutionId": "7b503631-9349-4ac5-b54b-0068392c98c3/BpmnGenericWorkflow/CaseManagerNode/8ed1797d-6c72-4640-8664-e116602d82df",
+            "Version": 2,
+            "ParentElementRunId": "9c511a9b766a3b44",
+            "JobKey": null
+          }
+        ],
+        "JobKey": null
+      },
+      {
+        "CompletedTimeUtc": "2026-08-14T14:38:01.1932927Z",
+        "ElementId": "Activity_Guardrails",
+        "ElementType": "ServiceTask",
+        "ElementExtensionType": "Maestro.CaseManagerGuardrails",
+        "ParentRunId": null,
+        "ParentElementId": "adhocCaseEventSubProcess",
+        "ParentElementRunId": null,
+        "RunId": "",
+        "StartedTimeUtc": "2026-08-14T14:38:00.7717024Z",
+        "Status": "Completed",
+        "ExternalLink": "",
+        "MaestroLink": "",
+        "ElementRuns": [
+          {
+            "Status": "Completed",
+            "StartedTimeUtc": "2026-08-14T14:38:00.7200875Z",
+            "CompletedTimeUtc": "2026-08-14T14:38:01.1932927Z",
+            "IncomingFlowId": "edge_CaseManagerNode-Activity_Guardrails",
+            "IncomingFlowIds": [
+              "edge_CaseManagerNode-Activity_Guardrails"
+            ],
+            "ElementRunId": "364d9ca4-a3c7-4e9f-8f97-1896426bd33c",
+            "MarkerItemIndex": null,
+            "WorkflowId": "7b503631-9349-4ac5-b54b-0068392c98c3/BpmnGenericWorkflow/adhocCaseEventSubProcess/26c4dbda-a6a7-4ada-80d8-53c50adfaad2",
+            "TemporalExecutionId": "7b503631-9349-4ac5-b54b-0068392c98c3/BpmnGenericWorkflow/Activity_Guardrails/364d9ca4-a3c7-4e9f-8f97-1896426bd33c",
+            "Version": 2,
+            "ParentElementRunId": "9c511a9b766a3b44",
+            "JobKey": null
+          }
+        ],
+        "JobKey": null
+      },
+      {
+        "CompletedTimeUtc": null,
+        "ElementId": "Stage_ErxzAl",
+        "ElementType": "CaseStage",
+        "ElementExtensionType": null,
+        "ParentRunId": null,
+        "ParentElementId": null,
+        "ParentElementRunId": null,
+        "RunId": "",
+        "StartedTimeUtc": "2026-08-14T14:38:00.9701995Z",
+        "Status": "InProgress",
+        "ExternalLink": null,
+        "MaestroLink": null,
+        "ElementRuns": [
+          {
+            "Status": "InProgress",
+            "StartedTimeUtc": "2026-08-14T14:38:00.9654666Z",
+            "CompletedTimeUtc": null,
+            "IncomingFlowId": null,
+            "IncomingFlowIds": [],
+            "ElementRunId": "aae561d5-2b9b-4e42-8e14-0c4284477c4f",
+            "MarkerItemIndex": null,
+            "WorkflowId": null,
+            "TemporalExecutionId": null,
+            "Version": 2,
+            "ParentElementRunId": null,
+            "JobKey": null
+          }
+        ],
+        "JobKey": null
+      },
+      {
+        "CompletedTimeUtc": "2026-08-14T14:38:04.5709988Z",
+        "ElementId": "stageSlaEventSubprocess_Stage_ErxzAl",
+        "ElementType": "SubProcess",
+        "ElementExtensionType": null,
+        "ParentRunId": null,
+        "ParentElementId": null,
+        "ParentElementRunId": null,
+        "RunId": "",
+        "StartedTimeUtc": "2026-08-14T14:38:02.3825494Z",
+        "Status": "Completed",
+        "ExternalLink": "",
+        "MaestroLink": "",
+        "ElementRuns": [
+          {
+            "Status": "Completed",
+            "StartedTimeUtc": "2026-08-14T14:38:02.3168112Z",
+            "CompletedTimeUtc": "2026-08-14T14:38:04.5709988Z",
+            "IncomingFlowId": null,
+            "IncomingFlowIds": [],
+            "ElementRunId": "1cd1ea58-7865-48a3-956d-7b021c421a65",
+            "MarkerItemIndex": null,
+            "WorkflowId": "7b503631-9349-4ac5-b54b-0068392c98c3/BpmnGenericWorkflow",
+            "TemporalExecutionId": "7b503631-9349-4ac5-b54b-0068392c98c3/BpmnGenericWorkflow/stageSlaEventSubprocess_Stage_ErxzAl/1cd1ea58-7865-48a3-956d-7b021c421a65",
+            "Version": 2,
+            "ParentElementRunId": null,
+            "JobKey": null
+          }
+        ],
+        "JobKey": null
+      },
+      {
+        "CompletedTimeUtc": null,
+        "ElementId": "tasksEventSubProcess",
+        "ElementType": "SubProcess",
+        "ElementExtensionType": null,
+        "ParentRunId": null,
+        "ParentElementId": null,
+        "ParentElementRunId": null,
+        "RunId": "",
+        "StartedTimeUtc": "2026-08-14T14:38:02.3922197Z",
+        "Status": "InProgress",
+        "ExternalLink": "",
+        "MaestroLink": "",
+        "ElementRuns": [
+          {
+            "Status": "InProgress",
+            "StartedTimeUtc": "2026-08-14T14:38:02.3181369Z",
+            "CompletedTimeUtc": null,
+            "IncomingFlowId": null,
+            "IncomingFlowIds": [],
+            "ElementRunId": "85a41ce4-5c15-4741-ba3f-2532b47b880c",
+            "MarkerItemIndex": null,
+            "WorkflowId": "7b503631-9349-4ac5-b54b-0068392c98c3/BpmnGenericWorkflow",
+            "TemporalExecutionId": "7b503631-9349-4ac5-b54b-0068392c98c3/BpmnGenericWorkflow/tasksEventSubProcess/85a41ce4-5c15-4741-ba3f-2532b47b880c",
+            "Version": 2,
+            "ParentElementRunId": null,
+            "JobKey": null
+          }
+        ],
+        "JobKey": null
+      },
+      {
+        "CompletedTimeUtc": null,
+        "ElementId": "tj7weHDHG",
+        "ElementType": "ServiceTask",
+        "ElementExtensionType": "Orchestrator.StartJob",
+        "ParentRunId": null,
+        "ParentElementId": "tasksEventSubProcess",
+        "ParentElementRunId": null,
+        "RunId": "",
+        "StartedTimeUtc": "2026-08-14T14:38:04.7788464Z",
+        "Status": "Failed",
+        "ExternalLink": "",
+        "MaestroLink": "",
+        "ElementRuns": [
+          {
+            "Status": "Failed",
+            "StartedTimeUtc": "2026-08-14T14:38:04.7072675Z",
+            "CompletedTimeUtc": "2026-08-14T14:38:05.3525476Z",
+            "IncomingFlowId": "edge_tj7weHDHG_UpdateRunningTasksNewGlobal-tj7weHDHG",
+            "IncomingFlowIds": [
+              "edge_tj7weHDHG_UpdateRunningTasksNewGlobal-tj7weHDHG"
+            ],
+            "ElementRunId": "d7e90920-c7f3-4c84-b67b-2e3e2bbfe988",
+            "MarkerItemIndex": null,
+            "WorkflowId": "7b503631-9349-4ac5-b54b-0068392c98c3/BpmnGenericWorkflow/tasksEventSubProcess/85a41ce4-5c15-4741-ba3f-2532b47b880c",
+            "TemporalExecutionId": "7b503631-9349-4ac5-b54b-0068392c98c3/BpmnGenericWorkflow/tj7weHDHG/d7e90920-c7f3-4c84-b67b-2e3e2bbfe988",
+            "Version": 2,
+            "ParentElementRunId": "63107ef885de16f5",
+            "JobKey": null
+          }
+        ],
+        "JobKey": null
+      }
+    ],
+    "TraceId": "7b50363193494ac5b54b0068392c98c3",
+    "ReleaseName": "EquipmentRentalCase-v1.0.1",
+    "IsThrottled": false
+  }
+}
