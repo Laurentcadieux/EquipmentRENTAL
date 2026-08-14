@@ -1,4 +1,24 @@
 {
   "version": "2.0",
-  "resources": []
+  "resources": [
+    {
+      "resource": "Connection",
+      "key": "5799c39b-43b3-42e0-8860-c23cf05d681d",
+      "activityId": "CreateLifecycleEvent",
+      "activityDisplayName": "Record rental command",
+      "value": {
+        "ConnectionId": {
+          "defaultValue": "5799c39b-43b3-42e0-8860-c23cf05d681d",
+          "isExpression": false
+        }
+      },
+      "metadata": {
+        "UseConnectionService": "true",
+        "Connector": "uipath-uipath-dataservice",
+        "ActivityName": "Record rental command",
+        "BindingsVersion": "2.2",
+        "SolutionsSupport": "true"
+      }
+    }
+  ]
 }
