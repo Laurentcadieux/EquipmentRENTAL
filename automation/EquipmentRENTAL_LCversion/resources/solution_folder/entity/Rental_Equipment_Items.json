@@ -1,0 +1,19 @@
+{
+  "docVersion": "1.0.0",
+  "resource": {
+    "name": "Rental_Equipment_Items",
+    "kind": "entity",
+    "apiVersion": "dataservice.uipath.com/v1",
+    "dependencies": [],
+    "runtimeDependencies": [],
+    "folders": [],
+    "spec": {
+      "resourceJson": "",
+      "displayName": "",
+      "name": "Rental_Equipment_Items"
+    },
+    "locks": [],
+    "key": "87a125e7-72c2-4b2d-b64d-201bc004ad22",
+    "files": []
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "docVersion": "1.0.0",
+  "resource": {
+    "name": "Pickup_Return_Requests",
+    "kind": "entity",
+    "apiVersion": "dataservice.uipath.com/v1",
+    "dependencies": [],
+    "runtimeDependencies": [],
+    "folders": [],
+    "spec": {
+      "resourceJson": "",
+      "displayName": "",
+      "name": "Pickup_Return_Requests"
+    },
+    "locks": [],
+    "key": "aa7b2600-5c85-4d90-a435-64b1c17a617f",
+    "files": []
+  }
+}

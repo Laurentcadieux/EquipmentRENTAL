@@ -1,0 +1,19 @@
+{
+  "docVersion": "1.0.0",
+  "resource": {
+    "name": "Vendor_Master",
+    "kind": "entity",
+    "apiVersion": "dataservice.uipath.com/v1",
+    "dependencies": [],
+    "runtimeDependencies": [],
+    "folders": [],
+    "spec": {
+      "resourceJson": "",
+      "displayName": "",
+      "name": "Vendor_Master"
+    },
+    "locks": [],
+    "key": "0181167e-c1c5-40e8-bd37-1719508ea32b",
+    "files": []
+  }
+}

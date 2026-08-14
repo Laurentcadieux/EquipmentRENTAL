@@ -1,0 +1,19 @@
+{
+  "docVersion": "1.0.0",
+  "resource": {
+    "name": "Vendor_Locations",
+    "kind": "entity",
+    "apiVersion": "dataservice.uipath.com/v1",
+    "dependencies": [],
+    "runtimeDependencies": [],
+    "folders": [],
+    "spec": {
+      "resourceJson": "",
+      "displayName": "",
+      "name": "Vendor_Locations"
+    },
+    "locks": [],
+    "key": "422dd399-2251-4846-adc5-724caa1f7d46",
+    "files": []
+  }
+}

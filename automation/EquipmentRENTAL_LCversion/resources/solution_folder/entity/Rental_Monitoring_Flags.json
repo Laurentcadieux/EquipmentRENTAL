@@ -1,0 +1,19 @@
+{
+  "docVersion": "1.0.0",
+  "resource": {
+    "name": "Rental_Monitoring_Flags",
+    "kind": "entity",
+    "apiVersion": "dataservice.uipath.com/v1",
+    "dependencies": [],
+    "runtimeDependencies": [],
+    "folders": [],
+    "spec": {
+      "resourceJson": "",
+      "displayName": "",
+      "name": "Rental_Monitoring_Flags"
+    },
+    "locks": [],
+    "key": "e253daee-4ee1-432a-a25f-e8aae7778067",
+    "files": []
+  }
+}

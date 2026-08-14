@@ -1,0 +1,19 @@
+{
+  "docVersion": "1.0.0",
+  "resource": {
+    "name": "Vendor_Equipment_Availability",
+    "kind": "entity",
+    "apiVersion": "dataservice.uipath.com/v1",
+    "dependencies": [],
+    "runtimeDependencies": [],
+    "folders": [],
+    "spec": {
+      "resourceJson": "",
+      "displayName": "",
+      "name": "Vendor_Equipment_Availability"
+    },
+    "locks": [],
+    "key": "0cbfa8dc-ce92-4898-acfb-caf0564bcb41",
+    "files": []
+  }
+}

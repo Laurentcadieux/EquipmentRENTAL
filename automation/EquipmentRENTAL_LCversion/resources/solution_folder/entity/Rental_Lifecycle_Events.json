@@ -1,0 +1,19 @@
+{
+  "docVersion": "1.0.0",
+  "resource": {
+    "name": "Rental_Lifecycle_Events",
+    "kind": "entity",
+    "apiVersion": "dataservice.uipath.com/v1",
+    "dependencies": [],
+    "runtimeDependencies": [],
+    "folders": [],
+    "spec": {
+      "resourceJson": "",
+      "displayName": "",
+      "name": "Rental_Lifecycle_Events"
+    },
+    "locks": [],
+    "key": "591e783a-a4f8-48c6-aee5-b692d0a6e283",
+    "files": []
+  }
+}

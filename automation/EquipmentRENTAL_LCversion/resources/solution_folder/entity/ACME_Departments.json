@@ -1,0 +1,19 @@
+{
+  "docVersion": "1.0.0",
+  "resource": {
+    "name": "ACME_Departments",
+    "kind": "entity",
+    "apiVersion": "dataservice.uipath.com/v1",
+    "dependencies": [],
+    "runtimeDependencies": [],
+    "folders": [],
+    "spec": {
+      "resourceJson": "",
+      "displayName": "",
+      "name": "ACME_Departments"
+    },
+    "locks": [],
+    "key": "b8a0c4ce-5fd0-4614-aa00-ead5903e5e32",
+    "files": []
+  }
+}
