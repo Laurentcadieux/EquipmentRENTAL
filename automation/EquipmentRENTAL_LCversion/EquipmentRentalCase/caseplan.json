@@ -3,7 +3,26 @@
     "name": "EquipmentRental",
     "version": "20.0.0",
     "description": "Manages ACME equipment rentals from intake through monitoring, return, and closure.",
-    "bindings": [],
+    "bindings": [
+        {
+            "id": "bRetIn001",
+            "name": "name",
+            "type": "string",
+            "resource": "app",
+            "resourceKey": "EquipmentRENTAL/EquipmentRENTAL_LCversion.equipment-return-intent",
+            "default": "equipment-return-intent",
+            "propertyAttribute": "name"
+        },
+        {
+            "id": "bRetIn002",
+            "name": "folderPath",
+            "type": "string",
+            "resource": "app",
+            "resourceKey": "EquipmentRENTAL/EquipmentRENTAL_LCversion.equipment-return-intent",
+            "default": "EquipmentRENTAL/EquipmentRENTAL_LCversion",
+            "propertyAttribute": "folderPath"
+        }
+    ],
     "variables": {
         "inputOutputs": [
             {
@@ -540,6 +559,31 @@
                             "data": {
                                 "taskTitle": "Confirm equipment return intent",
                                 "priority": "High",
+                                "name": "=bindings.bRetIn001",
+                                "folderPath": "=bindings.bRetIn002",
+                                "inputs": [],
+                                "outputs": [
+                                    {
+                                        "name": "reviewerComment",
+                                        "type": "string",
+                                        "id": "reviewerComment",
+                                        "var": "reviewerComment",
+                                        "source": "=reviewerComment",
+                                        "target": "=reviewerComment",
+                                        "elementId": "tO5J7EXwm",
+                                        "value": ""
+                                    },
+                                    {
+                                        "name": "Action",
+                                        "type": "string",
+                                        "id": "action",
+                                        "var": "action",
+                                        "source": "=Action",
+                                        "target": "=Action",
+                                        "elementId": "tO5J7EXwm",
+                                        "value": ""
+                                    }
+                                ],
                                 "assignmentCriteria": "user",
                                 "recipient": {
                                     "Type": 2,

@@ -1,4 +1,13 @@
 {
   "version": "2.0",
-  "resources": []
+  "resources": [
+    {
+      "resource": "app",
+      "key": "EquipmentRENTAL/EquipmentRENTAL_LCversion.equipment-return-intent",
+      "value": {
+        "name": { "defaultValue": "equipment-return-intent" },
+        "folderPath": { "defaultValue": "EquipmentRENTAL/EquipmentRENTAL_LCversion" }
+      }
+    }
+  ]
 }
