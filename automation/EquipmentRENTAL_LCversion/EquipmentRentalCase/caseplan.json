@@ -21,6 +21,66 @@
             "resourceKey": "EquipmentRENTAL/EquipmentRENTAL_LCversion.equipment-return-intent",
             "default": "EquipmentRENTAL/EquipmentRENTAL_LCversion",
             "propertyAttribute": "folderPath"
+        },
+        {
+            "id": "bCmdApi01",
+            "name": "name",
+            "type": "string",
+            "resource": "process",
+            "resourceSubType": "Api",
+            "resourceKey": "EquipmentRENTAL/EquipmentRENTAL_LCversion.RentalCommandsApi",
+            "default": "RentalCommandsApi",
+            "propertyAttribute": "name"
+        },
+        {
+            "id": "bCmdApi02",
+            "name": "folderPath",
+            "type": "string",
+            "resource": "process",
+            "resourceSubType": "Api",
+            "resourceKey": "EquipmentRENTAL/EquipmentRENTAL_LCversion.RentalCommandsApi",
+            "default": "EquipmentRENTAL/EquipmentRENTAL_LCversion",
+            "propertyAttribute": "folderPath"
+        },
+        {
+            "id": "bMonApi01",
+            "name": "name",
+            "type": "string",
+            "resource": "process",
+            "resourceSubType": "Api",
+            "resourceKey": "EquipmentRENTAL/EquipmentRENTAL_LCversion.RentalMonitoringApi",
+            "default": "RentalMonitoringApi",
+            "propertyAttribute": "name"
+        },
+        {
+            "id": "bMonApi02",
+            "name": "folderPath",
+            "type": "string",
+            "resource": "process",
+            "resourceSubType": "Api",
+            "resourceKey": "EquipmentRENTAL/EquipmentRENTAL_LCversion.RentalMonitoringApi",
+            "default": "EquipmentRENTAL/EquipmentRENTAL_LCversion",
+            "propertyAttribute": "folderPath"
+        },
+        {
+            "id": "bAgent001",
+            "name": "name",
+            "type": "string",
+            "resource": "process",
+            "resourceSubType": "Agent",
+            "resourceKey": "EquipmentRENTAL/EquipmentRENTAL_LCversion.RentalOrchestratorAgent",
+            "default": "RentalOrchestratorAgent",
+            "propertyAttribute": "name"
+        },
+        {
+            "id": "bAgent002",
+            "name": "folderPath",
+            "type": "string",
+            "resource": "process",
+            "resourceSubType": "Agent",
+            "resourceKey": "EquipmentRENTAL/EquipmentRENTAL_LCversion.RentalOrchestratorAgent",
+            "default": "EquipmentRENTAL/EquipmentRENTAL_LCversion",
+            "propertyAttribute": "folderPath"
         }
     ],
     "variables": {
@@ -291,8 +351,8 @@
                             "isRequired": true,
                             "type": "api-workflow",
                             "data": {
-                                "name": "RentalCommandsApi",
-                                "folderPath": "EquipmentRENTAL/EquipmentRENTAL_LCversion"
+                                "name": "=bindings.bCmdApi01",
+                                "folderPath": "=bindings.bCmdApi02"
                             },
                             "entryConditions": [
                                 {
@@ -314,10 +374,10 @@
                             "displayName": "Update rental extension in Mastermind",
                             "description": "Writes extended rental date.",
                             "isRequired": true,
-                            "type": "rpa",
+                            "type": "api-workflow",
                             "data": {
-                                "name": "EquipmentRentalMastermindRpa",
-                                "folderPath": "EquipmentRENTAL/EquipmentRENTAL_LCversion"
+                                "name": "=bindings.bCmdApi01",
+                                "folderPath": "=bindings.bCmdApi02"
                             },
                             "entryConditions": [
                                 {
@@ -344,8 +404,8 @@
                             "isRequired": true,
                             "type": "api-workflow",
                             "data": {
-                                "name": "RentalMonitoringApi",
-                                "folderPath": "EquipmentRENTAL/EquipmentRENTAL_LCversion"
+                                "name": "=bindings.bMonApi01",
+                                "folderPath": "=bindings.bMonApi02"
                             },
                             "entryConditions": [
                                 {
@@ -438,8 +498,8 @@
                             "isRequired": true,
                             "type": "api-workflow",
                             "data": {
-                                "name": "RentalCommandsApi",
-                                "folderPath": "EquipmentRENTAL/EquipmentRENTAL_LCversion"
+                                "name": "=bindings.bCmdApi01",
+                                "folderPath": "=bindings.bCmdApi02"
                             },
                             "entryConditions": [
                                 {
@@ -462,10 +522,10 @@
                             "shouldRunOnlyOnce": true,
                             "description": "Records expedited pickup status.",
                             "isRequired": true,
-                            "type": "rpa",
+                            "type": "api-workflow",
                             "data": {
-                                "name": "EquipmentRentalMastermindRpa",
-                                "folderPath": "EquipmentRENTAL/EquipmentRENTAL_LCversion"
+                                "name": "=bindings.bCmdApi01",
+                                "folderPath": "=bindings.bCmdApi02"
                             },
                             "entryConditions": [
                                 {
@@ -613,8 +673,8 @@
                             "isRequired": true,
                             "type": "api-workflow",
                             "data": {
-                                "name": "RentalCommandsApi",
-                                "folderPath": "EquipmentRENTAL/EquipmentRENTAL_LCversion"
+                                "name": "=bindings.bCmdApi01",
+                                "folderPath": "=bindings.bCmdApi02"
                             },
                             "entryConditions": [
                                 {
@@ -640,10 +700,10 @@
                             "shouldRunOnlyOnce": true,
                             "description": "Checks whether equipment is still required.",
                             "isRequired": true,
-                            "type": "rpa",
+                            "type": "api-workflow",
                             "data": {
-                                "name": "EquipmentRentalMastermindRpa",
-                                "folderPath": "EquipmentRENTAL/EquipmentRENTAL_LCversion"
+                                "name": "=bindings.bMonApi01",
+                                "folderPath": "=bindings.bMonApi02"
                             },
                             "entryConditions": [
                                 {
@@ -673,6 +733,9 @@
                             "data": {
                                 "taskTitle": "Complete equipment return inspection",
                                 "priority": "High",
+                                "name": "=bindings.bRetIn001",
+                                "folderPath": "=bindings.bRetIn002",
+                                "inputs": [],
                                 "assignmentCriteria": "user",
                                 "recipient": {
                                     "Type": 2,
@@ -703,10 +766,10 @@
                             "shouldRunOnlyOnce": true,
                             "description": "Closes the rental job after confirmed return.",
                             "isRequired": true,
-                            "type": "rpa",
+                            "type": "api-workflow",
                             "data": {
-                                "name": "EquipmentRentalMastermindRpa",
-                                "folderPath": "EquipmentRENTAL/EquipmentRENTAL_LCversion"
+                                "name": "=bindings.bCmdApi01",
+                                "folderPath": "=bindings.bCmdApi02"
                             },
                             "entryConditions": [
                                 {
@@ -836,8 +899,8 @@
                             "isRequired": true,
                             "type": "api-workflow",
                             "data": {
-                                "name": "RentalMonitoringApi",
-                                "folderPath": "EquipmentRENTAL/EquipmentRENTAL_LCversion"
+                                "name": "=bindings.bMonApi01",
+                                "folderPath": "=bindings.bMonApi02"
                             },
                             "entryConditions": [
                                 {
@@ -861,8 +924,8 @@
                             "isRequired": true,
                             "type": "api-workflow",
                             "data": {
-                                "name": "RentalMonitoringApi",
-                                "folderPath": "EquipmentRENTAL/EquipmentRENTAL_LCversion"
+                                "name": "=bindings.bMonApi01",
+                                "folderPath": "=bindings.bMonApi02"
                             },
                             "entryConditions": [
                                 {
@@ -967,10 +1030,10 @@
                             "shouldRunOnlyOnce": true,
                             "description": "Validates required job, contract, date, branch, and equipment fields.",
                             "isRequired": true,
-                            "type": "rpa",
+                            "type": "api-workflow",
                             "data": {
-                                "name": "EquipmentRentalValidationRpa",
-                                "folderPath": "EquipmentRENTAL/EquipmentRENTAL_LCversion"
+                                "name": "=bindings.bCmdApi01",
+                                "folderPath": "=bindings.bCmdApi02"
                             },
                             "entryConditions": [
                                 {
@@ -995,8 +1058,8 @@
                             "isRequired": true,
                             "type": "agent",
                             "data": {
-                                "name": "RentalCaseAgent",
-                                "folderPath": "EquipmentRENTAL/EquipmentRENTAL_LCversion"
+                                "name": "=bindings.bAgent001",
+                                "folderPath": "=bindings.bAgent002"
                             },
                             "entryConditions": [
                                 {

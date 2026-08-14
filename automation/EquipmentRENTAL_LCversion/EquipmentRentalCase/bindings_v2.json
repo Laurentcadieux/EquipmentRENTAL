@@ -8,6 +8,33 @@
         "name": { "defaultValue": "equipment-return-intent" },
         "folderPath": { "defaultValue": "EquipmentRENTAL/EquipmentRENTAL_LCversion" }
       }
+    },
+    {
+      "resource": "process",
+      "key": "EquipmentRENTAL/EquipmentRENTAL_LCversion.RentalCommandsApi",
+      "value": {
+        "name": { "defaultValue": "RentalCommandsApi" },
+        "folderPath": { "defaultValue": "EquipmentRENTAL/EquipmentRENTAL_LCversion" }
+      },
+      "metadata": { "subType": "Api" }
+    },
+    {
+      "resource": "process",
+      "key": "EquipmentRENTAL/EquipmentRENTAL_LCversion.RentalMonitoringApi",
+      "value": {
+        "name": { "defaultValue": "RentalMonitoringApi" },
+        "folderPath": { "defaultValue": "EquipmentRENTAL/EquipmentRENTAL_LCversion" }
+      },
+      "metadata": { "subType": "Api" }
+    },
+    {
+      "resource": "process",
+      "key": "EquipmentRENTAL/EquipmentRENTAL_LCversion.RentalOrchestratorAgent",
+      "value": {
+        "name": { "defaultValue": "RentalOrchestratorAgent" },
+        "folderPath": { "defaultValue": "EquipmentRENTAL/EquipmentRENTAL_LCversion" }
+      },
+      "metadata": { "subType": "Agent" }
     }
   ]
 }

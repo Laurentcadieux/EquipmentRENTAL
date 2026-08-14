@@ -1,0 +1,32 @@
+{
+  "docVersion": "1.0.0",
+  "resource": {
+    "name": "EquipmentRENTAL_LCversion.api.RentalMonitoringApi",
+    "kind": "package",
+    "apiVersion": "orchestrator.uipath.com/v1",
+    "isOverridable": true,
+    "dependencies": [],
+    "runtimeDependencies": [],
+    "folders": [
+      {
+        "fullyQualifiedName": "solution_folder"
+      }
+    ],
+    "spec": {
+      "fileName": "EquipmentRENTAL_LCversion.api.RentalMonitoringApi.1.0.0.nupkg",
+      "fileReference": "EquipmentRENTAL_LCversion.api.RentalMonitoringApi_1.0.0",
+      "name": "EquipmentRENTAL_LCversion.api.RentalMonitoringApi"
+    },
+    "locks": [],
+    "key": "EquipmentRENTAL_LCversion.api.RentalMonitoringApi:1.0.0",
+    "files": [
+      {
+        "key": "EquipmentRENTAL_LCversion.api.RentalMonitoringApi_1.0.0",
+        "name": "EquipmentRENTAL_LCversion.api.RentalMonitoringApi.1.0.0.nupkg",
+        "url": "https://cloud.uipath.com/uipathlabs/Playground/orchestrator_/odata/Processes/UiPath.Server.Configuration.OData.DownloadPackage(key='EquipmentRENTAL_LCversion.api.RentalMonitoringApi:1.0.0')?feedId=93949a13-9388-45bb-af90-5783a67e1b33",
+        "kind": "Package",
+        "version": "1.0.0"
+      }
+    ]
+  }
+}
