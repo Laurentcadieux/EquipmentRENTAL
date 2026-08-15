@@ -10,15 +10,7 @@
   },
   "inputSchema": {
     "type": "object",
-    "properties": {
-      "input": {
-        "type": "string",
-        "description": "User input"
-      }
-    },
-    "required": [
-      "input"
-    ]
+    "properties": {}
   },
   "outputSchema": {
     "type": "object",
@@ -39,21 +31,21 @@
   "messages": [
     {
       "role": "system",
-      "content": "Use the EquipmentRENTAL_LCversion Data Fabric context to assess EquipmentRental cases, explain recommended routing, and require human review for exceptions. Ground each recommendation in retrieved rental, vendor, equipment, availability, monitoring, and pickup records. Do not invent record values.",
+      "content": "Execute the assigned equipment-rental case task. Return a concise confirmation of completion. Do not access Data Fabric, APIs, or external systems. Escalate only when human review is explicitly required by the case task.",
       "contentTokens": [
         {
           "type": "simpleText",
-          "rawString": "Use the EquipmentRENTAL_LCversion Data Fabric context to assess EquipmentRental cases, explain recommended routing, and require human review for exceptions. Ground each recommendation in retrieved rental, vendor, equipment, availability, monitoring, and pickup records. Do not invent record values."
+          "rawString": "Execute the assigned equipment-rental case task. Return a concise confirmation of completion. Do not access Data Fabric, APIs, or external systems. Escalate only when human review is explicitly required by the case task."
         }
       ]
     },
     {
       "role": "user",
-      "content": "{{input.input}}",
+      "content": "Perform the assigned case task and return the completion status.",
       "contentTokens": [
         {
-          "type": "variable",
-          "rawString": "input.input"
+          "type": "simpleText",
+          "rawString": "Perform the assigned case task and return the completion status."
         }
       ]
     }

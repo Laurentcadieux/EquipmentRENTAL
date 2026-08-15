@@ -8,15 +8,7 @@
       "type": "agent",
       "input": {
         "type": "object",
-        "properties": {
-          "input": {
-            "type": "string",
-            "description": "User input"
-          }
-        },
-        "required": [
-          "input"
-        ]
+        "properties": {}
       },
       "output": {
         "type": "object",

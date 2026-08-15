@@ -13,7 +13,30 @@
         "name": "RentalMonitoringApi"
       }
     ],
-    "runtimeDependencies": [],
+    "runtimeDependencies": [
+      {
+        "bindingType": "Connection",
+        "bindingKey": "5799c39b-43b3-42e0-8860-c23cf05d681d",
+        "bindingValues": {
+          "connectionId": {
+            "defaultValue": "5799c39b-43b3-42e0-8860-c23cf05d681d",
+            "isExpression": false
+          }
+        },
+        "bindingMetadata": {
+          "activityName": "Write monitoring flag",
+          "bindingsVersion": "2.2",
+          "solutionsSupport": "true",
+          "connector": "uipath-uipath-dataservice",
+          "useConnectionService": "true"
+        },
+        "resourceKind": "Connection",
+        "resourceType": "uipath-uipath-dataservice",
+        "resourceKey": "5799c39b-43b3-42e0-8860-c23cf05d681d",
+        "resourceName": "laurent.cadieux@uipath.com",
+        "folderKey": "5e6c96e4-ee96-4055-a02b-d62993318509"
+      }
+    ],
     "folders": [
       {
         "fullyQualifiedName": "solution_folder"

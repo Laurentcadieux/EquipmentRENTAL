@@ -46,7 +46,10 @@
           }
         },
         "bindingMetadata": {},
-        "resourceKind": "Process"
+        "resourceKind": "Process",
+        "resourceKey": "1c4b1ca0-e485-4ae7-b02c-6d5a27c32710",
+        "resourceName": "RentalCommandsApi_1",
+        "folderKey": "5e6c96e4-ee96-4055-a02b-d62993318509"
       },
       {
         "bindingType": "process",

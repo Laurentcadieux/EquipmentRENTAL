@@ -29,9 +29,9 @@
     },
     {
       "resource": "process",
-      "key": "EquipmentRENTAL/EquipmentRENTAL_LCversion.RentalOrchestratorAgent",
+      "key": "EquipmentRENTAL/EquipmentRENTAL_LCversion.RentalOrchestratorAgent-v1.0.6",
       "value": {
-        "name": { "defaultValue": "RentalOrchestratorAgent" },
+        "name": { "defaultValue": "RentalOrchestratorAgent-v1.0.6" },
         "folderPath": { "defaultValue": "EquipmentRENTAL/EquipmentRENTAL_LCversion" }
       },
       "metadata": { "subType": "Agent" }

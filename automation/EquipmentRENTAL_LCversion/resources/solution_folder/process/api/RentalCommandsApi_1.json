@@ -1,0 +1,69 @@
+{
+  "docVersion": "1.0.0",
+  "resource": {
+    "name": "RentalCommandsApi_1",
+    "kind": "process",
+    "type": "api",
+    "apiVersion": "orchestrator.uipath.com/v1",
+    "isOverridable": true,
+    "dependencies": [
+      {
+        "kind": "Package",
+        "name": "RentalCommandsApi_1"
+      }
+    ],
+    "runtimeDependencies": [
+      {
+        "bindingType": "Connection",
+        "bindingKey": "5799c39b-43b3-42e0-8860-c23cf05d681d",
+        "bindingValues": {
+          "connectionId": {
+            "defaultValue": "5799c39b-43b3-42e0-8860-c23cf05d681d",
+            "isExpression": false
+          }
+        },
+        "bindingMetadata": {
+          "connector": "uipath-uipath-dataservice",
+          "useConnectionService": "true",
+          "activityName": "Record rental command",
+          "bindingsVersion": "2.2",
+          "solutionsSupport": "true"
+        },
+        "resourceKind": "Connection"
+      }
+    ],
+    "folders": [
+      {
+        "fullyQualifiedName": "solution_folder"
+      }
+    ],
+    "spec": {
+      "type": "Api",
+      "name": "RentalCommandsApi_1",
+      "description": "Rental command API for EquipmentRentalCase",
+      "package": {
+        "name": "RentalCommandsApi_1",
+        "key": "RentalCommandsApi:1.0.1"
+      },
+      "packageName": "RentalCommandsApi",
+      "packageVersion": "1.0.1",
+      "entryPointUniqueId": "3871eea2-833a-4c9f-9959-040a3d49b8a5",
+      "entryPointName": "content/Workflow.json",
+      "inputArgumentsSchemaV2": "",
+      "outputArgumentsSchemaV2": "",
+      "hiddenForAttendedUser": false,
+      "alwaysRunning": false,
+      "autoStartProcess": false,
+      "targetFrameworkValue": "Portable",
+      "retentionAction": "Delete",
+      "retentionPeriod": 30,
+      "staleRetentionAction": "Delete",
+      "staleRetentionPeriod": 180,
+      "entryPoints": "[{\"UniqueId\":\"3871eea2-833a-4c9f-9959-040a3d49b8a5\",\"Path\":\"content/Workflow.json\",\"DisplayName\":null,\"InputArguments\":\"\",\"OutputArguments\":\"\",\"Type\":6,\"TargetRuntime\":null,\"ContentRoot\":null,\"DataVariation\":null,\"Id\":4012381}]",
+      "tags": []
+    },
+    "locks": [],
+    "key": "1c4b1ca0-e485-4ae7-b02c-6d5a27c32710",
+    "files": []
+  }
+}

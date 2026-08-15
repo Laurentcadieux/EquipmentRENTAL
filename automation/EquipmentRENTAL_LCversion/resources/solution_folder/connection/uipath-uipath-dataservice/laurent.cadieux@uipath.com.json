@@ -17,7 +17,7 @@
       "connectorName": "UiPath Data Fabric",
       "name": "laurent.cadieux@uipath.com",
       "authenticationType": "AuthenticateAfterDeployment",
-      "connectorVersion": "1.70.0",
+      "connectorVersion": "1.72.0",
       "connectorKey": "uipath-uipath-dataservice",
       "pollingInterval": 5
     },

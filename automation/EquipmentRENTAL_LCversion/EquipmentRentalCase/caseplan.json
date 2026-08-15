@@ -68,8 +68,8 @@
             "type": "string",
             "resource": "process",
             "resourceSubType": "Agent",
-            "resourceKey": "EquipmentRENTAL/EquipmentRENTAL_LCversion.RentalOrchestratorAgent",
-            "default": "RentalOrchestratorAgent",
+            "resourceKey": "EquipmentRENTAL/EquipmentRENTAL_LCversion.RentalOrchestratorAgent-v1.0.6",
+            "default": "RentalOrchestratorAgent-v1.0.6",
             "propertyAttribute": "name"
         },
         {
@@ -78,7 +78,7 @@
             "type": "string",
             "resource": "process",
             "resourceSubType": "Agent",
-            "resourceKey": "EquipmentRENTAL/EquipmentRENTAL_LCversion.RentalOrchestratorAgent",
+            "resourceKey": "EquipmentRENTAL/EquipmentRENTAL_LCversion.RentalOrchestratorAgent-v1.0.6",
             "default": "EquipmentRENTAL/EquipmentRENTAL_LCversion",
             "propertyAttribute": "folderPath"
         }
@@ -349,10 +349,10 @@
                             "displayName": "Cancel existing pickup request",
                             "description": "Cancels scheduled pickup before applying extension.",
                             "isRequired": true,
-                            "type": "api-workflow",
+                            "type": "agent",
                             "data": {
-                                "name": "=bindings.bCmdApi01",
-                                "folderPath": "=bindings.bCmdApi02"
+                                "name": "=bindings.bAgent001",
+                                "folderPath": "=bindings.bAgent002"
                             },
                             "entryConditions": [
                                 {
@@ -374,10 +374,10 @@
                             "displayName": "Update rental extension in Mastermind",
                             "description": "Writes extended rental date.",
                             "isRequired": true,
-                            "type": "api-workflow",
+                            "type": "agent",
                             "data": {
-                                "name": "=bindings.bCmdApi01",
-                                "folderPath": "=bindings.bCmdApi02"
+                                "name": "=bindings.bAgent001",
+                                "folderPath": "=bindings.bAgent002"
                             },
                             "entryConditions": [
                                 {
@@ -402,10 +402,10 @@
                             "displayName": "Notify procurement & return to Active Rental",
                             "description": "Notifies procurement and resumes monitoring.",
                             "isRequired": true,
-                            "type": "api-workflow",
+                            "type": "agent",
                             "data": {
-                                "name": "=bindings.bMonApi01",
-                                "folderPath": "=bindings.bMonApi02"
+                                "name": "=bindings.bAgent001",
+                                "folderPath": "=bindings.bAgent002"
                             },
                             "entryConditions": [
                                 {
@@ -496,10 +496,10 @@
                             "shouldRunOnlyOnce": true,
                             "description": "Sends expedited pickup request.",
                             "isRequired": true,
-                            "type": "api-workflow",
+                            "type": "agent",
                             "data": {
-                                "name": "=bindings.bCmdApi01",
-                                "folderPath": "=bindings.bCmdApi02"
+                                "name": "=bindings.bAgent001",
+                                "folderPath": "=bindings.bAgent002"
                             },
                             "entryConditions": [
                                 {
@@ -522,10 +522,10 @@
                             "shouldRunOnlyOnce": true,
                             "description": "Records expedited pickup status.",
                             "isRequired": true,
-                            "type": "api-workflow",
+                            "type": "agent",
                             "data": {
-                                "name": "=bindings.bCmdApi01",
-                                "folderPath": "=bindings.bCmdApi02"
+                                "name": "=bindings.bAgent001",
+                                "folderPath": "=bindings.bAgent002"
                             },
                             "entryConditions": [
                                 {
@@ -671,10 +671,10 @@
                             "shouldRunOnlyOnce": true,
                             "description": "Submits a mock pickup request and returns confirmation.",
                             "isRequired": true,
-                            "type": "api-workflow",
+                            "type": "agent",
                             "data": {
-                                "name": "=bindings.bCmdApi01",
-                                "folderPath": "=bindings.bCmdApi02"
+                                "name": "=bindings.bAgent001",
+                                "folderPath": "=bindings.bAgent002"
                             },
                             "entryConditions": [
                                 {
@@ -700,10 +700,10 @@
                             "shouldRunOnlyOnce": true,
                             "description": "Checks whether equipment is still required.",
                             "isRequired": true,
-                            "type": "api-workflow",
+                            "type": "agent",
                             "data": {
-                                "name": "=bindings.bMonApi01",
-                                "folderPath": "=bindings.bMonApi02"
+                                "name": "=bindings.bAgent001",
+                                "folderPath": "=bindings.bAgent002"
                             },
                             "entryConditions": [
                                 {
@@ -766,10 +766,10 @@
                             "shouldRunOnlyOnce": true,
                             "description": "Closes the rental job after confirmed return.",
                             "isRequired": true,
-                            "type": "api-workflow",
+                            "type": "agent",
                             "data": {
-                                "name": "=bindings.bCmdApi01",
-                                "folderPath": "=bindings.bCmdApi02"
+                                "name": "=bindings.bAgent001",
+                                "folderPath": "=bindings.bAgent002"
                             },
                             "entryConditions": [
                                 {
@@ -897,10 +897,10 @@
                             "displayName": "Monitor rental contract end date",
                             "description": "Calculates days remaining and whether the rental end date has been reached.",
                             "isRequired": true,
-                            "type": "api-workflow",
+                            "type": "agent",
                             "data": {
-                                "name": "=bindings.bMonApi01",
-                                "folderPath": "=bindings.bMonApi02"
+                                "name": "=bindings.bAgent001",
+                                "folderPath": "=bindings.bAgent002"
                             },
                             "entryConditions": [
                                 {
@@ -922,10 +922,10 @@
                             "displayName": "Send staged expiry alerts",
                             "description": "Sends staged 30-day, 7-day, and 1-day expiry alerts.",
                             "isRequired": true,
-                            "type": "api-workflow",
+                            "type": "agent",
                             "data": {
-                                "name": "=bindings.bMonApi01",
-                                "folderPath": "=bindings.bMonApi02"
+                                "name": "=bindings.bAgent001",
+                                "folderPath": "=bindings.bAgent002"
                             },
                             "entryConditions": [
                                 {
@@ -1030,10 +1030,10 @@
                             "shouldRunOnlyOnce": true,
                             "description": "Validates required job, contract, date, branch, and equipment fields.",
                             "isRequired": true,
-                            "type": "api-workflow",
+                            "type": "agent",
                             "data": {
-                                "name": "=bindings.bCmdApi01",
-                                "folderPath": "=bindings.bCmdApi02"
+                                "name": "=bindings.bAgent001",
+                                "folderPath": "=bindings.bAgent002"
                             },
                             "entryConditions": [
                                 {
